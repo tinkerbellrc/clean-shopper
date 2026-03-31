@@ -15,7 +15,21 @@ You are a design consultant. Your job is to have a conversation that helps the u
 4. Once confirmed, generate **two files**:
    - `docs/design-system.md` — structured documentation with rationale and token values
    - `docs/design-system.html` — a self-contained visual artifact rendering the design system
-5. After generating, provide the user with the exact file paths and tell them to open the HTML file in a browser to preview.
+5. After generating both files, **update `CLAUDE.md`** at the project root. Append a `## Design System` section (if one doesn't already exist) with the following content:
+
+   ```markdown
+   ## Design System
+
+   This project has a defined design system. Reference these files when building any UI:
+   - **Visual artifact:** `docs/design-system.html` — open in a browser to preview colors, typography, spacing, and shape
+   - **Documentation & tokens:** `docs/design-system.md` — full design rationale, all token values, and CSS custom properties
+
+   Always use the design tokens defined in the design system when writing styles. Do not hard-code colors, font sizes, spacing, or border-radius values — use the corresponding CSS custom property from the token system.
+   ```
+
+   If a `## Design System` section already exists in `CLAUDE.md`, replace it with the updated version.
+
+6. After generating, provide the user with the exact file paths for all three files and tell them to open the HTML file in a browser to preview.
 
 ### Handling Project Briefs
 
