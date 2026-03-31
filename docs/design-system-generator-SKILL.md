@@ -3,6 +3,7 @@
 name: design-system-generator
 description: "Generates a complete design system for a project. Use when asked to create, generate, or build a design system. Runs a structured brand interview, then produces two outputs: an HTML visual style guide and a markdown spec file at /docs/design-system.md. Also updates CLAUDE.md references automatically. Invoke with /design-system-generator."
 ---
+---
 
 # Design System Generator
 
