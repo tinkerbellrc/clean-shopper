@@ -1,5 +1,7 @@
 /* ============================================================
    RAYUM DESIGN SYSTEM — Tailwind v4 Theme
+   Includes backward-compatible aliases for the app's existing
+   class names (bg-linen, bg-sage, rounded-card, sp-*, etc.)
    Source: Figma / Rayum_Design_System
    Version: 1.0 · 2026-04-14
 
@@ -186,6 +188,62 @@
   --color-orange-50:  #ff902e;
   --color-orange-60:  #f07000;
   --color-orange-100: #431f00;
+
+  /* ----------------------------------------------------------
+     APP ALIASES — Earthy palette names → Rayum tokens
+     These keep existing component class names working
+     (bg-linen, bg-sage, text-charcoal, rounded-card, etc.)
+     ---------------------------------------------------------- */
+
+  /* Backgrounds */
+  --color-linen:         var(--color-neutral-15);   /* #f6f7f9 — page bg */
+  --color-warm-white:    var(--color-neutral-10);   /* #ffffff — card bg */
+  --color-sage:          var(--color-brand-primary-50);  /* #5cdf78 — active/CTA */
+  --color-sage-15:       var(--color-brand-primary-10);  /* #f1fff4 — tint */
+  --color-moss:          var(--color-brand-primary-70);  /* #39a550 — hover/dark green */
+  --color-garden:        var(--color-brand-primary-40);  /* #70fc8e — badge bg */
+  --color-clay:          var(--color-orange-50);    /* #ff902e — caution */
+  --color-dune:          var(--color-neutral-30);   /* #d3dbe4 — borders/skeletons */
+  --color-charcoal:      var(--color-neutral-100);  /* #0a0d11 — primary text */
+  --color-stone:         var(--color-neutral-60);   /* #606e80 — secondary text */
+  --color-terracotta:    var(--color-red-60);       /* #e53e3e — avoid/error */
+  --color-terracotta-12: var(--color-red-10);       /* #ffeded — error tint */
+
+  /* ----------------------------------------------------------
+     SPACING — sp-* prefix for existing component classes
+     Maps to the same px values as Rayum space primitives
+     ---------------------------------------------------------- */
+  --spacing-sp-0-5: 2px;   /* sp-0-5  = space/50  */
+  --spacing-sp-1:   4px;   /* sp-1    = space/100 */
+  --spacing-sp-1-5: 6px;   /* sp-1-5  = space/150 */
+  --spacing-sp-2:   8px;   /* sp-2    = space/200 */
+  --spacing-sp-2-5: 10px;  /* sp-2-5  = space/250 */
+  --spacing-sp-3:   12px;  /* sp-3    = space/300 */
+  --spacing-sp-4:   16px;  /* sp-4    = space/400 */
+  --spacing-sp-5:   20px;  /* sp-5    = space/500 */
+  --spacing-sp-6:   24px;  /* sp-6    = space/600 */
+  --spacing-sp-7:   28px;  /* sp-7    = space/700 */
+  --spacing-sp-8:   32px;  /* sp-8    = space/800 */
+  --spacing-sp-10:  40px;  /* sp-10   = space/1000 */
+  --spacing-sp-12:  48px;  /* sp-12   = space/1200 */
+  --spacing-sp-14:  56px;  /* sp-14   = space/1400 */
+  --spacing-sp-16:  64px;  /* sp-16   = space/1600 */
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY — aliases for existing text-heading-* classes
+     ---------------------------------------------------------- */
+  --text-heading-l: 32px;   /* Heading Base  */
+  --text-heading-m: 24px;   /* Subheading Large */
+  --text-heading-s: 18px;   /* Subheading Small */
+  --text-body:      16px;   /* Body Base */
+  --text-label:     14px;   /* Label Base */
+  --text-micro:     12px;   /* Label Small */
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS — aliases for rounded-card, rounded-tag
+     ---------------------------------------------------------- */
+  --radius-card: var(--radius-xl);   /* 16px — cards, panels */
+  --radius-tag:  var(--radius-md);   /* 8px  — badges, chips  */
 }
 
 /* ============================================================
