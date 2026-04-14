@@ -1,924 +1,901 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clean Shopper — Design System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean Shopper — Visual Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
   <style>
-    /* ========================================
-       DESIGN TOKENS
-       ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      /* --- Colors: Primary --- */
-      --color-primary: #6B8F71;
-      --color-primary-light: #8FB396;
-      --color-primary-dark: #4A6B50;
-      --color-accent: #C4704B;
+      --warm-white: #FAFAF7;
+      --linen: #F5F2EC;
+      --sage: #7A9E7E;
+      --sage-15: rgba(122, 158, 126, 0.15);
+      --moss: #4E7055;
+      --clay: #B87A5A;
+      --charcoal: #2C2C2A;
+      --stone: #6B6B68;
+      --dune: #D4D0C8;
+      --garden: #5E8C61;
+      --terracotta: #C0614A;
 
-      /* --- Colors: Semantic --- */
-      --color-success: #6B8F71;
-      --color-warning: #C4944A;
-      --color-error: #B85C5C;
-      --color-info: #7B8FA1;
-
-      /* --- Colors: Neutrals --- */
-      --neutral-50: #F7F5F2;
-      --neutral-100: #EFECE7;
-      --neutral-200: #E2DDD5;
-      --neutral-300: #CFC8BD;
-      --neutral-400: #A89F93;
-      --neutral-500: #857C71;
-      --neutral-600: #655D53;
-      --neutral-700: #4A443C;
-      --neutral-800: #332E28;
-      --neutral-900: #1E1B17;
-
-      /* --- Colors: Surfaces --- */
-      --surface-page: #F7F5F2;
-      --surface-card: #FFFFFF;
-      --surface-secondary: #EFECE7;
-      --surface-overlay: rgba(30, 27, 23, 0.4);
-
-      /* --- Typography --- */
-      --font-primary: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-      --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
-
-      --text-display: 2.441rem;
-      --text-h1: 1.953rem;
-      --text-h2: 1.563rem;
-      --text-h3: 1.25rem;
-      --text-h4: 1rem;
-      --text-body: 1rem;
-      --text-small: 0.875rem;
-      --text-caption: 0.75rem;
-
-      --weight-light: 300;
-      --weight-regular: 400;
-      --weight-medium: 500;
-      --weight-semibold: 600;
-
-      --leading-display: 1.15;
-      --leading-heading: 1.2;
-      --leading-subheading: 1.3;
-      --leading-body: 1.7;
-      --leading-small: 1.5;
-      --leading-caption: 1.4;
-
-      --tracking-display: -0.02em;
-      --tracking-heading: -0.01em;
-      --tracking-caps: 0.08em;
-
-      /* --- Spacing --- */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
       --space-4: 16px;
       --space-6: 24px;
       --space-8: 32px;
-      --space-10: 40px;
       --space-12: 48px;
       --space-16: 64px;
-
-      /* --- Layout --- */
-      --max-width-content: 720px;
-      --max-width-wide: 960px;
-      --page-margin-desktop: 32px;
-      --page-margin-mobile: 16px;
-
-      /* --- Shape --- */
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-      --radius-xl: 20px;
-      --radius-full: 9999px;
-
-      /* --- Shadows --- */
-      --shadow-sm: 0 1px 3px rgba(30,27,23,0.06), 0 1px 2px rgba(30,27,23,0.04);
-      --shadow-md: 0 4px 12px rgba(30,27,23,0.08), 0 2px 4px rgba(30,27,23,0.04);
-      --shadow-lg: 0 12px 28px rgba(30,27,23,0.12), 0 4px 8px rgba(30,27,23,0.06);
-
-      /* --- Motion --- */
-      --duration-fast: 120ms;
-      --duration-normal: 220ms;
-      --duration-slow: 380ms;
-      --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
-      --ease-in: cubic-bezier(0.42, 0, 1, 1);
-      --ease-out: cubic-bezier(0, 0, 0.58, 1);
-    }
-
-    /* ========================================
-       BASE STYLES
-       ======================================== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-      font-family: var(--font-primary);
-      font-size: var(--text-body);
-      font-weight: var(--weight-regular);
-      line-height: var(--leading-body);
-      color: var(--neutral-600);
-      background-color: var(--surface-page);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--linen);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.5;
     }
 
-    /* ========================================
-       LAYOUT
-       ======================================== */
+    /* Layout */
     .page {
-      max-width: var(--max-width-wide);
+      max-width: 960px;
       margin: 0 auto;
-      padding: var(--space-16) var(--page-margin-desktop);
+      padding: var(--space-16) var(--space-6);
     }
 
-    @media (max-width: 640px) {
-      .page {
-        padding: var(--space-12) var(--page-margin-mobile);
-      }
-    }
-
-    section {
+    .section {
       margin-bottom: var(--space-16);
     }
 
-    /* ========================================
-       TYPOGRAPHY STYLES
-       ======================================== */
-    .section-title {
-      font-family: var(--font-secondary);
-      font-size: var(--text-small);
-      font-weight: var(--weight-semibold);
-      letter-spacing: var(--tracking-caps);
+    .section + .section {
+      padding-top: var(--space-12);
+      border-top: 1px solid var(--dune);
+    }
+
+    /* Typography */
+    .heading-l { font-size: 32px; font-weight: 700; line-height: 1.2; }
+    .heading-m { font-size: 24px; font-weight: 600; line-height: 1.2; }
+    .heading-s { font-size: 18px; font-weight: 600; line-height: 1.2; }
+    .body      { font-size: 16px; font-weight: 400; line-height: 1.5; }
+    .label     { font-size: 14px; font-weight: 500; line-height: 1.4; }
+    .micro     { font-size: 12px; font-weight: 400; line-height: 1.4; }
+
+    .text-stone     { color: var(--stone); }
+    .text-sage      { color: var(--sage); }
+    .text-moss      { color: var(--moss); }
+    .text-clay      { color: var(--clay); }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--neutral-400);
-      margin-bottom: var(--space-8);
-    }
-
-    .section-subtitle {
-      font-family: var(--font-secondary);
-      font-size: var(--text-small);
-      font-weight: var(--weight-medium);
-      color: var(--neutral-500);
-      margin-bottom: var(--space-4);
-      margin-top: var(--space-10);
-    }
-
-    h2 {
-      font-family: var(--font-primary);
-      font-size: var(--text-h2);
-      font-weight: var(--weight-semibold);
-      line-height: var(--leading-heading);
-      color: var(--neutral-800);
-      letter-spacing: var(--tracking-heading);
-    }
-
-    p {
-      max-width: var(--max-width-content);
-    }
-
-    /* ========================================
-       HEADER
-       ======================================== */
-    .header {
-      margin-bottom: var(--space-16);
-      padding-bottom: var(--space-12);
-      border-bottom: 1px solid var(--neutral-200);
-    }
-
-    .header-product {
-      font-family: var(--font-primary);
-      font-size: var(--text-display);
-      font-weight: var(--weight-light);
-      line-height: var(--leading-display);
-      letter-spacing: var(--tracking-display);
-      color: var(--neutral-900);
+      color: var(--stone);
       margin-bottom: var(--space-2);
     }
 
-    .header-meta {
-      font-family: var(--font-secondary);
-      font-size: var(--text-caption);
-      font-weight: var(--weight-medium);
-      line-height: var(--leading-caption);
-      color: var(--neutral-400);
-      letter-spacing: var(--tracking-caps);
-      text-transform: uppercase;
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: var(--space-2);
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--stone);
       margin-bottom: var(--space-8);
+      max-width: 560px;
     }
 
-    .header-direction {
-      font-family: var(--font-primary);
-      font-size: var(--text-body);
-      font-weight: var(--weight-regular);
-      line-height: var(--leading-body);
-      color: var(--neutral-600);
-      font-style: italic;
-      max-width: var(--max-width-content);
-    }
+    /* Grid helpers */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); }
 
-    /* ========================================
-       PRINCIPLES
-       ======================================== */
-    .principles-grid {
-      display: grid;
-      gap: var(--space-4);
-    }
-
-    .principle {
-      background: var(--surface-card);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .principle-name {
-      font-family: var(--font-secondary);
-      font-size: var(--text-h4);
-      font-weight: var(--weight-semibold);
-      color: var(--neutral-800);
-      margin-bottom: var(--space-1);
-    }
-
-    .principle-desc {
-      font-family: var(--font-primary);
-      font-size: var(--text-small);
-      color: var(--neutral-500);
-      line-height: var(--leading-small);
-    }
-
-    /* ========================================
-       COLOR SWATCHES
-       ======================================== */
-    .swatch-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-4);
-    }
-
+    /* ─── COLOR PALETTE ─── */
     .swatch {
-      min-width: 120px;
-      flex: 1;
-      border-radius: var(--radius-md);
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--dune);
     }
-
     .swatch-color {
       height: 80px;
-      display: flex;
-      align-items: flex-end;
-      padding: var(--space-2) var(--space-3);
     }
-
-    .swatch-color.dark-text .swatch-hex {
-      color: var(--neutral-800);
+    .swatch-info {
+      background: var(--warm-white);
+      padding: var(--space-3) var(--space-3);
     }
-
-    .swatch-color.light-text .swatch-hex {
-      color: #FFFFFF;
-    }
-
-    .swatch-hex {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      font-weight: var(--weight-medium);
-      opacity: 0.85;
-    }
-
-    .swatch-label {
-      background: var(--surface-card);
-      padding: var(--space-2) var(--space-3);
-    }
-
-    .swatch-token {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-600);
-      display: block;
-    }
-
     .swatch-name {
-      font-family: var(--font-secondary);
-      font-size: var(--text-caption);
-      color: var(--neutral-400);
-      display: block;
-      margin-top: 1px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .swatch-hex {
+      font-size: 12px;
+      color: var(--stone);
+      font-family: monospace;
+    }
+    .swatch-role {
+      font-size: 11px;
+      color: var(--stone);
+      margin-top: 2px;
     }
 
-    /* Neutral strip */
-    .neutral-strip {
+    /* ─── TYPOGRAPHY SCALE ─── */
+    .type-row {
       display: flex;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--dune);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+    .type-meta .label { color: var(--stone); }
+    .type-meta .micro { color: var(--dune); margin-top: 2px; font-family: monospace; }
+    .type-sample { color: var(--charcoal); }
+
+    /* ─── SPACING ─── */
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-2) 0;
+    }
+    .spacing-bar {
+      background: var(--sage-15);
+      border: 1px solid var(--sage);
+      border-radius: 3px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .spacing-label {
+      font-size: 13px;
+      font-family: monospace;
+      color: var(--stone);
+      min-width: 80px;
+    }
+    .spacing-desc {
+      font-size: 13px;
+      color: var(--stone);
     }
 
-    .neutral-step {
-      flex: 1;
-      height: 64px;
+    /* ─── PRODUCT CARD ─── */
+    .card {
+      background: var(--warm-white);
+      border: 1px solid var(--dune);
+      border-radius: 12px;
+      padding: var(--space-6);
+      cursor: pointer;
+      transition: border-color 0.15s ease;
+    }
+    .card:hover { border-color: var(--sage); }
+
+    .card-header {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--space-4);
+    }
+    .card-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+    .card-brand {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--stone);
+      margin-top: 2px;
+    }
+
+    .score-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
     }
+    .score-high  { background: var(--garden); }
+    .score-mid   { background: var(--clay); }
+    .score-low   { background: var(--terracotta); }
 
-    .neutral-step span {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: var(--weight-medium);
-      letter-spacing: 0.02em;
-    }
-
-    .neutral-step.dark-text span { color: var(--neutral-700); }
-    .neutral-step.light-text span { color: rgba(255,255,255,0.8); }
-
-    /* Surface nesting */
-    .surface-demo {
-      background: var(--surface-page);
-      border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-    }
-
-    .surface-demo-card {
-      background: var(--surface-card);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .surface-demo-elevated {
-      background: var(--surface-card);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
-      box-shadow: var(--shadow-md);
-    }
-
-    .surface-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-400);
-      margin-bottom: var(--space-2);
-    }
-
-    /* ========================================
-       TYPOGRAPHY SPECIMENS
-       ======================================== */
-    .specimen {
-      margin-bottom: var(--space-8);
-      padding-bottom: var(--space-8);
-      border-bottom: 1px solid var(--neutral-100);
-    }
-
-    .specimen:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .specimen-text {
-      color: var(--neutral-800);
-      margin-bottom: var(--space-2);
-    }
-
-    .specimen-meta {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-400);
-      line-height: var(--leading-caption);
-    }
-
-    /* ========================================
-       SPACING BARS
-       ======================================== */
-    .spacing-bar-row {
+    .card-tags {
       display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .tag {
+      background: var(--sage-15);
+      color: var(--moss);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+    .tag-flagged {
+      background: rgba(192, 97, 74, 0.12);
+      color: var(--terracotta);
+    }
+    .tag-flagged::before {
+      content: '⚑ ';
+      font-size: 11px;
+    }
+
+    .card-preference {
+      font-size: 14px;
+      color: var(--stone);
+      font-style: normal;
+    }
+
+    .card-preference-label {
+      font-size: 12px;
+      color: var(--stone);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .best-match-badge {
+      display: inline-flex;
       align-items: center;
+      gap: 5px;
+      background: var(--moss);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
       margin-bottom: var(--space-3);
     }
-
-    .spacing-bar-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-500);
-      width: 100px;
-      flex-shrink: 0;
-    }
-
-    .spacing-bar {
-      height: 24px;
-      background: rgba(107, 143, 113, 0.2);
-      border-radius: var(--radius-sm);
-      border-left: 3px solid var(--color-primary);
-    }
-
-    .spacing-bar-value {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-400);
-      margin-left: var(--space-2);
-      flex-shrink: 0;
-    }
-
-    /* ========================================
-       SHAPE EXAMPLES
-       ======================================== */
-    .shape-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-6);
-      align-items: flex-start;
-    }
-
-    .shape-example {
-      text-align: center;
-    }
-
-    .shape-box {
-      width: 80px;
-      height: 56px;
-      background: var(--neutral-200);
-      margin-bottom: var(--space-2);
-    }
-
-    .shape-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-500);
-    }
-
-    .shape-value {
-      font-family: var(--font-mono);
+    .best-match-badge::before {
+      content: '✦';
       font-size: 10px;
-      color: var(--neutral-400);
     }
 
-    .shadow-row {
+    /* ─── AI CONVERSATION ─── */
+    .conversation {
+      background: var(--warm-white);
+      border-radius: 16px;
+      border: 1px solid var(--dune);
+      overflow: hidden;
+    }
+    .conversation-body {
+      padding: var(--space-6);
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: var(--space-8);
-      align-items: flex-start;
+    }
+    .message-group { display: flex; flex-direction: column; gap: var(--space-4); }
+    .message-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-1);
+    }
+    .message-label.user { color: var(--stone); }
+    .message-label.ai   { color: var(--sage); }
+    .message-text {
+      font-size: 16px;
+      color: var(--charcoal);
+      line-height: 1.6;
+      max-width: 560px;
+    }
+    .message-text.user {
+      color: var(--stone);
     }
 
-    .shadow-example {
-      text-align: center;
+    .thinking-dots {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      padding: var(--space-2) 0;
+    }
+    .thinking-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sage);
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse {
+      0%, 80%, 100% { opacity: 0.3; transform: scale(0.9); }
+      40%           { opacity: 1;   transform: scale(1); }
     }
 
-    .shadow-box {
-      width: 140px;
-      height: 90px;
-      background: var(--surface-card);
-      border-radius: var(--radius-lg);
-      margin-bottom: var(--space-2);
+    .conversation-input {
+      border-top: 1px solid var(--dune);
+      background: var(--linen);
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
     }
-
-    .shadow-label {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-500);
+    .input-field {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--charcoal);
     }
+    .input-field::placeholder { color: var(--dune); }
+    .input-send {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--sage);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .input-send:hover { background: var(--moss); }
+    .input-send svg { width: 16px; height: 16px; fill: white; }
 
-    /* ========================================
-       MOTION
-       ======================================== */
-    .motion-tokens {
+    /* ─── AI STATES ─── */
+    .ai-states-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+    .state-card {
+      background: var(--warm-white);
+      border: 1px solid var(--dune);
+      border-radius: 10px;
+      padding: var(--space-4) var(--space-4);
+    }
+    .state-name {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--stone);
+      margin-bottom: var(--space-3);
+    }
+    .state-demo {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    .state-desc {
+      font-size: 13px;
+      color: var(--stone);
+      margin-top: var(--space-3);
+      line-height: 1.4;
+    }
+
+    .confident-text {
+      font-size: 15px;
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+    .uncertain-text {
+      font-size: 15px;
+      color: var(--stone);
+    }
+
+    /* Preference applied */
+    .pref-note {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--stone);
+      border-left: 2px solid var(--sage);
+      padding-left: var(--space-2);
+    }
+
+    /* Flagged ingredient dot */
+    .flagged-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      display: inline-block;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      margin-bottom: var(--space-16);
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--sage);
+      margin-bottom: var(--space-4);
+    }
+    .hero-title {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: var(--space-4);
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--stone);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    /* Comparison layout */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: var(--space-4);
     }
 
-    .motion-token {
-      background: var(--surface-card);
-      border-radius: var(--radius-md);
-      padding: var(--space-4);
-      box-shadow: var(--shadow-sm);
+    /* Divider label */
+    .divider-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
     }
-
-    .motion-token-name {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      font-weight: var(--weight-medium);
-      color: var(--neutral-700);
-      margin-bottom: var(--space-1);
+    .divider-label::before,
+    .divider-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--dune);
     }
-
-    .motion-token-value {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--neutral-400);
-    }
-
-    /* ========================================
-       FOOTER
-       ======================================== */
-    .footer {
-      margin-top: var(--space-16);
-      padding-top: var(--space-8);
-      border-top: 1px solid var(--neutral-200);
-      font-family: var(--font-secondary);
-      font-size: var(--text-caption);
-      color: var(--neutral-400);
+    .divider-label span {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--stone);
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
-  <div class="page">
+<div class="page">
 
-    <!-- ==================== HEADER ==================== -->
-    <header class="header">
-      <h1 class="header-product">Clean Shopper</h1>
-      <p class="header-meta">Design System v1.0 &mdash; March 30, 2026</p>
-      <p class="header-direction">
-        A calm, trusted space &mdash; organic and minimal, with the restrained confidence of Apple&rsquo;s visual language. Information is presented cleanly and the interface gets out of the way, with occasional pops of editorial color that add personality without clutter. The experience is closer to consulting a knowledgeable friend than browsing a store.
-      </p>
-    </header>
-
-    <!-- ==================== DESIGN PRINCIPLES ==================== -->
-    <section>
-      <p class="section-title">Design Principles</p>
-      <div class="principles-grid">
-        <div class="principle">
-          <p class="principle-name">Let the content breathe</p>
-          <p class="principle-desc">Generous whitespace creates calm. Every element earns its place by serving the user, not filling a layout.</p>
-        </div>
-        <div class="principle">
-          <p class="principle-name">Earn trust through restraint</p>
-          <p class="principle-desc">No selling, no urgency, no visual noise. Confidence comes from saying less, not more.</p>
-        </div>
-        <div class="principle">
-          <p class="principle-name">Nature as reference</p>
-          <p class="principle-desc">Color, texture, and rhythm draw from the natural world &mdash; earthy, muted, organic. Nothing synthetic.</p>
-        </div>
-        <div class="principle">
-          <p class="principle-name">Show only what&rsquo;s needed</p>
-          <p class="principle-desc">Information is progressive, not exhaustive. The default state is simple. Depth is there when you ask for it.</p>
-        </div>
-        <div class="principle">
-          <p class="principle-name">Accessible by nature</p>
-          <p class="principle-desc">Strong contrast and readability are the foundation, not an accommodation. The calm palette and accessibility reinforce each other.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== COLOR: PRIMARY ==================== -->
-    <section>
-      <p class="section-title">Color Palette</p>
-
-      <p class="section-subtitle">Primary Colors</p>
-      <div class="swatch-row">
-        <div class="swatch">
-          <div class="swatch-color light-text" style="background-color: var(--color-primary);">
-            <span class="swatch-hex">#6B8F71</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-primary</span>
-            <span class="swatch-name">Sage</span>
-          </div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-color dark-text" style="background-color: var(--color-primary-light);">
-            <span class="swatch-hex">#8FB396</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-primary-light</span>
-            <span class="swatch-name">Soft Sage</span>
-          </div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-color light-text" style="background-color: var(--color-primary-dark);">
-            <span class="swatch-hex">#4A6B50</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-primary-dark</span>
-            <span class="swatch-name">Deep Forest</span>
-          </div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-color light-text" style="background-color: var(--color-accent);">
-            <span class="swatch-hex">#C4704B</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-accent</span>
-            <span class="swatch-name">Terracotta</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SEMANTIC COLORS -->
-      <p class="section-subtitle">Semantic Colors</p>
-      <div class="swatch-row">
-        <div class="swatch">
-          <div class="swatch-color light-text" style="background-color: var(--color-success);">
-            <span class="swatch-hex">#6B8F71</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-success</span>
-            <span class="swatch-name">Success</span>
-          </div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-color dark-text" style="background-color: var(--color-warning);">
-            <span class="swatch-hex">#C4944A</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-warning</span>
-            <span class="swatch-name">Warning</span>
-          </div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-color light-text" style="background-color: var(--color-error);">
-            <span class="swatch-hex">#B85C5C</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-error</span>
-            <span class="swatch-name">Error</span>
-          </div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-color light-text" style="background-color: var(--color-info);">
-            <span class="swatch-hex">#7B8FA1</span>
-          </div>
-          <div class="swatch-label">
-            <span class="swatch-token">--color-info</span>
-            <span class="swatch-name">Info</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- NEUTRAL SCALE -->
-      <p class="section-subtitle">Neutral Scale</p>
-      <div class="neutral-strip">
-        <div class="neutral-step dark-text" style="background-color: var(--neutral-50);">
-          <span>50</span>
-          <span>#F7F5F2</span>
-        </div>
-        <div class="neutral-step dark-text" style="background-color: var(--neutral-100);">
-          <span>100</span>
-          <span>#EFECE7</span>
-        </div>
-        <div class="neutral-step dark-text" style="background-color: var(--neutral-200);">
-          <span>200</span>
-          <span>#E2DDD5</span>
-        </div>
-        <div class="neutral-step dark-text" style="background-color: var(--neutral-300);">
-          <span>300</span>
-          <span>#CFC8BD</span>
-        </div>
-        <div class="neutral-step dark-text" style="background-color: var(--neutral-400);">
-          <span>400</span>
-          <span>#A89F93</span>
-        </div>
-        <div class="neutral-step light-text" style="background-color: var(--neutral-500);">
-          <span>500</span>
-          <span>#857C71</span>
-        </div>
-        <div class="neutral-step light-text" style="background-color: var(--neutral-600);">
-          <span>600</span>
-          <span>#655D53</span>
-        </div>
-        <div class="neutral-step light-text" style="background-color: var(--neutral-700);">
-          <span>700</span>
-          <span>#4A443C</span>
-        </div>
-        <div class="neutral-step light-text" style="background-color: var(--neutral-800);">
-          <span>800</span>
-          <span>#332E28</span>
-        </div>
-        <div class="neutral-step light-text" style="background-color: var(--neutral-900);">
-          <span>900</span>
-          <span>#1E1B17</span>
-        </div>
-      </div>
-
-      <!-- SURFACE HIERARCHY -->
-      <p class="section-subtitle">Surface Hierarchy</p>
-      <div class="surface-demo">
-        <p class="surface-label">Page background &mdash; --surface-page: #F7F5F2</p>
-        <div class="surface-demo-card">
-          <p class="surface-label">Card &mdash; --surface-card: #FFFFFF</p>
-          <div class="surface-demo-elevated">
-            <p class="surface-label">Elevated &mdash; shadow-md on card surface</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== TYPOGRAPHY ==================== -->
-    <section>
-      <p class="section-title">Typography</p>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-display); font-weight: var(--weight-light); line-height: var(--leading-display); letter-spacing: var(--tracking-display);">
-          Clean Shopper
-        </p>
-        <p class="specimen-meta">display &middot; Source Serif 4 &middot; 2.441rem (39px) &middot; weight 300 &middot; line-height 1.15</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-h1); font-weight: var(--weight-regular); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading);">
-          Discover cleaner products for your home
-        </p>
-        <p class="specimen-meta">h1 &middot; Source Serif 4 &middot; 1.953rem (31px) &middot; weight 400 &middot; line-height 1.2</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-h2); font-weight: var(--weight-semibold); line-height: var(--leading-heading);">
-          Your saved preferences
-        </p>
-        <p class="specimen-meta">h2 &middot; Source Serif 4 &middot; 1.563rem (25px) &middot; weight 600 &middot; line-height 1.25</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-h3); font-weight: var(--weight-semibold); line-height: var(--leading-subheading);">
-          Ingredient safety breakdown
-        </p>
-        <p class="specimen-meta">h3 &middot; Source Serif 4 &middot; 1.25rem (20px) &middot; weight 600 &middot; line-height 1.3</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-secondary); font-size: var(--text-h4); font-weight: var(--weight-semibold); line-height: var(--leading-subheading);">
-          Certification details
-        </p>
-        <p class="specimen-meta">h4 &middot; Inter &middot; 1rem (16px) &middot; weight 600 &middot; line-height 1.35</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-body); font-weight: var(--weight-regular); line-height: var(--leading-body);">
-          This dish soap is rated well by EWG for low toxicity. It avoids parabens, synthetic fragrances, and triclosan. The plant-based surfactants are biodegradable, and the packaging is made from 100% post-consumer recycled plastic.
-        </p>
-        <p class="specimen-meta">body &middot; Source Serif 4 &middot; 1rem (16px) &middot; weight 400 &middot; line-height 1.7</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-secondary); font-size: var(--text-small); font-weight: var(--weight-regular); line-height: var(--leading-small); color: var(--neutral-500);">
-          EWG Verified &middot; USDA Organic &middot; B Corp Certified
-        </p>
-        <p class="specimen-meta">small &middot; Inter &middot; 0.875rem (14px) &middot; weight 400 &middot; line-height 1.5</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-secondary); font-size: var(--text-caption); font-weight: var(--weight-medium); line-height: var(--leading-caption); color: var(--neutral-400);">
-          Last updated 2 hours ago &middot; Source: EWG Skin Deep
-        </p>
-        <p class="specimen-meta">caption &middot; Inter &middot; 0.75rem (12px) &middot; weight 500 &middot; line-height 1.4</p>
-      </div>
-
-      <div class="specimen">
-        <p class="specimen-text" style="font-family: var(--font-mono); font-size: var(--text-small); font-weight: var(--weight-regular); line-height: var(--leading-small); color: var(--neutral-600);">
-          Sodium Lauryl Sulfate &middot; Cocamidopropyl Betaine &middot; Citric Acid
-        </p>
-        <p class="specimen-meta">mono &middot; JetBrains Mono &middot; 0.875rem (14px) &middot; weight 400 &middot; line-height 1.5</p>
-      </div>
-    </section>
-
-    <!-- ==================== SPACING ==================== -->
-    <section>
-      <p class="section-title">Spacing Scale</p>
-      <p style="font-family: var(--font-secondary); font-size: var(--text-small); color: var(--neutral-500); margin-bottom: var(--space-8); max-width: var(--max-width-content);">
-        Base unit: 4px. Spacious and gallery-like &mdash; generous whitespace creates the calm, unpressured feeling of consulting a friend rather than scrolling a marketplace.
-      </p>
-
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-1</span>
-        <div class="spacing-bar" style="width: 4px;"></div>
-        <span class="spacing-bar-value">4px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-2</span>
-        <div class="spacing-bar" style="width: 8px;"></div>
-        <span class="spacing-bar-value">8px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-3</span>
-        <div class="spacing-bar" style="width: 12px;"></div>
-        <span class="spacing-bar-value">12px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-4</span>
-        <div class="spacing-bar" style="width: 16px;"></div>
-        <span class="spacing-bar-value">16px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-6</span>
-        <div class="spacing-bar" style="width: 24px;"></div>
-        <span class="spacing-bar-value">24px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-8</span>
-        <div class="spacing-bar" style="width: 32px;"></div>
-        <span class="spacing-bar-value">32px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-10</span>
-        <div class="spacing-bar" style="width: 40px;"></div>
-        <span class="spacing-bar-value">40px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-12</span>
-        <div class="spacing-bar" style="width: 48px;"></div>
-        <span class="spacing-bar-value">48px</span>
-      </div>
-      <div class="spacing-bar-row">
-        <span class="spacing-bar-label">space-16</span>
-        <div class="spacing-bar" style="width: 64px;"></div>
-        <span class="spacing-bar-value">64px</span>
-      </div>
-    </section>
-
-    <!-- ==================== SHAPE ==================== -->
-    <section>
-      <p class="section-title">Shape &amp; Elevation</p>
-
-      <p class="section-subtitle">Border Radius</p>
-      <div class="shape-row">
-        <div class="shape-example">
-          <div class="shape-box" style="border-radius: var(--radius-sm);"></div>
-          <p class="shape-label">radius-sm</p>
-          <p class="shape-value">6px</p>
-        </div>
-        <div class="shape-example">
-          <div class="shape-box" style="border-radius: var(--radius-md);"></div>
-          <p class="shape-label">radius-md</p>
-          <p class="shape-value">10px</p>
-        </div>
-        <div class="shape-example">
-          <div class="shape-box" style="border-radius: var(--radius-lg);"></div>
-          <p class="shape-label">radius-lg</p>
-          <p class="shape-value">14px</p>
-        </div>
-        <div class="shape-example">
-          <div class="shape-box" style="border-radius: var(--radius-xl);"></div>
-          <p class="shape-label">radius-xl</p>
-          <p class="shape-value">20px</p>
-        </div>
-        <div class="shape-example">
-          <div class="shape-box" style="border-radius: var(--radius-full); width: 56px;"></div>
-          <p class="shape-label">radius-full</p>
-          <p class="shape-value">9999px</p>
-        </div>
-      </div>
-
-      <p class="section-subtitle">Elevation</p>
-      <div class="shadow-row">
-        <div class="shadow-example">
-          <div class="shadow-box" style="box-shadow: var(--shadow-sm);"></div>
-          <p class="shadow-label">shadow-sm</p>
-        </div>
-        <div class="shadow-example">
-          <div class="shadow-box" style="box-shadow: var(--shadow-md);"></div>
-          <p class="shadow-label">shadow-md</p>
-        </div>
-        <div class="shadow-example">
-          <div class="shadow-box" style="box-shadow: var(--shadow-lg);"></div>
-          <p class="shadow-label">shadow-lg</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== MOTION ==================== -->
-    <section>
-      <p class="section-title">Motion</p>
-      <p style="font-family: var(--font-primary); font-size: var(--text-body); color: var(--neutral-600); margin-bottom: var(--space-8); max-width: var(--max-width-content);">
-        Smooth and polished but never showy. Motion makes transitions feel crafted and intentional &mdash; things ease in gently, settle naturally, and never bounce or overshoot. The pace matches the calm environment.
-      </p>
-
-      <div class="motion-tokens">
-        <div class="motion-token">
-          <p class="motion-token-name">duration-fast</p>
-          <p class="motion-token-value">120ms &middot; ease-out</p>
-          <p class="motion-token-value" style="color: var(--neutral-500); margin-top: var(--space-1);">Hover, color shifts</p>
-        </div>
-        <div class="motion-token">
-          <p class="motion-token-name">duration-normal</p>
-          <p class="motion-token-value">220ms &middot; ease-in-out</p>
-          <p class="motion-token-value" style="color: var(--neutral-500); margin-top: var(--space-1);">Dropdowns, tooltips</p>
-        </div>
-        <div class="motion-token">
-          <p class="motion-token-name">duration-slow</p>
-          <p class="motion-token-value">380ms &middot; ease-out</p>
-          <p class="motion-token-value" style="color: var(--neutral-500); margin-top: var(--space-1);">Modals, sidebars</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="footer">
-      <p>Generated by /design-system-generator &middot; March 30, 2026</p>
-    </footer>
-
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Clean Shopper</div>
+    <h1 class="hero-title">Visual Design System</h1>
+    <p class="hero-desc">A knowledgeable friend who's already done the research — warm, unhurried, and trustworthy. Every visual choice reinforces two things: this product is grounded in nature, and it gives you exactly what you need to make a confident decision, nothing more.</p>
   </div>
+
+
+  <!-- COLOR -->
+  <div class="section">
+    <div class="section-label">01 — Color</div>
+    <div class="section-title">Palette</div>
+    <p class="section-desc">Botanical and California-warm. Sage and moss carry the clean ingredients message without stating it. Warm white keeps it from feeling clinical. Clay adds warmth and grounding.</p>
+
+    <div class="divider-label"><span>Base</span></div>
+    <div class="grid-3" style="margin-bottom: var(--space-4);">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FAFAF7;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm White</div>
+          <div class="swatch-hex">#FAFAF7</div>
+          <div class="swatch-role">Cards, inputs, sidebar</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5F2EC;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Linen</div>
+          <div class="swatch-hex">#F5F2EC</div>
+          <div class="swatch-role">App background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#D4D0C8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Dune</div>
+          <div class="swatch-hex">#D4D0C8</div>
+          <div class="swatch-role">Borders, dividers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-label"><span>Brand</span></div>
+    <div class="grid-3" style="margin-bottom: var(--space-4);">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#7A9E7E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Sage</div>
+          <div class="swatch-hex">#7A9E7E</div>
+          <div class="swatch-role">Primary actions, links, active states</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4E7055;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Moss</div>
+          <div class="swatch-hex">#4E7055</div>
+          <div class="swatch-role">Hover states, Best match badge</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#B87A5A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Clay</div>
+          <div class="swatch-hex">#B87A5A</div>
+          <div class="swatch-role">Secondary CTAs, warnings</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-label"><span>Text</span></div>
+    <div class="grid-2" style="margin-bottom: var(--space-4);">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2C2C2A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Charcoal</div>
+          <div class="swatch-hex">#2C2C2A</div>
+          <div class="swatch-role">Primary text, headings</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B6B68;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Stone</div>
+          <div class="swatch-hex">#6B6B68</div>
+          <div class="swatch-role">Supporting labels, preference notes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-label"><span>Functional — Safety scoring only</span></div>
+    <div class="grid-2">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#5E8C61;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Garden</div>
+          <div class="swatch-hex">#5E8C61</div>
+          <div class="swatch-role">High safety score, confirmed preferences</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C0614A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Terracotta</div>
+          <div class="swatch-hex">#C0614A</div>
+          <div class="swatch-role">Low safety score, flagged ingredients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-label">02 — Typography</div>
+    <div class="section-title">Type Scale</div>
+    <p class="section-desc">DM Sans throughout. Hierarchy through size and weight only — no decorative underlines or italic for emphasis. Max line length 64 characters for conversational responses.</p>
+
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="label">Heading L</div>
+        <div class="micro">32px / 700</div>
+      </div>
+      <div class="type-sample heading-l">Clean ingredients,<br>clear choices.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="label">Heading M</div>
+        <div class="micro">24px / 600</div>
+      </div>
+      <div class="type-sample heading-m">Your recommendations</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="label">Heading S</div>
+        <div class="micro">18px / 600</div>
+      </div>
+      <div class="type-sample heading-s">Seventh Generation Free & Clear</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="label">Body</div>
+        <div class="micro">16px / 400</div>
+      </div>
+      <div class="type-sample body" style="max-width:480px;">I found three dish soaps that match your fragrance-free and EWG Verified preferences. The first one has the cleanest ingredient list of the three.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="label">Label</div>
+        <div class="micro">14px / 500</div>
+      </div>
+      <div class="type-sample label">EWG Verified · Fragrance-free · B Corp</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="label">Micro</div>
+        <div class="micro">12px / 400</div>
+      </div>
+      <div class="type-sample micro text-stone">Based on your saved preferences · Updated just now</div>
+    </div>
+  </div>
+
+
+  <!-- SPACING -->
+  <div class="section">
+    <div class="section-label">03 — Spacing</div>
+    <div class="section-title">Spacing System</div>
+    <p class="section-desc">Base unit 4px. Lean toward more space, not less. When in doubt, step up the scale.</p>
+
+    <div style="display:flex; flex-direction:column; gap: var(--space-2);">
+      <div class="spacing-row">
+        <div class="spacing-label">4px · sp-1</div>
+        <div class="spacing-bar" style="width:4px;"></div>
+        <div class="spacing-desc">Tag inner vertical padding</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">8px · sp-2</div>
+        <div class="spacing-bar" style="width:8px;"></div>
+        <div class="spacing-desc">Tag inner horizontal padding, icon gaps</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">12px · sp-3</div>
+        <div class="spacing-bar" style="width:12px;"></div>
+        <div class="spacing-desc">Tight component stacking</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">16px · sp-4</div>
+        <div class="spacing-bar" style="width:16px;"></div>
+        <div class="spacing-desc">Card internal sections</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">24px · sp-6</div>
+        <div class="spacing-bar" style="width:24px;"></div>
+        <div class="spacing-desc">Default card padding</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">32px · sp-8</div>
+        <div class="spacing-bar" style="width:32px;"></div>
+        <div class="spacing-desc">Conversational message group separation</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">48px · sp-12</div>
+        <div class="spacing-bar" style="width:48px;"></div>
+        <div class="spacing-desc">Section separation minimum</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-label">64px · sp-16</div>
+        <div class="spacing-bar" style="width:64px;"></div>
+        <div class="spacing-desc">Page-level vertical rhythm</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- COMPONENTS -->
+  <div class="section">
+    <div class="section-label">04 — Components</div>
+    <div class="section-title">Product Recommendation Cards</div>
+    <p class="section-desc">Richer card, enforced hierarchy. Three visual zones: identity (name + brand + score), attributes (tags), preference match note. Tap to expand for full ingredient reasoning.</p>
+
+    <div class="comparison">
+
+      <!-- Best match card -->
+      <div>
+        <div class="best-match-badge">Best match</div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-name">Free & Clear Dish Soap</div>
+              <div class="card-brand">Seventh Generation</div>
+            </div>
+            <div class="score-badge score-high">A</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag">EWG Verified</span>
+            <span class="tag">Fragrance-free</span>
+            <span class="tag">B Corp</span>
+          </div>
+          <div class="card-preference-label">Matches your preferences</div>
+          <div class="card-preference">Fragrance-free, EWG Verified — both on your saved list.</div>
+        </div>
+      </div>
+
+      <!-- Secondary card -->
+      <div>
+        <div style="height: 31px;"></div><!-- spacer to align with best match -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-name">Dish Soap Concentrate</div>
+              <div class="card-brand">Branch Basics</div>
+            </div>
+            <div class="score-badge score-mid">B</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag">Concentrate</span>
+            <span class="tag">Plant-based</span>
+            <span class="tag-flagged tag">Citrus scent</span>
+          </div>
+          <div class="card-preference-label">Note</div>
+          <div class="card-preference">Contains citrus fragrance — check against your fragrance sensitivity.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider-label"><span>Attribute Tags</span></div>
+    <div style="display:flex; flex-wrap:wrap; gap: var(--space-2); margin-bottom: var(--space-8);">
+      <span class="tag">EWG Verified</span>
+      <span class="tag">USDA Organic</span>
+      <span class="tag">Fragrance-free</span>
+      <span class="tag">B Corp</span>
+      <span class="tag">Concentrate</span>
+      <span class="tag">Plant-based</span>
+      <span class="tag-flagged tag">Synthetic fragrance</span>
+      <span class="tag-flagged tag">Formaldehyde</span>
+    </div>
+
+    <div class="divider-label"><span>Safety Score Badge</span></div>
+    <div style="display:flex; gap: var(--space-4); align-items:center; margin-bottom: var(--space-8);">
+      <div>
+        <div class="score-badge score-high" style="margin-bottom:6px;">A</div>
+        <div class="micro text-stone" style="text-align:center;">High</div>
+      </div>
+      <div>
+        <div class="score-badge score-mid" style="margin-bottom:6px;">B</div>
+        <div class="micro text-stone" style="text-align:center;">Moderate</div>
+      </div>
+      <div>
+        <div class="score-badge score-low" style="margin-bottom:6px;">D</div>
+        <div class="micro text-stone" style="text-align:center;">Low</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- AI CONVERSATION -->
+  <div class="section">
+    <div class="section-label">05 — AI Conversation</div>
+    <div class="section-title">Conversational Interface</div>
+    <p class="section-desc">No chat bubbles. AI responses appear as clean body text. Feels like reading, not messaging. User input sits in a linen bar at the bottom.</p>
+
+    <div class="conversation">
+      <div class="conversation-body">
+
+        <div class="message-group">
+          <div class="message-label user">You</div>
+          <div class="message-text user">I need a dish soap that's safe for my kids and doesn't have any synthetic fragrance.</div>
+        </div>
+
+        <div class="message-group">
+          <div class="message-label ai">Clean Shopper</div>
+          <div class="message-text">I found three options that match your fragrance-free preference. The top pick scores an A on EWG and is EWG Verified — one of the stricter certifications for cleaning products.</div>
+        </div>
+
+        <div class="message-group">
+          <div class="message-label ai">Thinking</div>
+          <div class="thinking-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+      </div>
+      <div class="conversation-input">
+        <input class="input-field" type="text" placeholder="Ask about ingredients, compare products…" readonly />
+        <button class="input-send">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 8l7-7 7 7M8 1v14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- AI STATES -->
+  <div class="section">
+    <div class="section-label">06 — AI States</div>
+    <div class="section-title">How the UI Communicates AI Activity</div>
+    <p class="section-desc">Six states to design for. Visual signals should be informative, never alarming.</p>
+
+    <div class="ai-states-grid">
+
+      <div class="state-card">
+        <div class="state-name">Thinking</div>
+        <div class="state-demo">
+          <div class="thinking-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="state-desc">Three sage dots, soft pulse. No spinner. Appears below last message, not full-screen.</div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-name">Suggesting</div>
+        <div class="state-demo" style="flex-direction:column; align-items:flex-start; gap:6px;">
+          <div style="height:8px; background:var(--dune); border-radius:4px; width:80%; animation: fadeIn 0.8s ease forwards; opacity:0; animation-delay:0.1s;"></div>
+          <div style="height:8px; background:var(--dune); border-radius:4px; width:60%; animation: fadeIn 0.8s ease forwards; opacity:0; animation-delay:0.3s;"></div>
+          <div style="height:8px; background:var(--dune); border-radius:4px; width:70%; animation: fadeIn 0.8s ease forwards; opacity:0; animation-delay:0.5s;"></div>
+        </div>
+        <div class="state-desc">Cards fade in with 100ms stagger. Feels deliberate, not instant-dump.</div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-name">Confident</div>
+        <div class="state-demo">
+          <div class="best-match-badge" style="margin:0;">Best match</div>
+        </div>
+        <div class="state-desc">Moss badge on the leading recommendation. Used only when the AI is certain.</div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-name">Uncertain</div>
+        <div class="state-demo">
+          <div class="uncertain-text">Here are a few options worth considering.</div>
+        </div>
+        <div class="state-desc">No badge. Copy shifts to open-ended framing. No visual alarm — just honest.</div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-name">Preference Applied</div>
+        <div class="state-demo">
+          <div class="pref-note">Based on your fragrance-free preference</div>
+        </div>
+        <div class="state-desc">Stone label with sage left border. Quiet acknowledgment the system is paying attention.</div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-name">Flagged Ingredient</div>
+        <div class="state-demo" style="align-items:center; gap:6px;">
+          <span class="tag-flagged tag" style="display:inline-flex; align-items:center;">
+            Synthetic fragrance
+          </span>
+        </div>
+        <div class="state-desc">Terracotta tag on the relevant attribute. Tap for ingredient detail and why it's flagged.</div>
+      </div>
+
+    </div>
+    <style>
+      @keyframes fadeIn {
+        to { opacity: 1; }
+      }
+    </style>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div style="padding-top: var(--space-12); border-top: 1px solid var(--dune); display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <div style="font-size:15px; font-weight:600; color:var(--charcoal);">Clean Shopper</div>
+      <div class="micro text-stone">Visual Design System · v1</div>
+    </div>
+    <div class="micro text-stone">DM Sans · #F5F2EC · #FAFAF7 · #7A9E7E · #4E7055 · #B87A5A</div>
+  </div>
+
+</div>
 </body>
 </html>
