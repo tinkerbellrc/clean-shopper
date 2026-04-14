@@ -9,6 +9,7 @@ interface Product {
   category: string
   description: string
   safety_level: SafetyLevel
+  image_url: string | null
 }
 
 type Status = 'idle' | 'loading' | 'done' | 'error'
@@ -78,6 +79,7 @@ export function SearchPage() {
     const { data, error } = await supabase
       .from('products')
       .select('*')
+      .not('image_url', 'is', null)
       .or(`name.ilike.%${term}%,brand.ilike.%${term}%,description.ilike.%${term}%`)
       .order('name')
 
@@ -202,6 +204,7 @@ export function SearchPage() {
                   safetyLevel={product.safety_level}
                   category={product.category}
                   description={product.description}
+                  imageUrl={product.image_url}
                 />
               ))}
             </div>

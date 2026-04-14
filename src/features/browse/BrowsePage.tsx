@@ -33,6 +33,7 @@ export function BrowsePage() {
     supabase
       .from('products')
       .select('*')
+      .not('image_url', 'is', null)
       .order('category')
       .order('name')
       .then(({ data, error }) => {
