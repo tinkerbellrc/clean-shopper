@@ -1,7 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Colors ─── */
+  --color-warm-white: #FAFAF7;
+  --color-linen: #F5F2EC;
+  --color-sage: #7A9E7E;
+  --color-sage-15: rgba(122, 158, 126, 0.15);
+  --color-moss: #4E7055;
+  --color-clay: #B87A5A;
+  --color-charcoal: #2C2C2A;
+  --color-stone: #6B6B68;
+  --color-dune: #D4D0C8;
+  --color-garden: #5E8C61;
+  --color-terracotta: #C0614A;
+  --color-terracotta-12: rgba(192, 97, 74, 0.12);
+
+  /* ─── Typography ─── */
+  --font-family-sans: 'DM Sans', sans-serif;
+
+  --font-size-micro: 12px;
+  --font-size-label: 14px;
+  --font-size-body: 16px;
+  --font-size-heading-s: 18px;
+  --font-size-heading-m: 24px;
+  --font-size-heading-l: 32px;
+
+  /* ─── Spacing (4px base) ─── */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  /* ─── Border radius ─── */
+  --radius-tag: 6px;
+  --radius-card: 12px;
+  --radius-full: 9999px;
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: #F5F2EC;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
