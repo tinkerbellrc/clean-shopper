@@ -180,6 +180,24 @@
     }
     .card:hover { border-color: var(--sage); }
 
+    .card-image {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 6px;
+      background: var(--linen);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
     .card-header {
       display: flex;
       justify-content: space-between;
@@ -707,6 +725,9 @@
       <div>
         <div class="best-match-badge">Best match</div>
         <div class="card">
+          <div class="card-image">
+            <img src="https://m.media-amazon.com/images/I/71+7q+cdyWL._SL1500_.jpg" alt="Burt's Bees Baby Fragrance-Free Baby Wash" />
+          </div>
           <div class="card-header">
             <div>
               <div class="card-name">Free & Clear Dish Soap</div>
@@ -724,7 +745,7 @@
         </div>
       </div>
 
-      <!-- Secondary card -->
+      <!-- Secondary card — no image example -->
       <div>
         <div style="height: 31px;"></div><!-- spacer to align with best match -->
         <div class="card">

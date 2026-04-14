@@ -127,6 +127,7 @@ export function BrowsePage() {
                   safetyLevel={product.safety_level ?? 'clean'}
                   category={product.category}
                   description={product.description}
+                  imageUrl={product.image_url}
                   className="flex-1"
                 />
                 <button

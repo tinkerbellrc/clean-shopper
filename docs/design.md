@@ -85,6 +85,8 @@ Richer card with enforced hierarchy. Three visual zones:
 
 Card background: Warm White (`#FAFAF7`). App background behind cards: Linen (`#F5F2EC`). Border: 1px Dune. Border-radius: 12px. No drop shadow — separation through color contrast between card and page background, not elevation.
 
+**Product image** (when available): 1:1 aspect ratio, full card width, Linen background (`#F5F2EC`), `object-contain` so the product is never cropped, `mix-blend-multiply` to drop the white product image background. Sits above the top row. Cards without an image skip the image zone entirely — no placeholder.
+
 **Safety Score Badge**
 
 Circular badge, 44px. Letter grade (A–D). Color maps to: Garden (A/high), Clay (B–C/moderate), Terracotta (D/low). Appears top-right of every product card.

@@ -5,6 +5,7 @@ interface ProductCardProps {
   safetyLevel: SafetyLevel
   category: string
   description: string
+  imageUrl?: string | null
   isBestMatch?: boolean
   preferenceNote?: string
   onClick?: () => void
@@ -22,6 +23,7 @@ export function ProductCard({
   safetyLevel,
   category,
   description,
+  imageUrl,
   isBestMatch = false,
   preferenceNote,
   onClick,
@@ -50,6 +52,17 @@ export function ProductCard({
         tabIndex={isClickable ? 0 : undefined}
         onKeyDown={isClickable ? (e) => e.key === 'Enter' && onClick?.() : undefined}
       >
+        {/* Product image — 1:1 aspect ratio */}
+        {imageUrl && (
+          <div className="mb-sp-4 aspect-square w-full overflow-hidden rounded-tag bg-linen">
+            <img
+              src={imageUrl}
+              alt={name}
+              className="h-full w-full object-contain mix-blend-multiply"
+            />
+          </div>
+        )}
+
         {/* Top row: product name + safety badge */}
         <div className="flex items-start justify-between gap-sp-2">
           <h2 className="text-heading-s font-semibold text-charcoal">
