@@ -1,922 +1,721 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clean Shopper — Visual Design System</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <title>Rayum Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── Primitives ── */
     :root {
-      --warm-white: #FAFAF7;
-      --linen: #F5F2EC;
-      --sage: #7A9E7E;
-      --sage-15: rgba(122, 158, 126, 0.15);
-      --moss: #4E7055;
-      --clay: #B87A5A;
-      --charcoal: #2C2C2A;
-      --stone: #6B6B68;
-      --dune: #D4D0C8;
-      --garden: #5E8C61;
-      --terracotta: #C0614A;
+      --color-brand-primary-10:  #f1fff4;
+      --color-brand-primary-20:  #c6ffd2;
+      --color-brand-primary-30:  #9cffb1;
+      --color-brand-primary-40:  #70fc8e;
+      --color-brand-primary-50:  #5cdf78;
+      --color-brand-primary-60:  #4ac263;
+      --color-brand-primary-70:  #39a550;
+      --color-brand-primary-80:  #2b873f;
+      --color-brand-primary-90:  #1e6a2f;
+      --color-brand-primary-100: #07200c;
 
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-6: 24px;
-      --space-8: 32px;
-      --space-12: 48px;
-      --space-16: 64px;
+      --color-brand-secondary-10:  #ebf0ff;
+      --color-brand-secondary-20:  #beceff;
+      --color-brand-secondary-30:  #92acff;
+      --color-brand-secondary-40:  #658aff;
+      --color-brand-secondary-50:  #3765f6;
+      --color-brand-secondary-60:  #244fd4;
+      --color-brand-secondary-70:  #153bb2;
+      --color-brand-secondary-80:  #092a90;
+      --color-brand-secondary-90:  #011c6e;
+      --color-brand-secondary-100: #011040;
+
+      --color-neutral-10:  #ffffff;
+      --color-neutral-15:  #f6f7f9;
+      --color-neutral-20:  #edf0f2;
+      --color-neutral-25:  #e1e5ea;
+      --color-neutral-30:  #d3dbe4;
+      --color-neutral-35:  #c3ced7;
+      --color-neutral-40:  #b0becb;
+      --color-neutral-50:  #929fb1;
+      --color-neutral-60:  #606e80;
+      --color-neutral-70:  #404b5a;
+      --color-neutral-80:  #2f3b4c;
+      --color-neutral-85:  #27313f;
+      --color-neutral-90:  #1f2633;
+      --color-neutral-95:  #181d25;
+      --color-neutral-100: #0a0d11;
+
+      --color-blue-10:  #e5f1ff; --color-blue-40:  #5ca7ff; --color-blue-60:  #0070f3; --color-blue-100: #002249;
+      --color-red-10:   #ffeded; --color-red-40:   #ff7979; --color-red-60:   #e53e3e; --color-red-100:  #450000;
+      --color-green-10: #effaf0; --color-green-60: #60cc65; --color-green-70: #4caf50; --color-green-100:#0b310c;
+      --color-yellow-10:#fffaea; --color-yellow-60:#ffcb2c; --color-yellow-100:#403000;
+      --color-orange-10:#fff1e5; --color-orange-50:#ff902e; --color-orange-60:#f07000; --color-orange-100:#431f00;
     }
 
+    /* ── Semantic — Light ── */
+    :root, [data-theme="light"] {
+      --bg-default:         var(--color-neutral-10);
+      --bg-muted:           var(--color-neutral-15);
+      --bg-inset:           var(--color-neutral-15);
+      --bg-inverse:         var(--color-neutral-95);
+      --fg-default:         var(--color-neutral-100);
+      --fg-muted:           var(--color-neutral-60);
+      --fg-inverse:         var(--color-neutral-10);
+      --border-default:     var(--color-neutral-35);
+      --border-muted-input: var(--color-neutral-30);
+      --btn-primary-bg:     var(--color-neutral-95);
+      --btn-primary-fg:     var(--color-neutral-10);
+      --btn-danger-bg:      var(--color-red-60);
+      --focus-ring:         var(--color-brand-primary-40);
+    }
+
+    /* ── Semantic — Dark ── */
+    [data-theme="dark"] {
+      --bg-default:         var(--color-neutral-100);
+      --bg-muted:           var(--color-neutral-90);
+      --bg-inset:           var(--color-neutral-95);
+      --bg-inverse:         var(--color-neutral-10);
+      --fg-default:         var(--color-neutral-20);
+      --fg-muted:           var(--color-neutral-50);
+      --fg-inverse:         var(--color-neutral-95);
+      --border-default:     var(--color-neutral-80);
+      --border-muted-input: var(--color-neutral-85);
+      --btn-primary-bg:     var(--color-neutral-10);
+      --btn-primary-fg:     var(--color-neutral-100);
+      --btn-danger-bg:      var(--color-red-60);
+      --focus-ring:         var(--color-brand-primary-40);
+    }
+
+    /* ── Global ── */
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--linen);
-      color: var(--charcoal);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-muted);
+      color: var(--fg-default);
       font-size: 16px;
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Layout */
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: var(--space-16) var(--space-6);
-    }
+    /* ── Layout ── */
+    .page { max-width: 1080px; margin: 0 auto; padding: 64px 24px; }
 
-    .section {
-      margin-bottom: var(--space-16);
-    }
+    .section { margin-bottom: 80px; }
+    .section + .section { padding-top: 64px; border-top: 1px solid var(--border-default); }
 
-    .section + .section {
-      padding-top: var(--space-12);
-      border-top: 1px solid var(--dune);
-    }
-
-    /* Typography */
-    .heading-l { font-size: 32px; font-weight: 700; line-height: 1.2; }
-    .heading-m { font-size: 24px; font-weight: 600; line-height: 1.2; }
-    .heading-s { font-size: 18px; font-weight: 600; line-height: 1.2; }
-    .body      { font-size: 16px; font-weight: 400; line-height: 1.5; }
-    .label     { font-size: 14px; font-weight: 500; line-height: 1.4; }
-    .micro     { font-size: 12px; font-weight: 400; line-height: 1.4; }
-
-    .text-stone     { color: var(--stone); }
-    .text-sage      { color: var(--sage); }
-    .text-moss      { color: var(--moss); }
-    .text-clay      { color: var(--clay); }
-
-    /* Section label */
     .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--stone);
-      margin-bottom: var(--space-2);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--fg-muted);
+      margin-bottom: 6px;
     }
-
     .section-title {
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: var(--space-2);
+      font-size: 28px; font-weight: 600; color: var(--fg-default);
+      letter-spacing: -0.8px; margin-bottom: 8px;
     }
-
     .section-desc {
-      font-size: 15px;
-      color: var(--stone);
-      margin-bottom: var(--space-8);
-      max-width: 560px;
+      font-size: 15px; color: var(--fg-muted); margin-bottom: 40px; max-width: 560px;
     }
 
-    /* Grid helpers */
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
-    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-4); }
-
-    /* ─── COLOR PALETTE ─── */
-    .swatch {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--dune);
-    }
-    .swatch-color {
-      height: 80px;
-    }
-    .swatch-info {
-      background: var(--warm-white);
-      padding: var(--space-3) var(--space-3);
-    }
-    .swatch-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-    .swatch-hex {
-      font-size: 12px;
-      color: var(--stone);
-      font-family: monospace;
-    }
-    .swatch-role {
-      font-size: 11px;
-      color: var(--stone);
-      margin-top: 2px;
-    }
-
-    /* ─── TYPOGRAPHY SCALE ─── */
-    .type-row {
-      display: flex;
-      align-items: baseline;
-      gap: var(--space-6);
-      padding: var(--space-4) 0;
-      border-bottom: 1px solid var(--dune);
-    }
-    .type-row:last-child { border-bottom: none; }
-    .type-meta {
-      min-width: 160px;
-      flex-shrink: 0;
-    }
-    .type-meta .label { color: var(--stone); }
-    .type-meta .micro { color: var(--dune); margin-top: 2px; font-family: monospace; }
-    .type-sample { color: var(--charcoal); }
-
-    /* ─── SPACING ─── */
-    .spacing-row {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      padding: var(--space-2) 0;
-    }
-    .spacing-bar {
-      background: var(--sage-15);
-      border: 1px solid var(--sage);
-      border-radius: 3px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-    .spacing-label {
-      font-size: 13px;
-      font-family: monospace;
-      color: var(--stone);
-      min-width: 80px;
-    }
-    .spacing-desc {
-      font-size: 13px;
-      color: var(--stone);
-    }
-
-    /* ─── PRODUCT CARD ─── */
-    .card {
-      background: var(--warm-white);
-      border: 1px solid var(--dune);
-      border-radius: 12px;
-      padding: var(--space-6);
-      cursor: pointer;
-      transition: border-color 0.15s ease;
-    }
-    .card:hover { border-color: var(--sage); }
-
-    .card-image {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 6px;
-      background: var(--linen);
-      margin-bottom: var(--space-4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      mix-blend-mode: multiply;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: var(--space-4);
-    }
-    .card-name {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.2;
-    }
-    .card-brand {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--stone);
-      margin-top: 2px;
-    }
-
-    .score-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: white;
-      flex-shrink: 0;
-    }
-    .score-high  { background: var(--garden); }
-    .score-mid   { background: var(--clay); }
-    .score-low   { background: var(--terracotta); }
-
-    .card-tags {
-      display: flex;
+    /* ── Header ── */
+    .ds-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 24px; margin-bottom: 80px; padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-default);
       flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-bottom: var(--space-4);
     }
+    .ds-wordmark {
+      font-size: 32px; font-weight: 700; letter-spacing: -1.5px;
+      color: var(--fg-default);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ds-wordmark-dot {
+      width: 32px; height: 32px; border-radius: 9999px;
+      background: var(--color-brand-primary-40);
+      flex-shrink: 0;
+    }
+    .ds-meta { font-size: 13px; color: var(--fg-muted); text-align: right; line-height: 1.8; }
+    .ds-tagline { font-size: 15px; color: var(--fg-muted); margin-top: 8px; max-width: 400px; }
 
-    .tag {
-      background: var(--sage-15);
-      color: var(--moss);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 6px;
+    /* ── Theme Toggle ── */
+    .theme-toggle {
+      position: fixed; top: 20px; right: 24px;
+      background: var(--bg-default); border: 1px solid var(--border-default);
+      border-radius: 9999px; padding: 6px 14px;
+      font-size: 13px; font-weight: 500; color: var(--fg-default);
+      cursor: pointer; z-index: 100; transition: background 150ms;
     }
-    .tag-flagged {
-      background: rgba(192, 97, 74, 0.12);
-      color: var(--terracotta);
-    }
-    .tag-flagged::before {
-      content: '⚑ ';
-      font-size: 11px;
-    }
+    .theme-toggle:hover { background: var(--bg-muted); }
 
-    .card-preference {
-      font-size: 14px;
-      color: var(--stone);
-      font-style: normal;
-    }
+    /* ── Color Swatches ── */
+    .color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .color-grid-10 { grid-template-columns: repeat(10, 1fr); }
+    .color-grid-15 { grid-template-columns: repeat(15, 1fr); }
 
-    .card-preference-label {
-      font-size: 12px;
-      color: var(--stone);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 500;
-      margin-bottom: 2px;
+    .swatch {
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
     }
+    .swatch-color { height: 56px; }
+    .swatch-info { padding: 8px 10px; background: var(--bg-default); }
+    .swatch-name { font-size: 11px; font-weight: 600; color: var(--fg-default); margin-bottom: 2px; }
+    .swatch-hex  { font-size: 11px; font-family: 'Roboto Mono', monospace; color: var(--fg-muted); }
 
-    .best-match-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: var(--moss);
-      color: white;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-bottom: var(--space-3);
+    .swatch-row { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-bottom: 16px; }
+    .swatch-chip {
+      height: 48px; border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      padding: 4px 6px; font-size: 10px; font-weight: 600; line-height: 1;
     }
-    .best-match-badge::before {
-      content: '✦';
-      font-size: 10px;
-    }
+    .swatch-chip-label { background: rgba(255,255,255,0.7); padding: 2px 4px; border-radius: 3px; color: #000; }
 
-    /* ─── AI CONVERSATION ─── */
-    .conversation {
-      background: var(--warm-white);
-      border-radius: 16px;
-      border: 1px solid var(--dune);
-      overflow: hidden;
+    .semantic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .semantic-card {
+      padding: 16px; border-radius: 12px;
+      background: var(--bg-default); border: 1px solid var(--border-default);
     }
-    .conversation-body {
-      padding: var(--space-6);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-8);
-    }
-    .message-group { display: flex; flex-direction: column; gap: var(--space-4); }
-    .message-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-1);
-    }
-    .message-label.user { color: var(--stone); }
-    .message-label.ai   { color: var(--sage); }
-    .message-text {
-      font-size: 16px;
-      color: var(--charcoal);
-      line-height: 1.6;
-      max-width: 560px;
-    }
-    .message-text.user {
-      color: var(--stone);
-    }
+    .semantic-preview { height: 36px; border-radius: 6px; margin-bottom: 10px; }
+    .semantic-name { font-size: 12px; font-weight: 600; color: var(--fg-default); font-family: 'Roboto Mono', monospace; }
+    .semantic-desc { font-size: 11px; color: var(--fg-muted); margin-top: 2px; }
 
-    .thinking-dots {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-      padding: var(--space-2) 0;
+    /* ── Typography ── */
+    .type-row {
+      display: flex; align-items: baseline; gap: 24px;
+      padding: 20px 0; border-bottom: 1px solid var(--border-default);
     }
-    .thinking-dots span {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--sage);
-      animation: pulse 1.2s ease-in-out infinite;
-    }
-    .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes pulse {
-      0%, 80%, 100% { opacity: 0.3; transform: scale(0.9); }
-      40%           { opacity: 1;   transform: scale(1); }
-    }
-
-    .conversation-input {
-      border-top: 1px solid var(--dune);
-      background: var(--linen);
-      padding: var(--space-4) var(--space-6);
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-    }
-    .input-field {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      color: var(--charcoal);
-    }
-    .input-field::placeholder { color: var(--dune); }
-    .input-send {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--sage);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s;
-    }
-    .input-send:hover { background: var(--moss); }
-    .input-send svg { width: 16px; height: 16px; fill: white; }
-
-    /* ─── AI STATES ─── */
-    .ai-states-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-4);
-    }
-    .state-card {
-      background: var(--warm-white);
-      border: 1px solid var(--dune);
-      border-radius: 10px;
-      padding: var(--space-4) var(--space-4);
-    }
-    .state-name {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--stone);
-      margin-bottom: var(--space-3);
-    }
-    .state-demo {
-      min-height: 40px;
-      display: flex;
-      align-items: center;
-    }
-    .state-desc {
-      font-size: 13px;
-      color: var(--stone);
-      margin-top: var(--space-3);
-      line-height: 1.4;
-    }
-
-    .confident-text {
-      font-size: 15px;
-      color: var(--charcoal);
-      font-weight: 500;
-    }
-    .uncertain-text {
-      font-size: 15px;
-      color: var(--stone);
-    }
-
-    /* Preference applied */
-    .pref-note {
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--stone);
-      border-left: 2px solid var(--sage);
-      padding-left: var(--space-2);
-    }
-
-    /* Flagged ingredient dot */
-    .flagged-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--terracotta);
-      display: inline-block;
-      margin-right: 4px;
-      vertical-align: middle;
-    }
-
-    /* ─── HERO ─── */
-    .hero {
-      margin-bottom: var(--space-16);
-    }
-    .hero-eyebrow {
-      font-size: 13px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--sage);
-      margin-bottom: var(--space-4);
-    }
-    .hero-title {
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--charcoal);
-      margin-bottom: var(--space-4);
-    }
-    .hero-desc {
-      font-size: 17px;
-      color: var(--stone);
-      max-width: 520px;
+    .type-row:first-child { padding-top: 0; }
+    .type-meta {
+      width: 180px; flex-shrink: 0;
+      font-size: 12px; font-family: 'Roboto Mono', monospace; color: var(--fg-muted);
       line-height: 1.6;
     }
+    .type-sample { flex: 1; color: var(--fg-default); }
+    .type-name { font-size: 11px; font-weight: 600; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
 
-    /* Comparison layout */
-    .comparison {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4);
-    }
+    /* ── Spacing ── */
+    .space-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+    .space-bar { height: 24px; background: var(--color-brand-primary-40); border-radius: 4px; min-width: 2px; }
+    .space-label { font-size: 13px; color: var(--fg-muted); font-family: 'Roboto Mono', monospace; }
 
-    /* Divider label */
-    .divider-label {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      margin: var(--space-8) 0;
+    /* ── Radius ── */
+    .radius-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .radius-card {
+      background: var(--bg-default); border: 1px solid var(--border-default);
+      padding: 20px; text-align: center;
     }
-    .divider-label::before,
-    .divider-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--dune);
+    .radius-preview {
+      width: 64px; height: 64px; margin: 0 auto 12px;
+      background: var(--color-brand-primary-40);
     }
-    .divider-label span {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--stone);
+    .radius-label { font-size: 13px; font-weight: 600; color: var(--fg-default); }
+    .radius-value { font-size: 11px; color: var(--fg-muted); font-family: 'Roboto Mono', monospace; margin-top: 4px; }
+
+    /* ── Components ── */
+    .component-canvas {
+      background: var(--bg-default); border: 1px solid var(--border-default);
+      border-radius: 16px; padding: 32px; margin-bottom: 24px;
+    }
+    .component-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .component-label { font-size: 12px; font-weight: 600; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; font-family: 'Inter', sans-serif; font-weight: 500;
+      border: 1.5px solid transparent; cursor: pointer;
+      border-radius: 9999px; transition: background 120ms;
       white-space: nowrap;
     }
+    .btn-sm  { height: 32px; padding: 0 12px; font-size: 13px; }
+    .btn-md  { height: 40px; padding: 0 20px; font-size: 14px; }
+    .btn-lg  { height: 48px; padding: 0 24px; font-size: 15px; }
+
+    .btn-primary   { background: var(--btn-primary-bg); color: var(--btn-primary-fg); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--fg-default);
+      border-color: var(--border-default);
+    }
+    .btn-accent {
+      background: var(--color-brand-primary-40);
+      color: var(--color-brand-primary-100);
+      border-color: transparent;
+    }
+    .btn-danger    { background: var(--btn-danger-bg); color: #fff; border-color: transparent; }
+    .btn-ghost     { background: transparent; color: var(--fg-default); border-color: transparent; }
+    .btn-disabled  { background: var(--color-neutral-25); color: var(--color-neutral-50); cursor: not-allowed; border-color: transparent; }
+
+    /* Badges */
+    .badge {
+      display: inline-flex; align-items: center;
+      height: 24px; padding: 0 10px; border-radius: 9999px;
+      font-size: 12px; font-weight: 600; border: 1px solid transparent;
+    }
+    .badge-accent   { background: var(--color-brand-primary-10); color: var(--color-brand-primary-80); border-color: var(--color-brand-primary-30); }
+    .badge-neutral  { background: var(--color-neutral-20); color: var(--color-neutral-70); }
+    .badge-info     { background: var(--color-blue-10); color: var(--color-blue-60); border-color: #b7d8ff; }
+    .badge-success  { background: var(--color-green-10); color: var(--color-green-70); border-color: #cff0d1; }
+    .badge-warning  { background: var(--color-orange-10); color: var(--color-orange-60); border-color: #ffd9b8; }
+    .badge-danger   { background: var(--color-red-10); color: var(--color-red-60); border-color: #ffa0a0; }
+
+    /* Input */
+    .input-wrap { position: relative; max-width: 320px; }
+    .input-field {
+      width: 100%; height: 44px; padding: 0 16px;
+      font-family: 'Inter', sans-serif; font-size: 14px; color: var(--fg-default);
+      background: var(--bg-default); border: 1.5px solid var(--border-muted-input);
+      border-radius: 9999px; outline: none;
+      transition: border-color 150ms;
+    }
+    .input-field:focus { border-color: var(--focus-ring); box-shadow: 0 0 0 3px rgba(112,252,142,0.2); }
+    .input-field::placeholder { color: var(--fg-muted); }
+
+    /* Alert */
+    .alert {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 14px 16px; border-radius: 12px; border: 1px solid transparent;
+      margin-bottom: 10px;
+    }
+    .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .alert-body { flex: 1; }
+    .alert-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .alert-desc  { font-size: 13px; opacity: 0.85; }
+    .alert-info    { background: var(--color-blue-10); border-color: #b7d8ff; color: var(--color-blue-60); }
+    .alert-success { background: var(--color-green-10); border-color: #cff0d1; color: var(--color-green-70); }
+    .alert-warning { background: var(--color-orange-10); border-color: #ffd9b8; color: var(--color-orange-60); }
+    .alert-danger  { background: var(--color-red-10); border-color: #ffa0a0; color: var(--color-red-60); }
+
+    /* Card */
+    .card {
+      background: var(--bg-default); border: 1px solid var(--border-default);
+      border-radius: 16px; overflow: hidden;
+    }
+    .card-img { height: 160px; background: linear-gradient(135deg, var(--color-brand-primary-10), var(--color-brand-primary-30)); display: flex; align-items: center; justify-content: center; font-size: 40px; }
+    .card-body { padding: 20px; }
+    .card-title { font-size: 16px; font-weight: 600; color: var(--fg-default); margin-bottom: 6px; }
+    .card-text  { font-size: 14px; color: var(--fg-muted); line-height: 1.6; margin-bottom: 16px; }
+    .card-footer { display: flex; gap: 8px; justify-content: flex-end; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   </style>
 </head>
 <body>
-<div class="page">
+  <button class="theme-toggle" onclick="
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    this.textContent = current === 'dark' ? '🌙 Dark' : '☀️ Light';
+  ">🌙 Dark</button>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-eyebrow">Clean Shopper</div>
-    <h1 class="hero-title">Visual Design System</h1>
-    <p class="hero-desc">A knowledgeable friend who's already done the research — warm, unhurried, and trustworthy. Every visual choice reinforces two things: this product is grounded in nature, and it gives you exactly what you need to make a confident decision, nothing more.</p>
-  </div>
+  <div class="page">
 
-
-  <!-- COLOR -->
-  <div class="section">
-    <div class="section-label">01 — Color</div>
-    <div class="section-title">Palette</div>
-    <p class="section-desc">Botanical and California-warm. Sage and moss carry the clean ingredients message without stating it. Warm white keeps it from feeling clinical. Clay adds warmth and grounding.</p>
-
-    <div class="divider-label"><span>Base</span></div>
-    <div class="grid-3" style="margin-bottom: var(--space-4);">
-      <div class="swatch">
-        <div class="swatch-color" style="background:#FAFAF7;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Warm White</div>
-          <div class="swatch-hex">#FAFAF7</div>
-          <div class="swatch-role">Cards, inputs, sidebar</div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#F5F2EC;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Linen</div>
-          <div class="swatch-hex">#F5F2EC</div>
-          <div class="swatch-role">App background</div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#D4D0C8;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Dune</div>
-          <div class="swatch-hex">#D4D0C8</div>
-          <div class="swatch-role">Borders, dividers</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider-label"><span>Brand</span></div>
-    <div class="grid-3" style="margin-bottom: var(--space-4);">
-      <div class="swatch">
-        <div class="swatch-color" style="background:#7A9E7E;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Sage</div>
-          <div class="swatch-hex">#7A9E7E</div>
-          <div class="swatch-role">Primary actions, links, active states</div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#4E7055;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Moss</div>
-          <div class="swatch-hex">#4E7055</div>
-          <div class="swatch-role">Hover states, Best match badge</div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#B87A5A;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Clay</div>
-          <div class="swatch-hex">#B87A5A</div>
-          <div class="swatch-role">Secondary CTAs, warnings</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider-label"><span>Text</span></div>
-    <div class="grid-2" style="margin-bottom: var(--space-4);">
-      <div class="swatch">
-        <div class="swatch-color" style="background:#2C2C2A;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Charcoal</div>
-          <div class="swatch-hex">#2C2C2A</div>
-          <div class="swatch-role">Primary text, headings</div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#6B6B68;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Stone</div>
-          <div class="swatch-hex">#6B6B68</div>
-          <div class="swatch-role">Supporting labels, preference notes</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider-label"><span>Functional — Safety scoring only</span></div>
-    <div class="grid-2">
-      <div class="swatch">
-        <div class="swatch-color" style="background:#5E8C61;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Garden</div>
-          <div class="swatch-hex">#5E8C61</div>
-          <div class="swatch-role">High safety score, confirmed preferences</div>
-        </div>
-      </div>
-      <div class="swatch">
-        <div class="swatch-color" style="background:#C0614A;"></div>
-        <div class="swatch-info">
-          <div class="swatch-name">Terracotta</div>
-          <div class="swatch-hex">#C0614A</div>
-          <div class="swatch-role">Low safety score, flagged ingredients</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- TYPOGRAPHY -->
-  <div class="section">
-    <div class="section-label">02 — Typography</div>
-    <div class="section-title">Type Scale</div>
-    <p class="section-desc">DM Sans throughout. Hierarchy through size and weight only — no decorative underlines or italic for emphasis. Max line length 64 characters for conversational responses.</p>
-
-    <div class="type-row">
-      <div class="type-meta">
-        <div class="label">Heading L</div>
-        <div class="micro">32px / 700</div>
-      </div>
-      <div class="type-sample heading-l">Clean ingredients,<br>clear choices.</div>
-    </div>
-    <div class="type-row">
-      <div class="type-meta">
-        <div class="label">Heading M</div>
-        <div class="micro">24px / 600</div>
-      </div>
-      <div class="type-sample heading-m">Your recommendations</div>
-    </div>
-    <div class="type-row">
-      <div class="type-meta">
-        <div class="label">Heading S</div>
-        <div class="micro">18px / 600</div>
-      </div>
-      <div class="type-sample heading-s">Seventh Generation Free & Clear</div>
-    </div>
-    <div class="type-row">
-      <div class="type-meta">
-        <div class="label">Body</div>
-        <div class="micro">16px / 400</div>
-      </div>
-      <div class="type-sample body" style="max-width:480px;">I found three dish soaps that match your fragrance-free and EWG Verified preferences. The first one has the cleanest ingredient list of the three.</div>
-    </div>
-    <div class="type-row">
-      <div class="type-meta">
-        <div class="label">Label</div>
-        <div class="micro">14px / 500</div>
-      </div>
-      <div class="type-sample label">EWG Verified · Fragrance-free · B Corp</div>
-    </div>
-    <div class="type-row">
-      <div class="type-meta">
-        <div class="label">Micro</div>
-        <div class="micro">12px / 400</div>
-      </div>
-      <div class="type-sample micro text-stone">Based on your saved preferences · Updated just now</div>
-    </div>
-  </div>
-
-
-  <!-- SPACING -->
-  <div class="section">
-    <div class="section-label">03 — Spacing</div>
-    <div class="section-title">Spacing System</div>
-    <p class="section-desc">Base unit 4px. Lean toward more space, not less. When in doubt, step up the scale.</p>
-
-    <div style="display:flex; flex-direction:column; gap: var(--space-2);">
-      <div class="spacing-row">
-        <div class="spacing-label">4px · sp-1</div>
-        <div class="spacing-bar" style="width:4px;"></div>
-        <div class="spacing-desc">Tag inner vertical padding</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">8px · sp-2</div>
-        <div class="spacing-bar" style="width:8px;"></div>
-        <div class="spacing-desc">Tag inner horizontal padding, icon gaps</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">12px · sp-3</div>
-        <div class="spacing-bar" style="width:12px;"></div>
-        <div class="spacing-desc">Tight component stacking</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">16px · sp-4</div>
-        <div class="spacing-bar" style="width:16px;"></div>
-        <div class="spacing-desc">Card internal sections</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">24px · sp-6</div>
-        <div class="spacing-bar" style="width:24px;"></div>
-        <div class="spacing-desc">Default card padding</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">32px · sp-8</div>
-        <div class="spacing-bar" style="width:32px;"></div>
-        <div class="spacing-desc">Conversational message group separation</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">48px · sp-12</div>
-        <div class="spacing-bar" style="width:48px;"></div>
-        <div class="spacing-desc">Section separation minimum</div>
-      </div>
-      <div class="spacing-row">
-        <div class="spacing-label">64px · sp-16</div>
-        <div class="spacing-bar" style="width:64px;"></div>
-        <div class="spacing-desc">Page-level vertical rhythm</div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- COMPONENTS -->
-  <div class="section">
-    <div class="section-label">04 — Components</div>
-    <div class="section-title">Product Recommendation Cards</div>
-    <p class="section-desc">Richer card, enforced hierarchy. Three visual zones: identity (name + brand + score), attributes (tags), preference match note. Tap to expand for full ingredient reasoning.</p>
-
-    <div class="comparison">
-
-      <!-- Best match card -->
+    <!-- ── Header ── -->
+    <header class="ds-header">
       <div>
-        <div class="best-match-badge">Best match</div>
-        <div class="card">
-          <div class="card-image">
-            <img src="https://m.media-amazon.com/images/I/71+7q+cdyWL._SL1500_.jpg" alt="Burt's Bees Baby Fragrance-Free Baby Wash" />
+        <div class="ds-wordmark">
+          <div class="ds-wordmark-dot"></div>
+          Rayum
+        </div>
+        <p class="ds-tagline">A production-ready design system. Green primary · Blue secondary · Light &amp; Dark mode.</p>
+      </div>
+      <div class="ds-meta">
+        Version 1.0 · April 2026<br>
+        Source: Figma / Rayum_Design_System<br>
+        Inter · Playfair · Roboto Mono
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════ COLORS ═══════════════════════════════ -->
+    <section class="section">
+      <div class="section-label">01 — Colors</div>
+      <div class="section-title">Color System</div>
+      <div class="section-desc">Two-brand palette built on a dark-anchored neutral scale. Three layers: primitives → semantic tokens → component tokens.</div>
+
+      <!-- Brand Primary -->
+      <div class="component-label">Brand Primary — Green</div>
+      <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-bottom:32px">
+        <div class="swatch"><div class="swatch-color" style="background:#f1fff4"></div><div class="swatch-info"><div class="swatch-name">10</div><div class="swatch-hex">#f1fff4</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#c6ffd2"></div><div class="swatch-info"><div class="swatch-name">20</div><div class="swatch-hex">#c6ffd2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#9cffb1"></div><div class="swatch-info"><div class="swatch-name">30</div><div class="swatch-hex">#9cffb1</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#70fc8e"></div><div class="swatch-info"><div class="swatch-name">40</div><div class="swatch-hex">#70fc8e</div></div></div>
+        <div class="swatch" style="outline:2px solid var(--color-brand-primary-50);outline-offset:2px"><div class="swatch-color" style="background:#5cdf78"></div><div class="swatch-info"><div class="swatch-name">50 ★</div><div class="swatch-hex">#5cdf78</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4ac263"></div><div class="swatch-info"><div class="swatch-name">60</div><div class="swatch-hex">#4ac263</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#39a550"></div><div class="swatch-info"><div class="swatch-name">70</div><div class="swatch-hex">#39a550</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#2b873f"></div><div class="swatch-info"><div class="swatch-name">80</div><div class="swatch-hex">#2b873f</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1e6a2f"></div><div class="swatch-info"><div class="swatch-name">90</div><div class="swatch-hex">#1e6a2f</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#07200c"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#07200c</div></div></div>
+      </div>
+
+      <!-- Brand Secondary -->
+      <div class="component-label">Brand Secondary — Blue</div>
+      <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-bottom:32px">
+        <div class="swatch"><div class="swatch-color" style="background:#ebf0ff"></div><div class="swatch-info"><div class="swatch-name">10</div><div class="swatch-hex">#ebf0ff</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#beceff"></div><div class="swatch-info"><div class="swatch-name">20</div><div class="swatch-hex">#beceff</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#92acff"></div><div class="swatch-info"><div class="swatch-name">30</div><div class="swatch-hex">#92acff</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#658aff"></div><div class="swatch-info"><div class="swatch-name">40</div><div class="swatch-hex">#658aff</div></div></div>
+        <div class="swatch" style="outline:2px solid var(--color-brand-secondary-50);outline-offset:2px"><div class="swatch-color" style="background:#3765f6"></div><div class="swatch-info"><div class="swatch-name">50 ★</div><div class="swatch-hex">#3765f6</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#244fd4"></div><div class="swatch-info"><div class="swatch-name">60</div><div class="swatch-hex">#244fd4</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#153bb2"></div><div class="swatch-info"><div class="swatch-name">70</div><div class="swatch-hex">#153bb2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#092a90"></div><div class="swatch-info"><div class="swatch-name">80</div><div class="swatch-hex">#092a90</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#011c6e"></div><div class="swatch-info"><div class="swatch-name">90</div><div class="swatch-hex">#011c6e</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#011040"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#011040</div></div></div>
+      </div>
+
+      <!-- Neutral -->
+      <div class="component-label">Neutral</div>
+      <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-bottom:32px">
+        <div class="swatch"><div class="swatch-color" style="background:#ffffff;border-bottom:1px solid #eee"></div><div class="swatch-info"><div class="swatch-name">10</div><div class="swatch-hex">#ffffff</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f6f7f9"></div><div class="swatch-info"><div class="swatch-name">15</div><div class="swatch-hex">#f6f7f9</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#edf0f2"></div><div class="swatch-info"><div class="swatch-name">25</div><div class="swatch-hex">#e1e5ea</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#c3ced7"></div><div class="swatch-info"><div class="swatch-name">35</div><div class="swatch-hex">#c3ced7</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#929fb1"></div><div class="swatch-info"><div class="swatch-name">50</div><div class="swatch-hex">#929fb1</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#606e80"></div><div class="swatch-info"><div class="swatch-name">60</div><div class="swatch-hex">#606e80</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#404b5a"></div><div class="swatch-info"><div class="swatch-name">70</div><div class="swatch-hex">#404b5a</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#2f3b4c"></div><div class="swatch-info"><div class="swatch-name">80</div><div class="swatch-hex">#2f3b4c</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1f2633"></div><div class="swatch-info"><div class="swatch-name">90</div><div class="swatch-hex">#1f2633</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#0a0d11"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#0a0d11</div></div></div>
+      </div>
+
+      <!-- Functional -->
+      <div class="component-label">Functional</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:0">
+        <div>
+          <div style="height:48px;background:#0070f3;border-radius:8px 8px 0 0"></div>
+          <div style="height:24px;background:#e5f1ff;border-radius:0 0 8px 8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#0070f3;font-weight:600">Blue / Info</div>
+        </div>
+        <div>
+          <div style="height:48px;background:#e53e3e;border-radius:8px 8px 0 0"></div>
+          <div style="height:24px;background:#ffeded;border-radius:0 0 8px 8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#e53e3e;font-weight:600">Red / Danger</div>
+        </div>
+        <div>
+          <div style="height:48px;background:#60cc65;border-radius:8px 8px 0 0"></div>
+          <div style="height:24px;background:#effaf0;border-radius:0 0 8px 8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#4caf50;font-weight:600">Green / Success</div>
+        </div>
+        <div>
+          <div style="height:48px;background:#ffcb2c;border-radius:8px 8px 0 0"></div>
+          <div style="height:24px;background:#fffaea;border-radius:0 0 8px 8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#b88a00;font-weight:600">Yellow / Warning</div>
+        </div>
+        <div>
+          <div style="height:48px;background:#f07000;border-radius:8px 8px 0 0"></div>
+          <div style="height:24px;background:#fff1e5;border-radius:0 0 8px 8px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:#f07000;font-weight:600">Orange / Caution</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ SEMANTIC ═══════════════════════════════ -->
+    <section class="section">
+      <div class="section-label">02 — Semantic Tokens</div>
+      <div class="section-title">Surface &amp; Text Tokens</div>
+      <div class="section-desc">These tokens adapt to the current theme. Toggle dark mode to see them shift.</div>
+
+      <div class="semantic-grid">
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--bg-default);border:1px solid var(--border-default)"></div>
+          <div class="semantic-name">--bg-default</div>
+          <div class="semantic-desc">Main canvas background</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--bg-muted)"></div>
+          <div class="semantic-name">--bg-muted</div>
+          <div class="semantic-desc">Secondary surfaces, sidebars</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--bg-inset)"></div>
+          <div class="semantic-name">--bg-inset</div>
+          <div class="semantic-desc">Input fields, inset areas</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--fg-default)"></div>
+          <div class="semantic-name">--fg-default</div>
+          <div class="semantic-desc">Primary text</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--fg-muted)"></div>
+          <div class="semantic-name">--fg-muted</div>
+          <div class="semantic-desc">Secondary text, captions</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--color-brand-primary-40)"></div>
+          <div class="semantic-name">--focus-ring</div>
+          <div class="semantic-desc">Focus ring, accent border</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--color-brand-primary-10)"></div>
+          <div class="semantic-name">--bg-accent-muted</div>
+          <div class="semantic-desc">Accent tint background</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--color-brand-primary-40)"></div>
+          <div class="semantic-name">--bg-accent-emphasis</div>
+          <div class="semantic-desc">Accent surface / highlight</div>
+        </div>
+        <div class="semantic-card">
+          <div class="semantic-preview" style="background:var(--border-default)"></div>
+          <div class="semantic-name">--border-default</div>
+          <div class="semantic-desc">Standard dividers, card edges</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ TYPOGRAPHY ═══════════════════════════════ -->
+    <section class="section">
+      <div class="section-label">03 — Typography</div>
+      <div class="section-title">Type Scale</div>
+      <div class="section-desc">Inter for UI, Playfair for editorial display moments, Roboto Mono for structured data.</div>
+
+      <div class="type-row">
+        <div class="type-meta">Title Hero<br>72px · 500</div>
+        <div>
+          <div class="type-name">Title Hero</div>
+          <div class="type-sample" style="font-size:64px;font-weight:500;letter-spacing:-4px;line-height:1.05">Clean Living</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Title Page Large<br>64px · 500</div>
+        <div>
+          <div class="type-name">Title Page Large</div>
+          <div class="type-sample" style="font-size:52px;font-weight:500;letter-spacing:-3.5px;line-height:1.05">What's in your cart?</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Heading Base<br>32px · 600</div>
+        <div>
+          <div class="type-name">Heading Base</div>
+          <div class="type-sample" style="font-size:32px;font-weight:600;letter-spacing:-1.2px">Ingredient Analysis</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Heading Small<br>28px · 600</div>
+        <div>
+          <div class="type-name">Heading Small</div>
+          <div class="type-sample" style="font-size:28px;font-weight:600;letter-spacing:-1.2px">Product Details</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Subheading Large<br>24px · 500</div>
+        <div>
+          <div class="type-name">Subheading Large</div>
+          <div class="type-sample" style="font-size:24px;font-weight:500;letter-spacing:-0.8px">Your preference summary</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Body Base<br>16px · 400</div>
+        <div>
+          <div class="type-name">Body Base</div>
+          <div class="type-sample" style="font-size:16px;font-weight:400;line-height:1.6;max-width:560px">This product contains 12 ingredients. Based on your preferences, 10 are clean. We flagged fragrance and sodium lauryl sulfate — both have caution signals for sensitive skin.</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Body Small<br>14px · 400</div>
+        <div>
+          <div class="type-name">Body Small</div>
+          <div class="type-sample" style="font-size:14px;font-weight:400;color:var(--fg-muted);line-height:1.6">Source: EWG Skin Deep · Updated March 2026</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Label Base<br>14px · 500</div>
+        <div>
+          <div class="type-name">Label Base</div>
+          <div class="type-sample" style="font-size:14px;font-weight:500">Product Score · Clean Rating · 4.8 / 5</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Mono / Data<br>14px · 400</div>
+        <div>
+          <div class="type-name">Roboto Mono — data &amp; code</div>
+          <div class="type-sample" style="font-size:14px;font-family:'Roboto Mono',monospace;color:var(--fg-muted)">EWG Score: 2 · pH: 5.5 · SLS: 0%</div>
+        </div>
+      </div>
+      <div class="type-row" style="border-bottom:none">
+        <div class="type-meta">Editorial / Serif<br>32px · 400</div>
+        <div>
+          <div class="type-name">Playfair Display — editorial moments</div>
+          <div class="type-sample" style="font-size:32px;font-family:'Playfair Display',serif;font-weight:400;letter-spacing:-0.5px">Know what goes on your skin.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ SPACING ═══════════════════════════════ -->
+    <section class="section">
+      <div class="section-label">04 — Spacing</div>
+      <div class="section-title">Spacing Scale</div>
+      <div class="section-desc">2px base unit. Scale steps from space/50 (2px) to space/4000 (160px).</div>
+
+      <div style="max-width:640px">
+        <div class="space-row"><div class="space-bar" style="width:2px"></div><div class="space-label">2px — space/50</div></div>
+        <div class="space-row"><div class="space-bar" style="width:4px"></div><div class="space-label">4px — space/100</div></div>
+        <div class="space-row"><div class="space-bar" style="width:8px"></div><div class="space-label">8px — space/200</div></div>
+        <div class="space-row"><div class="space-bar" style="width:12px"></div><div class="space-label">12px — space/300</div></div>
+        <div class="space-row"><div class="space-bar" style="width:16px"></div><div class="space-label">16px — space/400</div></div>
+        <div class="space-row"><div class="space-bar" style="width:20px"></div><div class="space-label">20px — space/500 · Card padding</div></div>
+        <div class="space-row"><div class="space-bar" style="width:24px"></div><div class="space-label">24px — space/600 · Button padding XL · Icon L</div></div>
+        <div class="space-row"><div class="space-bar" style="width:32px"></div><div class="space-label">32px — space/800 · Button SM height</div></div>
+        <div class="space-row"><div class="space-bar" style="width:40px"></div><div class="space-label">40px — space/1000 · Button MD height</div></div>
+        <div class="space-row"><div class="space-bar" style="width:48px"></div><div class="space-label">48px — space/1200 · Button LG height</div></div>
+        <div class="space-row"><div class="space-bar" style="width:64px"></div><div class="space-label">64px — space/1600</div></div>
+        <div class="space-row"><div class="space-bar" style="width:96px"></div><div class="space-label">96px — space/2400</div></div>
+        <div class="space-row"><div class="space-bar" style="width:160px"></div><div class="space-label">160px — space/4000</div></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ RADIUS ═══════════════════════════════ -->
+    <section class="section">
+      <div class="section-label">05 — Shape</div>
+      <div class="section-title">Border Radius</div>
+      <div class="section-desc">From square to fully rounded. Use radius/600 (24px) for buttons and inputs; radius/300 (12px) for cards.</div>
+
+      <div class="radius-grid">
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:0"></div>
+          <div class="radius-label">radius/0</div><div class="radius-value">0px</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:4px"></div>
+          <div class="radius-label">radius/100</div><div class="radius-value">4px</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:8px"></div>
+          <div class="radius-label">radius/200</div><div class="radius-value">8px</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:12px"></div>
+          <div class="radius-label">radius/300</div><div class="radius-value">12px · Card inner</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:16px"></div>
+          <div class="radius-label">radius/400</div><div class="radius-value">16px · Cards</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:24px"></div>
+          <div class="radius-label">radius/600</div><div class="radius-value">24px · Buttons</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:32px"></div>
+          <div class="radius-label">radius/800</div><div class="radius-value">32px · Card outer</div>
+        </div>
+        <div class="radius-card" style="border-radius:4px">
+          <div class="radius-preview" style="border-radius:9999px"></div>
+          <div class="radius-label">radius/Full</div><div class="radius-value">9999px · Avatars, pills</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ COMPONENTS ═══════════════════════════════ -->
+    <section class="section">
+      <div class="section-label">06 — Components</div>
+      <div class="section-title">Component Examples</div>
+      <div class="section-desc">Built from the token system. All states adapt to light and dark mode.</div>
+
+      <!-- Buttons -->
+      <div class="component-canvas">
+        <div class="component-label">Buttons</div>
+        <div class="component-row" style="margin-bottom:16px">
+          <button class="btn btn-primary btn-lg">Primary</button>
+          <button class="btn btn-secondary btn-lg">Secondary</button>
+          <button class="btn btn-accent btn-lg">Accent</button>
+          <button class="btn btn-ghost btn-lg">Ghost</button>
+          <button class="btn btn-danger btn-lg">Danger</button>
+          <button class="btn btn-disabled btn-lg" disabled>Disabled</button>
+        </div>
+        <div class="component-row" style="margin-bottom:0">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary btn-md">Medium</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="component-canvas">
+        <div class="component-label">Badges &amp; Tags</div>
+        <div class="component-row" style="margin-bottom:0">
+          <span class="badge badge-accent">Clean</span>
+          <span class="badge badge-neutral">Neutral</span>
+          <span class="badge badge-info">Info</span>
+          <span class="badge badge-success">Safe</span>
+          <span class="badge badge-warning">Caution</span>
+          <span class="badge badge-danger">Flagged</span>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="component-canvas">
+        <div class="component-label">Input</div>
+        <div class="component-row" style="gap:16px;flex-direction:column;align-items:flex-start;margin-bottom:0">
+          <div class="input-wrap">
+            <input class="input-field" type="text" placeholder="Search products or ingredients…" />
           </div>
-          <div class="card-header">
-            <div>
-              <div class="card-name">Free & Clear Dish Soap</div>
-              <div class="card-brand">Seventh Generation</div>
+          <div class="input-wrap">
+            <input class="input-field" type="text" value="Cetaphil Gentle Cleanser" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="component-canvas">
+        <div class="component-label">Alerts / Feedback</div>
+        <div class="alert alert-info">
+          <div class="alert-icon">ℹ️</div>
+          <div class="alert-body"><div class="alert-title">EWG rating updated</div><div class="alert-desc">This product's safety rating has changed since your last scan.</div></div>
+        </div>
+        <div class="alert alert-success">
+          <div class="alert-icon">✅</div>
+          <div class="alert-body"><div class="alert-title">All ingredients clear</div><div class="alert-desc">No flagged ingredients found based on your preferences.</div></div>
+        </div>
+        <div class="alert alert-warning">
+          <div class="alert-icon">⚠️</div>
+          <div class="alert-body"><div class="alert-title">Fragrance detected</div><div class="alert-desc">Fragrance is a caution ingredient for your skin sensitivity profile.</div></div>
+        </div>
+        <div class="alert alert-danger" style="margin-bottom:0">
+          <div class="alert-icon">🚫</div>
+          <div class="alert-body"><div class="alert-title">SLS flagged</div><div class="alert-desc">Sodium Lauryl Sulfate is on your avoid list. Consider an alternative.</div></div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="component-canvas">
+        <div class="component-label">Product Cards</div>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-img">🧴</div>
+            <div class="card-body">
+              <div class="card-title">Cetaphil Gentle Cleanser</div>
+              <div class="card-text">12 ingredients · EWG score 2 · No parabens, no SLS</div>
+              <div class="card-footer">
+                <span class="badge badge-success">Clean</span>
+                <button class="btn btn-secondary btn-sm">Details</button>
+              </div>
             </div>
-            <div class="score-badge score-high">A</div>
           </div>
-          <div class="card-tags">
-            <span class="tag">EWG Verified</span>
-            <span class="tag">Fragrance-free</span>
-            <span class="tag">B Corp</span>
-          </div>
-          <div class="card-preference-label">Matches your preferences</div>
-          <div class="card-preference">Fragrance-free, EWG Verified — both on your saved list.</div>
-        </div>
-      </div>
-
-      <!-- Secondary card — no image example -->
-      <div>
-        <div style="height: 31px;"></div><!-- spacer to align with best match -->
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-name">Dish Soap Concentrate</div>
-              <div class="card-brand">Branch Basics</div>
+          <div class="card">
+            <div class="card-img" style="background:linear-gradient(135deg,#ebf0ff,#beceff)">🫧</div>
+            <div class="card-body">
+              <div class="card-title">CeraVe Foaming Wash</div>
+              <div class="card-text">18 ingredients · EWG score 3 · Contains fragrance</div>
+              <div class="card-footer">
+                <span class="badge badge-warning">Caution</span>
+                <button class="btn btn-secondary btn-sm">Details</button>
+              </div>
             </div>
-            <div class="score-badge score-mid">B</div>
           </div>
-          <div class="card-tags">
-            <span class="tag">Concentrate</span>
-            <span class="tag">Plant-based</span>
-            <span class="tag-flagged tag">Citrus scent</span>
-          </div>
-          <div class="card-preference-label">Note</div>
-          <div class="card-preference">Contains citrus fragrance — check against your fragrance sensitivity.</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="divider-label"><span>Attribute Tags</span></div>
-    <div style="display:flex; flex-wrap:wrap; gap: var(--space-2); margin-bottom: var(--space-8);">
-      <span class="tag">EWG Verified</span>
-      <span class="tag">USDA Organic</span>
-      <span class="tag">Fragrance-free</span>
-      <span class="tag">B Corp</span>
-      <span class="tag">Concentrate</span>
-      <span class="tag">Plant-based</span>
-      <span class="tag-flagged tag">Synthetic fragrance</span>
-      <span class="tag-flagged tag">Formaldehyde</span>
-    </div>
-
-    <div class="divider-label"><span>Safety Score Badge</span></div>
-    <div style="display:flex; gap: var(--space-4); align-items:center; margin-bottom: var(--space-8);">
-      <div>
-        <div class="score-badge score-high" style="margin-bottom:6px;">A</div>
-        <div class="micro text-stone" style="text-align:center;">High</div>
-      </div>
-      <div>
-        <div class="score-badge score-mid" style="margin-bottom:6px;">B</div>
-        <div class="micro text-stone" style="text-align:center;">Moderate</div>
-      </div>
-      <div>
-        <div class="score-badge score-low" style="margin-bottom:6px;">D</div>
-        <div class="micro text-stone" style="text-align:center;">Low</div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- AI CONVERSATION -->
-  <div class="section">
-    <div class="section-label">05 — AI Conversation</div>
-    <div class="section-title">Conversational Interface</div>
-    <p class="section-desc">No chat bubbles. AI responses appear as clean body text. Feels like reading, not messaging. User input sits in a linen bar at the bottom.</p>
-
-    <div class="conversation">
-      <div class="conversation-body">
-
-        <div class="message-group">
-          <div class="message-label user">You</div>
-          <div class="message-text user">I need a dish soap that's safe for my kids and doesn't have any synthetic fragrance.</div>
-        </div>
-
-        <div class="message-group">
-          <div class="message-label ai">Clean Shopper</div>
-          <div class="message-text">I found three options that match your fragrance-free preference. The top pick scores an A on EWG and is EWG Verified — one of the stricter certifications for cleaning products.</div>
-        </div>
-
-        <div class="message-group">
-          <div class="message-label ai">Thinking</div>
-          <div class="thinking-dots">
-            <span></span><span></span><span></span>
+          <div class="card">
+            <div class="card-img" style="background:linear-gradient(135deg,#fff1e5,#ffd9b8)">🧼</div>
+            <div class="card-body">
+              <div class="card-title">Neutrogena Hydro Boost</div>
+              <div class="card-text">22 ingredients · EWG score 5 · SLS detected</div>
+              <div class="card-footer">
+                <span class="badge badge-danger">Flagged</span>
+                <button class="btn btn-secondary btn-sm">Details</button>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-      </div>
-      <div class="conversation-input">
-        <input class="input-field" type="text" placeholder="Ask about ingredients, compare products…" readonly />
-        <button class="input-send">
-          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 8l7-7 7 7M8 1v14" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </div>
   </div>
-
-
-  <!-- AI STATES -->
-  <div class="section">
-    <div class="section-label">06 — AI States</div>
-    <div class="section-title">How the UI Communicates AI Activity</div>
-    <p class="section-desc">Six states to design for. Visual signals should be informative, never alarming.</p>
-
-    <div class="ai-states-grid">
-
-      <div class="state-card">
-        <div class="state-name">Thinking</div>
-        <div class="state-demo">
-          <div class="thinking-dots">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-        <div class="state-desc">Three sage dots, soft pulse. No spinner. Appears below last message, not full-screen.</div>
-      </div>
-
-      <div class="state-card">
-        <div class="state-name">Suggesting</div>
-        <div class="state-demo" style="flex-direction:column; align-items:flex-start; gap:6px;">
-          <div style="height:8px; background:var(--dune); border-radius:4px; width:80%; animation: fadeIn 0.8s ease forwards; opacity:0; animation-delay:0.1s;"></div>
-          <div style="height:8px; background:var(--dune); border-radius:4px; width:60%; animation: fadeIn 0.8s ease forwards; opacity:0; animation-delay:0.3s;"></div>
-          <div style="height:8px; background:var(--dune); border-radius:4px; width:70%; animation: fadeIn 0.8s ease forwards; opacity:0; animation-delay:0.5s;"></div>
-        </div>
-        <div class="state-desc">Cards fade in with 100ms stagger. Feels deliberate, not instant-dump.</div>
-      </div>
-
-      <div class="state-card">
-        <div class="state-name">Confident</div>
-        <div class="state-demo">
-          <div class="best-match-badge" style="margin:0;">Best match</div>
-        </div>
-        <div class="state-desc">Moss badge on the leading recommendation. Used only when the AI is certain.</div>
-      </div>
-
-      <div class="state-card">
-        <div class="state-name">Uncertain</div>
-        <div class="state-demo">
-          <div class="uncertain-text">Here are a few options worth considering.</div>
-        </div>
-        <div class="state-desc">No badge. Copy shifts to open-ended framing. No visual alarm — just honest.</div>
-      </div>
-
-      <div class="state-card">
-        <div class="state-name">Preference Applied</div>
-        <div class="state-demo">
-          <div class="pref-note">Based on your fragrance-free preference</div>
-        </div>
-        <div class="state-desc">Stone label with sage left border. Quiet acknowledgment the system is paying attention.</div>
-      </div>
-
-      <div class="state-card">
-        <div class="state-name">Flagged Ingredient</div>
-        <div class="state-demo" style="align-items:center; gap:6px;">
-          <span class="tag-flagged tag" style="display:inline-flex; align-items:center;">
-            Synthetic fragrance
-          </span>
-        </div>
-        <div class="state-desc">Terracotta tag on the relevant attribute. Tap for ingredient detail and why it's flagged.</div>
-      </div>
-
-    </div>
-    <style>
-      @keyframes fadeIn {
-        to { opacity: 1; }
-      }
-    </style>
-  </div>
-
-
-  <!-- FOOTER -->
-  <div style="padding-top: var(--space-12); border-top: 1px solid var(--dune); display:flex; justify-content:space-between; align-items:center;">
-    <div>
-      <div style="font-size:15px; font-weight:600; color:var(--charcoal);">Clean Shopper</div>
-      <div class="micro text-stone">Visual Design System · v1</div>
-    </div>
-    <div class="micro text-stone">DM Sans · #F5F2EC · #FAFAF7 · #7A9E7E · #4E7055 · #B87A5A</div>
-  </div>
-
-</div>
 </body>
 </html>

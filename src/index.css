@@ -1,62 +1,23 @@
 @import "tailwindcss";
-
-@theme {
-  /* ─── Colors ─── */
-  --color-warm-white: #FAFAF7;
-  --color-linen: #F5F2EC;
-  --color-sage: #7A9E7E;
-  --color-sage-15: rgba(122, 158, 126, 0.15);
-  --color-moss: #4E7055;
-  --color-clay: #B87A5A;
-  --color-charcoal: #2C2C2A;
-  --color-stone: #6B6B68;
-  --color-dune: #D4D0C8;
-  --color-garden: #5E8C61;
-  --color-terracotta: #C0614A;
-  --color-terracotta-12: rgba(192, 97, 74, 0.12);
-
-  /* ─── Typography ─── */
-  --font-family-sans: 'DM Sans', sans-serif;
-
-  --font-size-micro: 12px;
-  --font-size-label: 14px;
-  --font-size-body: 16px;
-  --font-size-heading-s: 18px;
-  --font-size-heading-m: 24px;
-  --font-size-heading-l: 32px;
-
-  /* ─── Spacing (4px base) ─── */
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-6: 24px;
-  --spacing-8: 32px;
-  --spacing-12: 48px;
-  --spacing-16: 64px;
-
-  /* ─── Border radius ─── */
-  --radius-tag: 6px;
-  --radius-card: 12px;
-  --radius-full: 9999px;
-}
+@import "./rayum-theme.css";
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #F5F2EC;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+  /* ── App-level aliases onto Rayum semantic tokens ── */
+  --text:       var(--fg-muted);
+  --text-h:     var(--fg-default);
+  --bg:         var(--bg-default);
+  --border:     var(--border-default);
+  --code-bg:    var(--bg-inset);
+  --accent:     var(--color-brand-primary-50);
+  --accent-bg:  var(--bg-accent-muted);
+  --accent-border: var(--border-accent);
+  --social-bg:  var(--bg-muted);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(10, 13, 17, 0.08) 0 10px 15px -3px, rgba(10, 13, 17, 0.04) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans:    var(--font-sans);
+  --heading: var(--font-sans);
+  --mono:    var(--font-mono);
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -75,17 +36,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    color-scheme: dark;
   }
 
   #social .button-icon {

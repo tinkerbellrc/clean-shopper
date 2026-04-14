@@ -1,0 +1,342 @@
+/* ============================================================
+   RAYUM DESIGN SYSTEM — Tailwind v4 Theme
+   Source: Figma / Rayum_Design_System
+   Version: 1.0 · 2026-04-14
+
+   Usage:
+     @import "tailwindcss";
+     @import "./rayum-theme.css";
+   ============================================================ */
+
+@theme {
+
+  /* ----------------------------------------------------------
+     FONTS
+     ---------------------------------------------------------- */
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair', 'Playfair Display', Georgia, serif;
+  --font-mono:  'Roboto Mono', ui-monospace, monospace;
+
+  /* ----------------------------------------------------------
+     TYPE SCALE
+     ---------------------------------------------------------- */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  28px;
+  --text-4xl:  32px;
+  --text-5xl:  40px;
+  --text-6xl:  48px;
+  --text-7xl:  64px;
+  --text-8xl:  72px;
+
+  /* ----------------------------------------------------------
+     FONT WEIGHTS
+     ---------------------------------------------------------- */
+  --font-weight-thin:       100;
+  --font-weight-extralight: 200;
+  --font-weight-light:      300;
+  --font-weight-normal:     400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+  --font-weight-black:      900;
+
+  /* ----------------------------------------------------------
+     LETTER SPACING
+     ---------------------------------------------------------- */
+  --tracking-tight-1: -0.2px;
+  --tracking-tight-2: -0.4px;
+  --tracking-tight-3: -0.8px;
+  --tracking-tight-4: -1.2px;
+  --tracking-tight-5: -1.6px;
+  --tracking-tight-6: -2.4px;
+  --tracking-tight-7: -3.2px;
+  --tracking-tight-8: -4px;
+
+  /* ----------------------------------------------------------
+     SPACING  (Rayum Space Primitives)
+     ---------------------------------------------------------- */
+  --spacing-px:  2px;   /* space/50  */
+  --spacing-1:   4px;   /* space/100 */
+  --spacing-1-5: 6px;   /* space/150 */
+  --spacing-2:   8px;   /* space/200 */
+  --spacing-2-5: 10px;  /* space/250 */
+  --spacing-3:   12px;  /* space/300 */
+  --spacing-4:   16px;  /* space/400 */
+  --spacing-5:   20px;  /* space/500 */
+  --spacing-6:   24px;  /* space/600 */
+  --spacing-7:   28px;  /* space/700 */
+  --spacing-8:   32px;  /* space/800 */
+  --spacing-10:  40px;  /* space/1000 */
+  --spacing-12:  48px;  /* space/1200 */
+  --spacing-14:  56px;  /* space/1400 */
+  --spacing-16:  64px;  /* space/1600 */
+  --spacing-24:  96px;  /* space/2400 */
+  --spacing-40:  160px; /* space/4000 */
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS  (Rayum Radius Primitives)
+     ---------------------------------------------------------- */
+  --radius-none: 0px;
+  --radius-xs:   2px;   /* radius/50  */
+  --radius-sm:   4px;   /* radius/100 */
+  --radius-md:   8px;   /* radius/200 */
+  --radius-lg:   12px;  /* radius/300 */
+  --radius-xl:   16px;  /* radius/400 */
+  --radius-2xl:  24px;  /* radius/600 */
+  --radius-3xl:  32px;  /* radius/800 */
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     STROKE / BORDER WIDTHS
+     ---------------------------------------------------------- */
+  --border-0:   0px;
+  --border-thin: 0.5px;
+  --border-base: 1px;
+  --border-md:   1.5px;
+  --border-lg:   2px;
+
+  /* ----------------------------------------------------------
+     BREAKPOINTS
+     ---------------------------------------------------------- */
+  --breakpoint-mobile:  402px;
+  --breakpoint-tablet:  1194px;
+  --breakpoint-desktop: 1440px;
+
+  /* ----------------------------------------------------------
+     COLOR PRIMITIVES — Brand Primary (Green)
+     ---------------------------------------------------------- */
+  --color-brand-primary-10:  #f1fff4;
+  --color-brand-primary-20:  #c6ffd2;
+  --color-brand-primary-30:  #9cffb1;
+  --color-brand-primary-40:  #70fc8e;
+  --color-brand-primary-50:  #5cdf78;
+  --color-brand-primary-60:  #4ac263;
+  --color-brand-primary-70:  #39a550;
+  --color-brand-primary-80:  #2b873f;
+  --color-brand-primary-90:  #1e6a2f;
+  --color-brand-primary-100: #07200c;
+
+  /* ----------------------------------------------------------
+     COLOR PRIMITIVES — Brand Secondary (Blue)
+     ---------------------------------------------------------- */
+  --color-brand-secondary-10:  #ebf0ff;
+  --color-brand-secondary-20:  #beceff;
+  --color-brand-secondary-30:  #92acff;
+  --color-brand-secondary-40:  #658aff;
+  --color-brand-secondary-50:  #3765f6;
+  --color-brand-secondary-60:  #244fd4;
+  --color-brand-secondary-70:  #153bb2;
+  --color-brand-secondary-80:  #092a90;
+  --color-brand-secondary-90:  #011c6e;
+  --color-brand-secondary-100: #011040;
+
+  /* ----------------------------------------------------------
+     COLOR PRIMITIVES — Neutral
+     ---------------------------------------------------------- */
+  --color-neutral-10:  #ffffff;
+  --color-neutral-15:  #f6f7f9;
+  --color-neutral-20:  #edf0f2;
+  --color-neutral-25:  #e1e5ea;
+  --color-neutral-30:  #d3dbe4;
+  --color-neutral-35:  #c3ced7;
+  --color-neutral-40:  #b0becb;
+  --color-neutral-50:  #929fb1;
+  --color-neutral-60:  #606e80;
+  --color-neutral-70:  #404b5a;
+  --color-neutral-80:  #2f3b4c;
+  --color-neutral-85:  #27313f;
+  --color-neutral-90:  #1f2633;
+  --color-neutral-95:  #181d25;
+  --color-neutral-100: #0a0d11;
+
+  /* ----------------------------------------------------------
+     COLOR PRIMITIVES — Functional (sampled key steps)
+     ---------------------------------------------------------- */
+  --color-blue-10:    #e5f1ff;
+  --color-blue-40:    #5ca7ff;
+  --color-blue-50:    #2e8eff;
+  --color-blue-60:    #0070f3;
+  --color-blue-70:    #005dca;
+  --color-blue-100:   #002249;
+
+  --color-red-10:     #ffeded;
+  --color-red-40:     #ff7979;
+  --color-red-50:     #ff5252;
+  --color-red-60:     #e53e3e;
+  --color-red-70:     #c32b2b;
+  --color-red-100:    #450000;
+
+  --color-green-10:   #effaf0;
+  --color-green-50:   #5ce362;
+  --color-green-60:   #60cc65;
+  --color-green-70:   #4caf50;
+  --color-green-100:  #0b310c;
+
+  --color-yellow-10:  #fffaea;
+  --color-yellow-60:  #ffcb2c;
+  --color-yellow-100: #403000;
+
+  --color-orange-10:  #fff1e5;
+  --color-orange-50:  #ff902e;
+  --color-orange-60:  #f07000;
+  --color-orange-100: #431f00;
+}
+
+/* ============================================================
+   SEMANTIC TOKENS — Light Mode
+   ============================================================ */
+:root,
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-default:          var(--color-neutral-10);
+  --bg-muted:            var(--color-neutral-15);
+  --bg-inset:            var(--color-neutral-15);
+  --bg-inverse:          var(--color-neutral-95);
+  --bg-overlay:          var(--color-neutral-10);
+  --bg-neutral-emphasis: var(--color-neutral-35);
+  --bg-neutral-muted:    var(--color-neutral-25);
+  --bg-accent-emphasis:  var(--color-brand-primary-40);
+  --bg-accent-muted:     var(--color-brand-primary-10);
+  --bg-brand-primary:    var(--color-brand-primary-40);
+  --bg-brand-secondary:  var(--color-brand-secondary-50);
+  --bg-brand-tertiary:   var(--color-brand-secondary-20);
+
+  /* Foreground */
+  --fg-default:          var(--color-neutral-100);
+  --fg-muted:            var(--color-neutral-60);
+  --fg-inverse:          var(--color-neutral-10);
+  --fg-accent:           var(--color-brand-primary-50);
+  --fg-brand-primary:    var(--color-brand-primary-60);
+  --fg-brand-secondary:  var(--color-brand-secondary-60);
+
+  /* Borders */
+  --border-default:      var(--color-neutral-35);
+  --border-muted:        var(--color-neutral-50);
+  --border-muted-input:  var(--color-neutral-30);
+  --border-accent:       var(--color-brand-primary-40);
+  --border-brand:        var(--color-brand-secondary-50);
+
+  /* Focus */
+  --focus-ring:          var(--color-brand-primary-40);
+  --focus-center:        var(--color-brand-primary-10);
+
+  /* Action — Primary Button */
+  --btn-primary-bg:       var(--color-neutral-95);
+  --btn-primary-fg:       var(--color-neutral-10);
+  --btn-primary-bg-hover: var(--color-neutral-90);
+  --btn-primary-bg-active:var(--color-neutral-100);
+  --btn-primary-bg-dis:   var(--color-neutral-35);
+  --btn-primary-fg-dis:   var(--color-neutral-60);
+
+  /* Action — Secondary Button */
+  --btn-secondary-border:  var(--color-neutral-40);
+  --btn-secondary-fg:      var(--color-neutral-95);
+  --btn-secondary-fg-act:  var(--color-neutral-100);
+
+  /* Action — Danger Button */
+  --btn-danger-bg:         var(--color-red-60);
+  --btn-danger-bg-hover:   var(--color-red-70);
+  --btn-danger-fg:         var(--color-neutral-10);
+
+  /* Disabled */
+  --disabled-bg:           var(--color-neutral-35);
+  --disabled-fg:           var(--color-neutral-60);
+
+  /* Support */
+  --support-info-bg:       var(--color-blue-10);
+  --support-info-fg:       var(--color-blue-50);
+  --support-info-border:   var(--color-blue-60);
+  --support-success-bg:    var(--color-green-10);
+  --support-success-fg:    var(--color-green-70);
+  --support-success-border:var(--color-green-60);
+  --support-warning-bg:    var(--color-orange-10);
+  --support-warning-fg:    var(--color-orange-60);
+  --support-warning-border:var(--color-orange-60);
+  --support-danger-bg:     var(--color-red-10);
+  --support-danger-fg:     var(--color-red-60);
+  --support-danger-border: var(--color-red-60);
+}
+
+/* ============================================================
+   SEMANTIC TOKENS — Dark Mode
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+}
+
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-default:          var(--color-neutral-100);
+  --bg-muted:            var(--color-neutral-90);
+  --bg-inset:            var(--color-neutral-95);
+  --bg-inverse:          var(--color-neutral-10);
+  --bg-overlay:          var(--color-neutral-90);
+  --bg-neutral-emphasis: var(--color-neutral-80);
+  --bg-neutral-muted:    var(--color-neutral-85);
+  --bg-accent-emphasis:  var(--color-brand-primary-40);
+  --bg-accent-muted:     var(--color-brand-primary-100);
+  --bg-brand-primary:    var(--color-brand-primary-40);
+  --bg-brand-secondary:  var(--color-brand-secondary-40);
+  --bg-brand-tertiary:   var(--color-brand-secondary-100);
+
+  /* Foreground */
+  --fg-default:          var(--color-neutral-20);
+  --fg-muted:            var(--color-neutral-50);
+  --fg-inverse:          var(--color-neutral-95);
+  --fg-accent:           var(--color-brand-primary-40);
+  --fg-brand-primary:    var(--color-brand-primary-40);
+  --fg-brand-secondary:  var(--color-brand-secondary-40);
+
+  /* Borders */
+  --border-default:      var(--color-neutral-80);
+  --border-muted:        var(--color-neutral-80);
+  --border-muted-input:  var(--color-neutral-85);
+  --border-accent:       var(--color-brand-primary-40);
+  --border-brand:        var(--color-brand-secondary-40);
+
+  /* Focus */
+  --focus-ring:          var(--color-brand-primary-40);
+  --focus-center:        var(--color-brand-primary-100);
+
+  /* Action — Primary Button */
+  --btn-primary-bg:       var(--color-neutral-10);
+  --btn-primary-fg:       var(--color-neutral-100);
+  --btn-primary-bg-hover: var(--color-neutral-20);
+  --btn-primary-bg-active:var(--color-neutral-10);
+  --btn-primary-bg-dis:   var(--color-neutral-85);
+  --btn-primary-fg-dis:   var(--color-neutral-60);
+
+  /* Action — Secondary Button */
+  --btn-secondary-border:  var(--color-neutral-70);
+  --btn-secondary-fg:      var(--color-neutral-10);
+  --btn-secondary-fg-act:  var(--color-neutral-10);
+
+  /* Action — Danger Button */
+  --btn-danger-bg:         var(--color-red-60);
+  --btn-danger-bg-hover:   var(--color-red-70);
+  --btn-danger-fg:         var(--color-neutral-10);
+
+  /* Disabled */
+  --disabled-bg:           var(--color-neutral-70);
+  --disabled-fg:           var(--color-neutral-60);
+
+  /* Support */
+  --support-info-bg:       var(--color-blue-100);
+  --support-info-fg:       var(--color-blue-40);
+  --support-info-border:   var(--color-blue-40);
+  --support-success-bg:    var(--color-green-100);
+  --support-success-fg:    var(--color-green-60);
+  --support-success-border:var(--color-green-50);
+  --support-warning-bg:    var(--color-orange-100);
+  --support-warning-fg:    var(--color-orange-50);
+  --support-warning-border:var(--color-orange-50);
+  --support-danger-bg:     var(--color-red-100);
+  --support-danger-fg:     var(--color-red-50);
+  --support-danger-border: var(--color-red-40);
+}
