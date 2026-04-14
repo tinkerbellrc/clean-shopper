@@ -114,6 +114,7 @@ export function ChatPage() {
             category: string
             description: string
             safety_level: 'clean' | 'caution' | 'avoid'
+            image_url: string | null
           }) => ({
             id: p.id,
             name: p.name,
@@ -121,6 +122,7 @@ export function ChatPage() {
             category: p.category,
             description: p.description,
             safety_level: p.safety_level,
+            image_url: p.image_url,
           }),
         )
       })
