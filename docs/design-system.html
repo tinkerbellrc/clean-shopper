@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clean Shopper — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       DESIGN TOKENS
+       ======================================== */
+    :root {
+      /* --- Colors: Primary --- */
+      --color-primary: #6B8F71;
+      --color-primary-light: #8FB396;
+      --color-primary-dark: #4A6B50;
+      --color-accent: #C4704B;
+
+      /* --- Colors: Semantic --- */
+      --color-success: #6B8F71;
+      --color-warning: #C4944A;
+      --color-error: #B85C5C;
+      --color-info: #7B8FA1;
+
+      /* --- Colors: Neutrals --- */
+      --neutral-50: #F7F5F2;
+      --neutral-100: #EFECE7;
+      --neutral-200: #E2DDD5;
+      --neutral-300: #CFC8BD;
+      --neutral-400: #A89F93;
+      --neutral-500: #857C71;
+      --neutral-600: #655D53;
+      --neutral-700: #4A443C;
+      --neutral-800: #332E28;
+      --neutral-900: #1E1B17;
+
+      /* --- Colors: Surfaces --- */
+      --surface-page: #F7F5F2;
+      --surface-card: #FFFFFF;
+      --surface-secondary: #EFECE7;
+      --surface-overlay: rgba(30, 27, 23, 0.4);
+
+      /* --- Typography --- */
+      --font-primary: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+      --text-display: 2.441rem;
+      --text-h1: 1.953rem;
+      --text-h2: 1.563rem;
+      --text-h3: 1.25rem;
+      --text-h4: 1rem;
+      --text-body: 1rem;
+      --text-small: 0.875rem;
+      --text-caption: 0.75rem;
+
+      --weight-light: 300;
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+
+      --leading-display: 1.15;
+      --leading-heading: 1.2;
+      --leading-subheading: 1.3;
+      --leading-body: 1.7;
+      --leading-small: 1.5;
+      --leading-caption: 1.4;
+
+      --tracking-display: -0.02em;
+      --tracking-heading: -0.01em;
+      --tracking-caps: 0.08em;
+
+      /* --- Spacing --- */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+
+      /* --- Layout --- */
+      --max-width-content: 720px;
+      --max-width-wide: 960px;
+      --page-margin-desktop: 32px;
+      --page-margin-mobile: 16px;
+
+      /* --- Shape --- */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+      --radius-full: 9999px;
+
+      /* --- Shadows --- */
+      --shadow-sm: 0 1px 3px rgba(30,27,23,0.06), 0 1px 2px rgba(30,27,23,0.04);
+      --shadow-md: 0 4px 12px rgba(30,27,23,0.08), 0 2px 4px rgba(30,27,23,0.04);
+      --shadow-lg: 0 12px 28px rgba(30,27,23,0.12), 0 4px 8px rgba(30,27,23,0.06);
+
+      /* --- Motion --- */
+      --duration-fast: 120ms;
+      --duration-normal: 220ms;
+      --duration-slow: 380ms;
+      --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --ease-in: cubic-bezier(0.42, 0, 1, 1);
+      --ease-out: cubic-bezier(0, 0, 0.58, 1);
+    }
+
+    /* ========================================
+       BASE STYLES
+       ======================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      font-size: var(--text-body);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-body);
+      color: var(--neutral-600);
+      background-color: var(--surface-page);
+    }
+
+    /* ========================================
+       LAYOUT
+       ======================================== */
+    .page {
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      padding: var(--space-16) var(--page-margin-desktop);
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: var(--space-12) var(--page-margin-mobile);
+      }
+    }
+
+    section {
+      margin-bottom: var(--space-16);
+    }
+
+    /* ========================================
+       TYPOGRAPHY STYLES
+       ======================================== */
+    .section-title {
+      font-family: var(--font-secondary);
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--neutral-400);
+      margin-bottom: var(--space-8);
+    }
+
+    .section-subtitle {
+      font-family: var(--font-secondary);
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--neutral-500);
+      margin-bottom: var(--space-4);
+      margin-top: var(--space-10);
+    }
+
+    h2 {
+      font-family: var(--font-primary);
+      font-size: var(--text-h2);
+      font-weight: var(--weight-semibold);
+      line-height: var(--leading-heading);
+      color: var(--neutral-800);
+      letter-spacing: var(--tracking-heading);
+    }
+
+    p {
+      max-width: var(--max-width-content);
+    }
+
+    /* ========================================
+       HEADER
+       ======================================== */
+    .header {
+      margin-bottom: var(--space-16);
+      padding-bottom: var(--space-12);
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .header-product {
+      font-family: var(--font-primary);
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-display);
+      letter-spacing: var(--tracking-display);
+      color: var(--neutral-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .header-meta {
+      font-family: var(--font-secondary);
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      line-height: var(--leading-caption);
+      color: var(--neutral-400);
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      margin-bottom: var(--space-8);
+    }
+
+    .header-direction {
+      font-family: var(--font-primary);
+      font-size: var(--text-body);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-body);
+      color: var(--neutral-600);
+      font-style: italic;
+      max-width: var(--max-width-content);
+    }
+
+    /* ========================================
+       PRINCIPLES
+       ======================================== */
+    .principles-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .principle {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .principle-name {
+      font-family: var(--font-secondary);
+      font-size: var(--text-h4);
+      font-weight: var(--weight-semibold);
+      color: var(--neutral-800);
+      margin-bottom: var(--space-1);
+    }
+
+    .principle-desc {
+      font-family: var(--font-primary);
+      font-size: var(--text-small);
+      color: var(--neutral-500);
+      line-height: var(--leading-small);
+    }
+
+    /* ========================================
+       COLOR SWATCHES
+       ======================================== */
+    .swatch-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .swatch {
+      min-width: 120px;
+      flex: 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .swatch-color {
+      height: 80px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-2) var(--space-3);
+    }
+
+    .swatch-color.dark-text .swatch-hex {
+      color: var(--neutral-800);
+    }
+
+    .swatch-color.light-text .swatch-hex {
+      color: #FFFFFF;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      opacity: 0.85;
+    }
+
+    .swatch-label {
+      background: var(--surface-card);
+      padding: var(--space-2) var(--space-3);
+    }
+
+    .swatch-token {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-600);
+      display: block;
+    }
+
+    .swatch-name {
+      font-family: var(--font-secondary);
+      font-size: var(--text-caption);
+      color: var(--neutral-400);
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* Neutral strip */
+    .neutral-strip {
+      display: flex;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .neutral-step {
+      flex: 1;
+      height: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .neutral-step span {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.02em;
+    }
+
+    .neutral-step.dark-text span { color: var(--neutral-700); }
+    .neutral-step.light-text span { color: rgba(255,255,255,0.8); }
+
+    /* Surface nesting */
+    .surface-demo {
+      background: var(--surface-page);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .surface-demo-card {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .surface-demo-elevated {
+      background: var(--surface-card);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-md);
+    }
+
+    .surface-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-400);
+      margin-bottom: var(--space-2);
+    }
+
+    /* ========================================
+       TYPOGRAPHY SPECIMENS
+       ======================================== */
+    .specimen {
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-8);
+      border-bottom: 1px solid var(--neutral-100);
+    }
+
+    .specimen:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .specimen-text {
+      color: var(--neutral-800);
+      margin-bottom: var(--space-2);
+    }
+
+    .specimen-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-400);
+      line-height: var(--leading-caption);
+    }
+
+    /* ========================================
+       SPACING BARS
+       ======================================== */
+    .spacing-bar-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .spacing-bar-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-500);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .spacing-bar {
+      height: 24px;
+      background: rgba(107, 143, 113, 0.2);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .spacing-bar-value {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-400);
+      margin-left: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    /* ========================================
+       SHAPE EXAMPLES
+       ======================================== */
+    .shape-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      align-items: flex-start;
+    }
+
+    .shape-example {
+      text-align: center;
+    }
+
+    .shape-box {
+      width: 80px;
+      height: 56px;
+      background: var(--neutral-200);
+      margin-bottom: var(--space-2);
+    }
+
+    .shape-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-500);
+    }
+
+    .shape-value {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--neutral-400);
+    }
+
+    .shadow-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+
+    .shadow-example {
+      text-align: center;
+    }
+
+    .shadow-box {
+      width: 140px;
+      height: 90px;
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-2);
+    }
+
+    .shadow-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-500);
+    }
+
+    /* ========================================
+       MOTION
+       ======================================== */
+    .motion-tokens {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .motion-token {
+      background: var(--surface-card);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .motion-token-name {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      color: var(--neutral-700);
+      margin-bottom: var(--space-1);
+    }
+
+    .motion-token-value {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--neutral-400);
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      margin-top: var(--space-16);
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--neutral-200);
+      font-family: var(--font-secondary);
+      font-size: var(--text-caption);
+      color: var(--neutral-400);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+      <h1 class="header-product">Clean Shopper</h1>
+      <p class="header-meta">Design System v1.0 &mdash; March 30, 2026</p>
+      <p class="header-direction">
+        A calm, trusted space &mdash; organic and minimal, with the restrained confidence of Apple&rsquo;s visual language. Information is presented cleanly and the interface gets out of the way, with occasional pops of editorial color that add personality without clutter. The experience is closer to consulting a knowledgeable friend than browsing a store.
+      </p>
+    </header>
+
+    <!-- ==================== DESIGN PRINCIPLES ==================== -->
+    <section>
+      <p class="section-title">Design Principles</p>
+      <div class="principles-grid">
+        <div class="principle">
+          <p class="principle-name">Let the content breathe</p>
+          <p class="principle-desc">Generous whitespace creates calm. Every element earns its place by serving the user, not filling a layout.</p>
+        </div>
+        <div class="principle">
+          <p class="principle-name">Earn trust through restraint</p>
+          <p class="principle-desc">No selling, no urgency, no visual noise. Confidence comes from saying less, not more.</p>
+        </div>
+        <div class="principle">
+          <p class="principle-name">Nature as reference</p>
+          <p class="principle-desc">Color, texture, and rhythm draw from the natural world &mdash; earthy, muted, organic. Nothing synthetic.</p>
+        </div>
+        <div class="principle">
+          <p class="principle-name">Show only what&rsquo;s needed</p>
+          <p class="principle-desc">Information is progressive, not exhaustive. The default state is simple. Depth is there when you ask for it.</p>
+        </div>
+        <div class="principle">
+          <p class="principle-name">Accessible by nature</p>
+          <p class="principle-desc">Strong contrast and readability are the foundation, not an accommodation. The calm palette and accessibility reinforce each other.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COLOR: PRIMARY ==================== -->
+    <section>
+      <p class="section-title">Color Palette</p>
+
+      <p class="section-subtitle">Primary Colors</p>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-color light-text" style="background-color: var(--color-primary);">
+            <span class="swatch-hex">#6B8F71</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-primary</span>
+            <span class="swatch-name">Sage</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color dark-text" style="background-color: var(--color-primary-light);">
+            <span class="swatch-hex">#8FB396</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-primary-light</span>
+            <span class="swatch-name">Soft Sage</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color light-text" style="background-color: var(--color-primary-dark);">
+            <span class="swatch-hex">#4A6B50</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-primary-dark</span>
+            <span class="swatch-name">Deep Forest</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color light-text" style="background-color: var(--color-accent);">
+            <span class="swatch-hex">#C4704B</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-accent</span>
+            <span class="swatch-name">Terracotta</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANTIC COLORS -->
+      <p class="section-subtitle">Semantic Colors</p>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-color light-text" style="background-color: var(--color-success);">
+            <span class="swatch-hex">#6B8F71</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-success</span>
+            <span class="swatch-name">Success</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color dark-text" style="background-color: var(--color-warning);">
+            <span class="swatch-hex">#C4944A</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-warning</span>
+            <span class="swatch-name">Warning</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color light-text" style="background-color: var(--color-error);">
+            <span class="swatch-hex">#B85C5C</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-error</span>
+            <span class="swatch-name">Error</span>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color light-text" style="background-color: var(--color-info);">
+            <span class="swatch-hex">#7B8FA1</span>
+          </div>
+          <div class="swatch-label">
+            <span class="swatch-token">--color-info</span>
+            <span class="swatch-name">Info</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEUTRAL SCALE -->
+      <p class="section-subtitle">Neutral Scale</p>
+      <div class="neutral-strip">
+        <div class="neutral-step dark-text" style="background-color: var(--neutral-50);">
+          <span>50</span>
+          <span>#F7F5F2</span>
+        </div>
+        <div class="neutral-step dark-text" style="background-color: var(--neutral-100);">
+          <span>100</span>
+          <span>#EFECE7</span>
+        </div>
+        <div class="neutral-step dark-text" style="background-color: var(--neutral-200);">
+          <span>200</span>
+          <span>#E2DDD5</span>
+        </div>
+        <div class="neutral-step dark-text" style="background-color: var(--neutral-300);">
+          <span>300</span>
+          <span>#CFC8BD</span>
+        </div>
+        <div class="neutral-step dark-text" style="background-color: var(--neutral-400);">
+          <span>400</span>
+          <span>#A89F93</span>
+        </div>
+        <div class="neutral-step light-text" style="background-color: var(--neutral-500);">
+          <span>500</span>
+          <span>#857C71</span>
+        </div>
+        <div class="neutral-step light-text" style="background-color: var(--neutral-600);">
+          <span>600</span>
+          <span>#655D53</span>
+        </div>
+        <div class="neutral-step light-text" style="background-color: var(--neutral-700);">
+          <span>700</span>
+          <span>#4A443C</span>
+        </div>
+        <div class="neutral-step light-text" style="background-color: var(--neutral-800);">
+          <span>800</span>
+          <span>#332E28</span>
+        </div>
+        <div class="neutral-step light-text" style="background-color: var(--neutral-900);">
+          <span>900</span>
+          <span>#1E1B17</span>
+        </div>
+      </div>
+
+      <!-- SURFACE HIERARCHY -->
+      <p class="section-subtitle">Surface Hierarchy</p>
+      <div class="surface-demo">
+        <p class="surface-label">Page background &mdash; --surface-page: #F7F5F2</p>
+        <div class="surface-demo-card">
+          <p class="surface-label">Card &mdash; --surface-card: #FFFFFF</p>
+          <div class="surface-demo-elevated">
+            <p class="surface-label">Elevated &mdash; shadow-md on card surface</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TYPOGRAPHY ==================== -->
+    <section>
+      <p class="section-title">Typography</p>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-display); font-weight: var(--weight-light); line-height: var(--leading-display); letter-spacing: var(--tracking-display);">
+          Clean Shopper
+        </p>
+        <p class="specimen-meta">display &middot; Source Serif 4 &middot; 2.441rem (39px) &middot; weight 300 &middot; line-height 1.15</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-h1); font-weight: var(--weight-regular); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading);">
+          Discover cleaner products for your home
+        </p>
+        <p class="specimen-meta">h1 &middot; Source Serif 4 &middot; 1.953rem (31px) &middot; weight 400 &middot; line-height 1.2</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-h2); font-weight: var(--weight-semibold); line-height: var(--leading-heading);">
+          Your saved preferences
+        </p>
+        <p class="specimen-meta">h2 &middot; Source Serif 4 &middot; 1.563rem (25px) &middot; weight 600 &middot; line-height 1.25</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-h3); font-weight: var(--weight-semibold); line-height: var(--leading-subheading);">
+          Ingredient safety breakdown
+        </p>
+        <p class="specimen-meta">h3 &middot; Source Serif 4 &middot; 1.25rem (20px) &middot; weight 600 &middot; line-height 1.3</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-secondary); font-size: var(--text-h4); font-weight: var(--weight-semibold); line-height: var(--leading-subheading);">
+          Certification details
+        </p>
+        <p class="specimen-meta">h4 &middot; Inter &middot; 1rem (16px) &middot; weight 600 &middot; line-height 1.35</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-primary); font-size: var(--text-body); font-weight: var(--weight-regular); line-height: var(--leading-body);">
+          This dish soap is rated well by EWG for low toxicity. It avoids parabens, synthetic fragrances, and triclosan. The plant-based surfactants are biodegradable, and the packaging is made from 100% post-consumer recycled plastic.
+        </p>
+        <p class="specimen-meta">body &middot; Source Serif 4 &middot; 1rem (16px) &middot; weight 400 &middot; line-height 1.7</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-secondary); font-size: var(--text-small); font-weight: var(--weight-regular); line-height: var(--leading-small); color: var(--neutral-500);">
+          EWG Verified &middot; USDA Organic &middot; B Corp Certified
+        </p>
+        <p class="specimen-meta">small &middot; Inter &middot; 0.875rem (14px) &middot; weight 400 &middot; line-height 1.5</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-secondary); font-size: var(--text-caption); font-weight: var(--weight-medium); line-height: var(--leading-caption); color: var(--neutral-400);">
+          Last updated 2 hours ago &middot; Source: EWG Skin Deep
+        </p>
+        <p class="specimen-meta">caption &middot; Inter &middot; 0.75rem (12px) &middot; weight 500 &middot; line-height 1.4</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen-text" style="font-family: var(--font-mono); font-size: var(--text-small); font-weight: var(--weight-regular); line-height: var(--leading-small); color: var(--neutral-600);">
+          Sodium Lauryl Sulfate &middot; Cocamidopropyl Betaine &middot; Citric Acid
+        </p>
+        <p class="specimen-meta">mono &middot; JetBrains Mono &middot; 0.875rem (14px) &middot; weight 400 &middot; line-height 1.5</p>
+      </div>
+    </section>
+
+    <!-- ==================== SPACING ==================== -->
+    <section>
+      <p class="section-title">Spacing Scale</p>
+      <p style="font-family: var(--font-secondary); font-size: var(--text-small); color: var(--neutral-500); margin-bottom: var(--space-8); max-width: var(--max-width-content);">
+        Base unit: 4px. Spacious and gallery-like &mdash; generous whitespace creates the calm, unpressured feeling of consulting a friend rather than scrolling a marketplace.
+      </p>
+
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-1</span>
+        <div class="spacing-bar" style="width: 4px;"></div>
+        <span class="spacing-bar-value">4px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-2</span>
+        <div class="spacing-bar" style="width: 8px;"></div>
+        <span class="spacing-bar-value">8px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-3</span>
+        <div class="spacing-bar" style="width: 12px;"></div>
+        <span class="spacing-bar-value">12px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-4</span>
+        <div class="spacing-bar" style="width: 16px;"></div>
+        <span class="spacing-bar-value">16px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-6</span>
+        <div class="spacing-bar" style="width: 24px;"></div>
+        <span class="spacing-bar-value">24px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-8</span>
+        <div class="spacing-bar" style="width: 32px;"></div>
+        <span class="spacing-bar-value">32px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-10</span>
+        <div class="spacing-bar" style="width: 40px;"></div>
+        <span class="spacing-bar-value">40px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-12</span>
+        <div class="spacing-bar" style="width: 48px;"></div>
+        <span class="spacing-bar-value">48px</span>
+      </div>
+      <div class="spacing-bar-row">
+        <span class="spacing-bar-label">space-16</span>
+        <div class="spacing-bar" style="width: 64px;"></div>
+        <span class="spacing-bar-value">64px</span>
+      </div>
+    </section>
+
+    <!-- ==================== SHAPE ==================== -->
+    <section>
+      <p class="section-title">Shape &amp; Elevation</p>
+
+      <p class="section-subtitle">Border Radius</p>
+      <div class="shape-row">
+        <div class="shape-example">
+          <div class="shape-box" style="border-radius: var(--radius-sm);"></div>
+          <p class="shape-label">radius-sm</p>
+          <p class="shape-value">6px</p>
+        </div>
+        <div class="shape-example">
+          <div class="shape-box" style="border-radius: var(--radius-md);"></div>
+          <p class="shape-label">radius-md</p>
+          <p class="shape-value">10px</p>
+        </div>
+        <div class="shape-example">
+          <div class="shape-box" style="border-radius: var(--radius-lg);"></div>
+          <p class="shape-label">radius-lg</p>
+          <p class="shape-value">14px</p>
+        </div>
+        <div class="shape-example">
+          <div class="shape-box" style="border-radius: var(--radius-xl);"></div>
+          <p class="shape-label">radius-xl</p>
+          <p class="shape-value">20px</p>
+        </div>
+        <div class="shape-example">
+          <div class="shape-box" style="border-radius: var(--radius-full); width: 56px;"></div>
+          <p class="shape-label">radius-full</p>
+          <p class="shape-value">9999px</p>
+        </div>
+      </div>
+
+      <p class="section-subtitle">Elevation</p>
+      <div class="shadow-row">
+        <div class="shadow-example">
+          <div class="shadow-box" style="box-shadow: var(--shadow-sm);"></div>
+          <p class="shadow-label">shadow-sm</p>
+        </div>
+        <div class="shadow-example">
+          <div class="shadow-box" style="box-shadow: var(--shadow-md);"></div>
+          <p class="shadow-label">shadow-md</p>
+        </div>
+        <div class="shadow-example">
+          <div class="shadow-box" style="box-shadow: var(--shadow-lg);"></div>
+          <p class="shadow-label">shadow-lg</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MOTION ==================== -->
+    <section>
+      <p class="section-title">Motion</p>
+      <p style="font-family: var(--font-primary); font-size: var(--text-body); color: var(--neutral-600); margin-bottom: var(--space-8); max-width: var(--max-width-content);">
+        Smooth and polished but never showy. Motion makes transitions feel crafted and intentional &mdash; things ease in gently, settle naturally, and never bounce or overshoot. The pace matches the calm environment.
+      </p>
+
+      <div class="motion-tokens">
+        <div class="motion-token">
+          <p class="motion-token-name">duration-fast</p>
+          <p class="motion-token-value">120ms &middot; ease-out</p>
+          <p class="motion-token-value" style="color: var(--neutral-500); margin-top: var(--space-1);">Hover, color shifts</p>
+        </div>
+        <div class="motion-token">
+          <p class="motion-token-name">duration-normal</p>
+          <p class="motion-token-value">220ms &middot; ease-in-out</p>
+          <p class="motion-token-value" style="color: var(--neutral-500); margin-top: var(--space-1);">Dropdowns, tooltips</p>
+        </div>
+        <div class="motion-token">
+          <p class="motion-token-name">duration-slow</p>
+          <p class="motion-token-value">380ms &middot; ease-out</p>
+          <p class="motion-token-value" style="color: var(--neutral-500); margin-top: var(--space-1);">Modals, sidebars</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+      <p>Generated by /design-system-generator &middot; March 30, 2026</p>
+    </footer>
+
+  </div>
+</body>
+</html>
