@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "design-system",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "docs", "--listen", "4040", "--no-clipboard"],
+      "port": 4040
+    },
+    {
+      "name": "app",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173
+    }
+  ]
+}
