@@ -12,10 +12,10 @@ interface ProductCardProps {
   className?: string
 }
 
-const safetyConfig: Record<SafetyLevel, { grade: string; bg: string; label: string }> = {
-  clean:   { grade: 'A', bg: 'bg-garden',      label: 'Clean'   },
-  caution: { grade: 'C', bg: 'bg-clay',        label: 'Caution' },
-  avoid:   { grade: 'D', bg: 'bg-terracotta',  label: 'Avoid'   },
+const safetyConfig: Record<SafetyLevel, { grade: string; bg: string; text: string; label: string }> = {
+  clean:   { grade: 'A', bg: 'bg-bright-green',  text: 'text-seed-green',  label: 'Clean'   },
+  caution: { grade: 'C', bg: 'bg-warning',        text: 'text-seed-green',  label: 'Caution' },
+  avoid:   { grade: 'D', bg: 'bg-error',          text: 'text-snow-white',  label: 'Avoid'   },
 }
 
 export function ProductCard({
@@ -34,18 +34,17 @@ export function ProductCard({
 
   return (
     <div className={`flex flex-col ${className}`}>
-      {/* Best match badge — rendered above the card, not inside it */}
+      {/* Best match badge — above the card */}
       {isBestMatch && (
-        <div className="mb-sp-2 inline-flex items-center rounded-tag bg-moss px-sp-2 py-sp-1">
-          <span className="text-micro font-semibold text-warm-white">✦ Best match</span>
+        <div className="mb-200 inline-flex items-center rounded-full bg-soft-green px-300 py-100">
+          <span className="text-300 font-medium text-snow-white">✦ Best match</span>
         </div>
       )}
 
-      {/* Card — flex-1 so it fills remaining height when className includes flex-1 */}
       <div
         className={[
-          'flex-1 bg-warm-white border border-dune rounded-card p-sp-6 shadow-none',
-          isClickable ? 'cursor-pointer hover:bg-warm-white transition-colors' : '',
+          'flex-1 bg-snow-white rounded-md p-600',
+          isClickable ? 'cursor-pointer hover:bg-cool-neutral-20 transition-colors' : '',
         ].join(' ')}
         onClick={onClick}
         role={isClickable ? 'button' : undefined}
@@ -54,7 +53,7 @@ export function ProductCard({
       >
         {/* Product image — 1:1 aspect ratio */}
         {imageUrl && (
-          <div className="mb-sp-4 aspect-square w-full overflow-hidden rounded-tag bg-linen">
+          <div className="mb-400 aspect-square w-full overflow-hidden rounded-sm bg-foam-white">
             <img
               src={imageUrl}
               alt={name}
@@ -64,37 +63,37 @@ export function ProductCard({
         )}
 
         {/* Top row: product name + safety badge */}
-        <div className="flex items-start justify-between gap-sp-2">
-          <h2 className="text-heading-s font-semibold text-charcoal">
+        <div className="flex items-start justify-between gap-200">
+          <h2 className="text-400 font-medium leading-snug tracking-tight text-seed-green">
             {name}
           </h2>
 
           {/* Safety badge */}
           <div
-            className={`${safety.bg} w-sp-12 h-sp-12 rounded-full flex shrink-0 items-center justify-center`}
+            className={`${safety.bg} ${safety.text} w-1200 h-1200 rounded-full flex shrink-0 items-center justify-center`}
             aria-label={`Safety level: ${safety.label}`}
           >
-            <span className="text-label font-semibold text-warm-white">
+            <span className="text-350 font-medium">
               {safety.grade}
             </span>
           </div>
         </div>
 
         {/* Category tag */}
-        <div className="mt-sp-3">
-          <span className="inline-flex items-center rounded-tag bg-sage-15 px-sp-2 py-sp-1 text-label font-medium text-moss">
+        <div className="mt-300">
+          <span className="inline-flex items-center rounded-full bg-seed-green-10 px-300 py-100 text-300 font-medium text-seed-green">
             {category}
           </span>
         </div>
 
         {/* Description */}
-        <p className="mt-sp-3 text-body font-normal text-stone">
+        <p className="mt-300 text-350 font-normal leading-body text-seed-green-70">
           {description}
         </p>
 
-        {/* Preference note — only rendered when provided */}
+        {/* Preference note */}
         {preferenceNote && (
-          <p className="mt-sp-3 border-l-2 border-sage pl-sp-2 text-label font-normal text-stone">
+          <p className="mt-300 border-l-2 border-seed-green-20 pl-300 text-300 font-normal text-seed-green-70">
             {preferenceNote}
           </p>
         )}

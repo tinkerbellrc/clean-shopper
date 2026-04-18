@@ -1,0 +1,312 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@theme {
+  /* ─── Font sizes — generates text-{n} utilities ─── */
+  --font-size-300:  0.75rem;    /* 12px */
+  --font-size-350:  0.875rem;   /* 14px */
+  --font-size-400:  1rem;       /* 16px */
+  --font-size-450:  1.125rem;   /* 18px */
+  --font-size-500:  1.25rem;    /* 20px */
+  --font-size-600:  1.5rem;     /* 24px */
+  --font-size-800:  2rem;       /* 32px */
+  --font-size-1000: 2.5rem;     /* 40px */
+  --font-size-1200: 3rem;       /* 48px */
+  --font-size-1600: 4rem;       /* 64px */
+
+  /* ─── Font weights — generates font-{name} utilities ─── */
+  --font-weight-light:   300;
+  --font-weight-default: 350;
+  --font-weight-normal:  400;
+  --font-weight-medium:  500;
+}
+
+/* ─── Design Tokens — Seed.com Design System ─── */
+
+:root {
+
+  /* ── Primitive Color Tokens ── */
+  --color-primary-seed-green:      #1c3a13;
+  --color-primary-soft-green:      #3d5b34;
+  --color-primary-snow-white:      #fcfcf7;
+  --color-primary-white:           #ffffff;
+
+  --color-neutral-cool-neutral-20: #f9f9f9;
+  --color-neutral-cool-neutral-40: #efefef;
+  --color-neutral-cool-neutral-60: #e6e6e6;
+  --color-neutral-faded-green-20:  #d2d8d0;
+  --color-neutral-faded-green-40:  #a4b0a1;
+  --color-neutral-faded-green-60:  #778971;
+  --color-neutral-foam-white:      #eff1e4;
+  --color-neutral-yellowish-white: #f6f7ef;
+  --color-micronav-green:          #58644c;
+
+  --color-guidance-bright-green:   #d3fa99;
+  --color-guidance-lemongrass:     #e9f0ca;
+  --color-guidance-error:          #eb5757;
+  --color-guidance-warning:        #ebb057;
+
+  /* ── Opacity Variants (seed green) ── */
+  --color-primary-seed-green-05:   rgba(28, 58, 19, 0.05);
+  --color-primary-seed-green-10:   rgba(28, 58, 19, 0.1);
+  --color-primary-seed-green-15:   rgba(28, 58, 19, 0.15);
+  --color-primary-seed-green-20:   rgba(28, 58, 19, 0.2);
+  --color-primary-seed-green-50:   rgba(28, 58, 19, 0.5);
+  --color-primary-seed-green-70:   rgba(28, 58, 19, 0.7);
+
+  /* ── Frosted Glass ── */
+  --color-neutral-frosted-glass-08: rgba(87, 94, 85, 0.08);
+  --color-neutral-frosted-glass-35: rgba(87, 94, 85, 0.35);
+
+  /* ── Overlays ── */
+  --color-dark-30:  rgba(0, 0, 0, 0.3);
+  --color-light-10: rgba(255, 255, 255, 0.1);
+
+  /* ── Semantic Color Tokens ── */
+  --text-primary:            var(--color-primary-seed-green);
+  --text-secondary:          var(--color-primary-seed-green-70);
+  --text-inverse-primary:    var(--color-primary-snow-white);
+  --text-inverse-secondary:  rgba(252, 252, 247, 0.7);
+  --text-disabled:           var(--color-primary-seed-green-50);
+  --text-error:              var(--color-guidance-error);
+  --text-warning:            var(--color-guidance-warning);
+
+  --fill-brand:          var(--color-primary-seed-green);
+  --fill-brand-subtle:   var(--color-primary-soft-green);
+  --fill-bright:         var(--color-primary-white);
+  --fill-primary:        var(--color-primary-snow-white);
+  --fill-secondary:      var(--color-neutral-yellowish-white);
+  --fill-tertiary:       var(--color-neutral-foam-white);
+  --fill-neutral-light:  var(--color-neutral-cool-neutral-20);
+  --fill-neutral-medium: var(--color-neutral-cool-neutral-40);
+  --fill-neutral-dark:   var(--color-neutral-cool-neutral-60);
+
+  --stroke-default: 0.0625rem;
+
+  /* ── Typography ── */
+  --font-family-sans: Inter, Helvetica, system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --font-size-250:  0.625rem;   /*  10px */
+  --font-size-300:  0.75rem;    /*  12px */
+  --font-size-350:  0.875rem;   /*  14px */
+  --font-size-400:  1rem;       /*  16px */
+  --font-size-450:  1.125rem;   /*  18px */
+  --font-size-500:  1.25rem;    /*  20px */
+  --font-size-600:  1.5rem;     /*  24px */
+  --font-size-800:  2rem;       /*  32px */
+  --font-size-1000: 2.5rem;     /*  40px */
+  --font-size-1200: 3rem;       /*  48px */
+  --font-size-1600: 4rem;       /*  64px */
+
+  --font-weight-300: 300;
+  --font-weight-350: 350;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+
+  --line-height-tight:  1.05;
+  --line-height-snug:   1.1;
+  --line-height-normal: 1.2;
+  --line-height-body:   1.3;
+
+  /* ── Base Spacing Scale ── */
+  --size-025:  0.0625rem;  /*   1px */
+  --size-050:  0.125rem;   /*   2px */
+  --size-100:  0.25rem;    /*   4px */
+  --size-200:  0.5rem;     /*   8px */
+  --size-300:  0.75rem;    /*  12px */
+  --size-400:  1rem;       /*  16px */
+  --size-600:  1.5rem;     /*  24px */
+  --size-800:  2rem;       /*  32px */
+  --size-1000: 2.5rem;     /*  40px */
+  --size-1200: 3rem;       /*  48px */
+  --size-1400: 3.5rem;     /*  56px */
+  --size-1600: 4rem;       /*  64px */
+  --size-1800: 4.5rem;     /*  72px */
+  --size-2000: 5rem;       /*  80px */
+  --size-2500: 6.25rem;    /* 100px */
+
+  /* ── Named Spacing Aliases ── */
+  --spacing-4:  var(--size-100);
+  --spacing-8:  var(--size-200);
+  --spacing-16: var(--size-400);
+  --spacing-24: var(--size-600);
+  --spacing-32: var(--size-800);
+  --spacing-40: var(--size-1000);
+  --spacing-48: var(--size-1200);
+  --spacing-56: var(--size-1400);
+  --spacing-64: var(--size-1600);
+  --spacing-80: var(--size-2000);
+
+  /* ── Component Spacing ── */
+  --nav-height:       3rem;    /*  48px */
+  --page-grid-margin: 1rem;    /*  16px */
+  --space-gutter:     1.25rem; /*  20px */
+  --section-padding-y: var(--size-1400);  /* 56px */
+  --section-padding-y-lg: var(--size-2000); /* 80px */
+  --card-padding: var(--size-1000);       /* 40px */
+
+  /* ── Border Radius ── */
+  --radius-xs:   var(--size-100);   /*   4px */
+  --radius-sm:   var(--size-200);   /*   8px */
+  --radius-md:   var(--size-400);   /*  16px */
+  --radius-lg:   var(--size-600);   /*  24px */
+  --radius-xl:   var(--size-800);   /*  32px */
+  --radius-full: 999px;             /* pill  */
+}
+
+/* ─── Base Styles ─── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-350);
+  line-height: var(--line-height-body);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  background-color: var(--fill-primary);
+  margin: 0;
+}
+
+/* ─── Heading Reset — inside @layer base so Tailwind utilities override it ─── */
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+}
+
+p {
+  margin: 0;
+  line-height: var(--line-height-body);
+}
+
+/* ─── Button Base ─── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-sans);
+  border-radius: var(--radius-full);
+  transition: opacity 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:hover { opacity: 0.88; }
+.btn:active { opacity: 0.75; }
+
+.btn-primary {
+  background-color: var(--color-primary-seed-green);
+  color: var(--color-primary-snow-white);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-350);
+  padding: var(--size-400) var(--size-600);
+}
+
+.btn-primary-sm {
+  background-color: var(--color-primary-seed-green);
+  color: var(--color-primary-snow-white);
+  font-size: var(--font-size-350);
+  font-weight: var(--font-weight-350);
+  padding: 0.625rem var(--size-400);
+}
+
+.btn-inverse {
+  background-color: var(--color-primary-snow-white);
+  color: var(--color-primary-seed-green);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-350);
+  padding: var(--size-400) var(--size-600);
+}
+
+.btn-frosted {
+  background-color: var(--color-neutral-frosted-glass-35);
+  color: var(--color-primary-snow-white);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-400);
+  padding: 0.375rem var(--size-300);
+  backdrop-filter: blur(8px);
+}
+
+.btn-dark-overlay {
+  background-color: var(--color-dark-30);
+  color: var(--color-primary-snow-white);
+  font-size: var(--font-size-400);
+  font-weight: var(--font-weight-350);
+  padding: var(--size-400) var(--size-600);
+  backdrop-filter: blur(8px);
+}
+
+/* ─── Card ─── */
+
+.card {
+  background-color: var(--fill-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding);
+}
+
+.card-lg {
+  background-color: var(--fill-secondary);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: var(--section-padding-y-lg) var(--size-800);
+}
+
+/* ─── Section Layout ─── */
+
+.section {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+.section-lg {
+  padding-top: var(--section-padding-y-lg);
+  padding-bottom: var(--section-padding-y-lg);
+}
+
+.section-stacked {
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+/* ─── Utility: Eyebrow / Label ─── */
+
+.eyebrow {
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-snug);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-inverse-primary);
+}
+
+/* ─── Animations ─── */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.35s ease-out;
+  }
+}

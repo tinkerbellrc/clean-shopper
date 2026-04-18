@@ -1,347 +1,236 @@
-# Design System: Clean Shopper
-**Date:** 2026-03-30  |  **Version:** 1.0  |  **Platform:** Web
+# Design System: Clean Shopper (Seed)
+**Source:** Extracted from seed.com  
+**Date:** 2026-04-14  |  **Version:** 2.0  |  **Branch:** design/extracted
+
+> This is the canonical token reference. For design rationale and component patterns, see `design.md`. For visual preview, open `design-system.html` in a browser.
 
 ---
 
 ## Design Direction
 
-Clean Shopper should feel like a calm, trusted space — organic and minimal, with the restrained confidence of Apple's visual language. It's a place where information is presented cleanly and the interface gets out of the way, with occasional pops of editorial color (inspired by Monocle's confident use of accent) that add personality without clutter.
+Premium, minimal, and nature-forward. Deep forest green (`#1c3a13`) on layered off-whites. Light optical weight typography with tight tracking on large sizes. Buttons are always pill-shaped. Sections are full-bleed with generous vertical rhythm. No drop shadows — depth comes from surface layering only.
 
-The experience is closer to consulting a knowledgeable friend than browsing a store. There is no urgency, no pressure, no conversion tactics. Information appears when you need it — enough to be informed, never overwhelmed. The visual environment should feel like walking in nature: soft light, earthy tones, soothing and calming.
+---
 
-Everything should be spacious, visual, and simple. Text is warm and readable. Accessibility is a core value, not a checkbox — strong contrast and readability are baked into the palette, not bolted on after.
+## Color Tokens
 
-## Design Principles
-
-**Let the content breathe.** Generous whitespace is not wasted space — it creates calm. Every element earns its place by serving the user, not filling a layout.
-
-**Earn trust through restraint.** No selling, no urgency, no visual noise. Confidence comes from saying less, not more. The interface recedes so the information can lead.
-
-**Nature as reference.** Color, texture, and rhythm draw from the natural world — earthy, muted, organic. Nothing synthetic, nothing neon, nothing that demands attention.
-
-**Show only what's needed.** Information is progressive, not exhaustive. The default state is simple. Depth is available when the user asks for it.
-
-**Accessible by nature.** Strong contrast and readability are not accommodations — they are the foundation. The calm palette and the accessibility commitment reinforce each other.
-
-## Color System
-
-### Palette Philosophy
-
-The palette is drawn from nature — forest greens, warm stones, soft earth. Colors are muted and grounded, never saturated or loud. The primary green connects directly to the product's mission (clean, natural, healthy) without feeling clinical. Pops of a warm accent color (inspired by Monocle's editorial confidence) provide moments of personality in an otherwise quiet palette.
-
-### Primary Colors
-
-| Token | Name | Hex | Usage |
-|-------|------|-----|-------|
-| color-primary | Sage | #6B8F71 | Primary actions, links, active states. A muted forest green — natural and trustworthy. |
-| color-primary-light | Soft Sage | #8FB396 | Hover states, selected backgrounds, subtle highlights. |
-| color-primary-dark | Deep Forest | #4A6B50 | Pressed states, high-emphasis text on light backgrounds. |
-| color-accent | Terracotta | #C4704B | Editorial pops — badges, highlights, featured content. Used sparingly for personality. |
-
-### Semantic Colors
-
-| Role | Hex | Usage |
-|------|-----|-------|
-| Success | #6B8F71 | Clean ingredient confirmed, preference saved. Shares the primary green — "clean" IS success here. |
-| Warning | #C4944A | Ingredient caution, unverified claim, partial match. Warm amber, not alarming. |
-| Error | #B85C5C | Harmful ingredient flagged, action failed. Muted red — serious but not aggressive. |
-| Info | #7B8FA1 | Contextual tips, explanations, supplementary detail. Cool slate, recedes naturally. |
-
-### Neutral Scale
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| neutral-50 | #F7F5F2 | Page background. Warm off-white with a hint of stone. |
-| neutral-100 | #EFECE7 | Secondary backgrounds, subtle section breaks. |
-| neutral-200 | #E2DDD5 | Borders, dividers, input backgrounds. |
-| neutral-300 | #CFC8BD | Disabled backgrounds, subtle UI elements. |
-| neutral-400 | #A89F93 | Placeholder text, disabled text, tertiary icons. |
-| neutral-500 | #857C71 | Secondary text, metadata, captions. |
-| neutral-600 | #655D53 | Body text. Warm dark brown — high readability on light surfaces. |
-| neutral-700 | #4A443C | Emphasized body text, subheadings. |
-| neutral-800 | #332E28 | Headings, primary text, high-emphasis labels. |
-| neutral-900 | #1E1B17 | Maximum emphasis. Rarely used — reserved for display text. |
-
-### Surface Colors
-
-| Surface | Hex | Usage |
-|---------|-----|-------|
-| Page background | #F7F5F2 (neutral-50) | Main canvas. Warm stone-white. |
-| Card / elevated | #FFFFFF | Product cards, chat bubbles (AI), comparison panels. Lifts above the page. |
-| Sidebar / secondary | #EFECE7 (neutral-100) | Preferences panel, cart sidebar, secondary surfaces. |
-| Overlay backdrop | rgba(30, 27, 23, 0.4) | Modal and drawer backdrops. Warm black at low opacity. |
-
-### Accessibility
-
-**Target:** WCAG AAA where achievable, AA as the absolute minimum.
-
-Key contrast ratios:
-- neutral-600 (#655D53) on neutral-50 (#F7F5F2): **5.2:1** — passes AA, body text
-- neutral-800 (#332E28) on white (#FFFFFF): **13.8:1** — passes AAA, headings
-- neutral-900 (#1E1B17) on neutral-50 (#F7F5F2): **14.1:1** — passes AAA, display text
-- color-primary-dark (#4A6B50) on white (#FFFFFF): **5.5:1** — passes AA, link text
-- Error (#B85C5C) on white (#FFFFFF): **4.6:1** — passes AA for large text; pair with icon for normal text
-
-Accessibility is not an afterthought. The muted, earthy palette was built with these ratios in mind — the calm aesthetic and readability reinforce each other.
-
-## Typography
-
-### Type Philosophy
-
-Text should feel warm and readable — like a well-edited magazine, not a technical manual. The typeface is humanist, with subtle organic character that connects to the natural theme without feeling decorative. Reading should feel effortless, even for ingredient lists and comparison data.
-
-### Font Stack
-
-| Role | Font | Fallback | Rationale |
-|------|------|----------|-----------|
-| Primary | Source Serif 4 | Georgia, 'Times New Roman', serif | A humanist serif with excellent readability. Warm and editorial — bridges the Apple-like restraint with Monocle's editorial confidence. Variable font with optical sizing. |
-| Secondary | Inter | system-ui, -apple-system, sans-serif | Clean sans-serif for UI elements, labels, metadata. Provides contrast with the serif body without competing. |
-| Monospace | JetBrains Mono | ui-monospace, 'Cascadia Code', monospace | Ingredient lists, EWG scores, data-heavy comparisons. Clear at small sizes. |
-
-### Type Scale
-
-Scale ratio: 1.25 (major third)
-
-| Token | Size | Weight | Line Height | Usage |
-|-------|------|--------|-------------|-------|
-| display | 2.441rem (39px) | 300 | 1.15 | Hero moments, landing headline. Light weight for elegance. |
-| h1 | 1.953rem (31px) | 400 | 1.2 | Page titles. |
-| h2 | 1.563rem (25px) | 600 | 1.25 | Section headings. |
-| h3 | 1.25rem (20px) | 600 | 1.3 | Card titles, subsection heads. |
-| h4 | 1rem (16px) | 600 | 1.35 | Label headings, sidebar titles. Set in Inter (secondary). |
-| body | 1rem (16px) | 400 | 1.7 | Paragraphs, chat messages, descriptions. Generous line-height for readability. |
-| small | 0.875rem (14px) | 400 | 1.5 | Captions, metadata, helper text. Set in Inter. |
-| caption | 0.75rem (12px) | 500 | 1.4 | Badges, tags, timestamps. Set in Inter. |
-
-### Letter Spacing
-
-- Display: `-0.02em` — slight tightening at large sizes for elegance
-- H1: `-0.01em`
-- All-caps text (rare — badges only): `0.08em`
-- Body and below: `0` (default)
-
-## Spacing System
-
-### Spacing Philosophy
-
-Spacious and gallery-like. The user asked for breathing room, and the product's conversational interface benefits from generous spacing — it creates the calm, unpressured feeling of consulting a friend rather than scrolling a crowded marketplace. White space signals confidence and trust.
-
-### Base Unit
-
-**4px.** Small enough for fine-tuning, scales cleanly to the larger steps.
-
-### Scale
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| space-1 | 4px | Icon-to-text micro gap, inline adjustments. |
-| space-2 | 8px | Tight element pairs, tag padding, badge spacing. |
-| space-3 | 12px | Related element gaps, input icon inset. |
-| space-4 | 16px | Default gap between related items, card internal padding. |
-| space-6 | 24px | Card-to-card gap, form field spacing. |
-| space-8 | 32px | Section padding, sidebar internal margins. |
-| space-10 | 40px | Major content breaks within a section. |
-| space-12 | 48px | Section-to-section spacing. |
-| space-16 | 64px | Page section vertical rhythm, hero spacing. |
-
-### Layout Metrics
-
-| Property | Value |
-|----------|-------|
-| Content max-width | 720px (conversational focus — narrow for readability) |
-| Wide max-width | 1080px (comparison views, when needed) |
-| Page margin (desktop) | 32px (space-8) |
-| Page margin (mobile) | 16px (space-4) |
-| Section spacing | 48px (space-12) |
-
-## Shape and Borders
-
-### Shape Philosophy
-
-Soft and organic. Rounded shapes reinforce the natural, approachable feel. Nothing is sharp or angular — edges are always eased, like river stones. The roundness increases with element size, creating a consistent but not monotonous rhythm.
-
-### Border Radius
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| radius-sm | 6px | Badges, tags, small chips. |
-| radius-md | 10px | Buttons, inputs, dropdowns. |
-| radius-lg | 14px | Cards, panels, chat bubbles. |
-| radius-xl | 20px | Featured cards, hero elements. |
-| radius-full | 9999px | Avatars, pills, toggle tracks. |
-
-### Borders
-
-| Type | Value |
-|------|-------|
-| Default | 1px solid #E2DDD5 (neutral-200) |
-| Subtle | 1px solid #EFECE7 (neutral-100) |
-| Focus ring | 2px solid #6B8F71 (primary), 2px offset |
-
-### Shadows
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| shadow-sm | 0 1px 3px rgba(30, 27, 23, 0.06), 0 1px 2px rgba(30, 27, 23, 0.04) | Cards, subtle elevation. |
-| shadow-md | 0 4px 12px rgba(30, 27, 23, 0.08), 0 2px 4px rgba(30, 27, 23, 0.04) | Popovers, floating elements. |
-| shadow-lg | 0 12px 28px rgba(30, 27, 23, 0.12), 0 4px 8px rgba(30, 27, 23, 0.06) | Modals, dialogs. |
-
-## Motion
-
-### Motion Philosophy
-
-Smooth and polished but never showy. Motion exists to make transitions feel crafted and intentional — things ease in gently, settle naturally, and never bounce or overshoot. The pace matches the calm environment: nothing snaps, nothing races. Content speaks for itself; motion just makes the experience feel considered.
-
-### Duration Tokens
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| duration-fast | 120ms | Hover states, color transitions, micro-interactions. |
-| duration-normal | 220ms | Dropdowns, tooltips, tab switches. |
-| duration-slow | 380ms | Modals, sidebars, page transitions. |
-
-### Easing
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| ease-default | cubic-bezier(0.25, 0.1, 0.25, 1) | General transitions — smooth and natural. |
-| ease-in | cubic-bezier(0.42, 0, 1, 1) | Elements leaving the viewport. |
-| ease-out | cubic-bezier(0, 0, 0.58, 1) | Elements entering — arrives gently. |
-
-### Reduced Motion
-
-All motion wrapped in `@media (prefers-reduced-motion: no-preference)`. With reduced motion enabled, transitions are instant (opacity crossfade only, 0ms duration). Accessibility commitment extends to motion sensitivity.
-
-## Dark Mode
-
-Not included in V1. The warm, earthy light-mode palette is the primary experience and aligns with the natural, soft-light aesthetic the user described. Dark mode may be explored in V2 once the foundational system is validated.
-
-## Responsive Breakpoints
-
-| Name | Value | Behavior |
-|------|-------|----------|
-| sm | 640px | Single column. Chat full-width. Cards stack vertically. Sidebar becomes full-screen drawer. |
-| md | 768px | Chat narrows to max-width. Product cards in 2-column grid where applicable. |
-| lg | 1024px | Sidebar can persist alongside main content. Two-panel layouts available. |
-| xl | 1280px | Max-width container centered with generous margins. Comparison views expand. |
-
-## Design Tokens (CSS Custom Properties)
+### Primitive Colors
 
 ```css
-:root {
-  /* --- Colors: Primary --- */
-  --color-primary: #6B8F71;
-  --color-primary-light: #8FB396;
-  --color-primary-dark: #4A6B50;
-  --color-accent: #C4704B;
+--color-primary-seed-green:       #1c3a13;
+--color-primary-soft-green:       #3d5b34;
+--color-primary-snow-white:       #fcfcf7;
+--color-primary-white:            #ffffff;
 
-  /* --- Colors: Semantic --- */
-  --color-success: #6B8F71;
-  --color-warning: #C4944A;
-  --color-error: #B85C5C;
-  --color-info: #7B8FA1;
+--color-neutral-cool-neutral-20:  #f9f9f9;
+--color-neutral-cool-neutral-40:  #efefef;
+--color-neutral-cool-neutral-60:  #e6e6e6;
+--color-neutral-faded-green-20:   #d2d8d0;
+--color-neutral-faded-green-40:   #a4b0a1;
+--color-neutral-faded-green-60:   #778971;
+--color-neutral-foam-white:       #eff1e4;
+--color-neutral-yellowish-white:  #f6f7ef;
+--color-micronav-green:           #58644c;
 
-  /* --- Colors: Neutrals --- */
-  --neutral-50: #F7F5F2;
-  --neutral-100: #EFECE7;
-  --neutral-200: #E2DDD5;
-  --neutral-300: #CFC8BD;
-  --neutral-400: #A89F93;
-  --neutral-500: #857C71;
-  --neutral-600: #655D53;
-  --neutral-700: #4A443C;
-  --neutral-800: #332E28;
-  --neutral-900: #1E1B17;
-
-  /* --- Colors: Surfaces --- */
-  --surface-page: #F7F5F2;
-  --surface-card: #FFFFFF;
-  --surface-secondary: #EFECE7;
-  --surface-overlay: rgba(30, 27, 23, 0.4);
-
-  /* --- Typography --- */
-  --font-primary: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
-
-  --text-display: 2.441rem;
-  --text-h1: 1.953rem;
-  --text-h2: 1.563rem;
-  --text-h3: 1.25rem;
-  --text-h4: 1rem;
-  --text-body: 1rem;
-  --text-small: 0.875rem;
-  --text-caption: 0.75rem;
-
-  --weight-light: 300;
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-
-  --leading-display: 1.15;
-  --leading-heading: 1.2;
-  --leading-subheading: 1.3;
-  --leading-body: 1.7;
-  --leading-small: 1.5;
-  --leading-caption: 1.4;
-
-  --tracking-display: -0.02em;
-  --tracking-heading: -0.01em;
-  --tracking-caps: 0.08em;
-
-  /* --- Spacing --- */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-
-  /* --- Layout --- */
-  --max-width-content: 720px;
-  --max-width-wide: 1080px;
-  --page-margin-desktop: 32px;
-  --page-margin-mobile: 16px;
-
-  /* --- Shape --- */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-full: 9999px;
-
-  /* --- Borders --- */
-  --border-default: 1px solid #E2DDD5;
-  --border-subtle: 1px solid #EFECE7;
-  --focus-ring: 2px solid #6B8F71;
-  --focus-offset: 2px;
-
-  /* --- Shadows --- */
-  --shadow-sm: 0 1px 3px rgba(30,27,23,0.06), 0 1px 2px rgba(30,27,23,0.04);
-  --shadow-md: 0 4px 12px rgba(30,27,23,0.08), 0 2px 4px rgba(30,27,23,0.04);
-  --shadow-lg: 0 12px 28px rgba(30,27,23,0.12), 0 4px 8px rgba(30,27,23,0.06);
-
-  /* --- Motion --- */
-  --duration-fast: 120ms;
-  --duration-normal: 220ms;
-  --duration-slow: 380ms;
-  --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-in: cubic-bezier(0.42, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.58, 1);
-}
+--color-guidance-bright-green:    #d3fa99;
+--color-guidance-lemongrass:      #e9f0ca;
+--color-guidance-error:           #eb5757;
+--color-guidance-warning:         #ebb057;
 ```
 
-## Open Decisions
+### Opacity Variants
 
-1. **Serif for body text.** Source Serif 4 was chosen for warmth and editorial character. [Assumed — confirm or override.] If the conversational interface feels too formal with serif body text, Inter (the secondary font) could take over body copy, with Source Serif reserved for headings only.
+```css
+--color-primary-seed-green-05:    rgba(28, 58, 19, 0.05);
+--color-primary-seed-green-10:    rgba(28, 58, 19, 0.1);
+--color-primary-seed-green-15:    rgba(28, 58, 19, 0.15);
+--color-primary-seed-green-20:    rgba(28, 58, 19, 0.2);
+--color-primary-seed-green-50:    rgba(28, 58, 19, 0.5);
+--color-primary-seed-green-70:    rgba(28, 58, 19, 0.7);
 
-2. **Accent color frequency.** Terracotta (#C4704B) is positioned for editorial pops — but "how often" and "where exactly" needs real screens to test. Too much and it fights the calm; too little and the Monocle inspiration is lost.
+--color-neutral-frosted-glass-08: rgba(87, 94, 85, 0.08);
+--color-neutral-frosted-glass-35: rgba(87, 94, 85, 0.35);
 
-3. **Content max-width at 720px.** Optimized for conversational readability. Comparison views may need the wider 1080px container — the trigger for switching needs definition.
+--color-dark-30:                  rgba(0, 0, 0, 0.3);
+--color-light-10:                 rgba(255, 255, 255, 0.1);
+```
 
-4. **Ingredient data typography.** Monospace (JetBrains Mono) is specified for scores and data, but ingredient lists might read better in the secondary sans-serif. Needs testing with real product data.
+### Semantic Tokens
 
-5. **Illustration and imagery style.** Not covered in this foundational system. Photography treatment (desaturated? warm-filtered?), empty state illustrations, and iconography style need a separate pass once the base is validated.
+```css
+--text-primary:            var(--color-primary-seed-green);       /* #1c3a13 */
+--text-secondary:          var(--color-primary-seed-green-70);    /* rgba(28,58,19,0.7) */
+--text-inverse-primary:    var(--color-primary-snow-white);       /* #fcfcf7 */
+--text-inverse-secondary:  rgba(252, 252, 247, 0.7);
+--text-disabled:           var(--color-primary-seed-green-50);
+--text-error:              var(--color-guidance-error);           /* #eb5757 */
+--text-warning:            var(--color-guidance-warning);         /* #ebb057 */
+
+--fill-brand:          var(--color-primary-seed-green);
+--fill-brand-subtle:   var(--color-primary-soft-green);
+--fill-bright:         var(--color-primary-white);
+--fill-primary:        var(--color-primary-snow-white);           /* default surface */
+--fill-secondary:      var(--color-neutral-yellowish-white);      /* #f6f7ef */
+--fill-tertiary:       var(--color-neutral-foam-white);           /* #eff1e4 */
+--fill-neutral-light:  var(--color-neutral-cool-neutral-20);
+--fill-neutral-medium: var(--color-neutral-cool-neutral-40);
+--fill-neutral-dark:   var(--color-neutral-cool-neutral-60);
+
+--stroke-default: 0.0625rem;  /* 1px */
+```
+
+### Surface Hierarchy
+
+Depth is expressed through background tone, never shadows:
+
+| Layer | Token | Value |
+|---|---|---|
+| 1 (brightest) | `--fill-bright` | `#ffffff` |
+| 2 | `--fill-primary` | `#fcfcf7` — default page bg |
+| 3 | `--fill-secondary` | `#f6f7ef` |
+| 4 | `--fill-tertiary` | `#eff1e4` |
+
+---
+
+## Typography Tokens
+
+### Font Families
+
+```css
+--font-family-sans: Inter, Helvetica, system-ui, sans-serif;
+--font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+```
+
+> Seed.com uses a proprietary typeface (Seed Sans, weight axis 300–500 with a custom 350 stop). Inter is the closest freely available substitute.
+
+### Font Size Scale
+
+```css
+--font-size-250:  0.625rem;   /*  10px */
+--font-size-300:  0.75rem;    /*  12px — eyebrow / label */
+--font-size-350:  0.875rem;   /*  14px — small body, nav */
+--font-size-400:  1rem;       /*  16px — body */
+--font-size-450:  1.125rem;   /*  18px */
+--font-size-500:  1.25rem;    /*  20px */
+--font-size-600:  1.5rem;     /*  24px — sub-heading */
+--font-size-800:  2rem;       /*  32px — heading S */
+--font-size-1000: 2.5rem;     /*  40px — heading M */
+--font-size-1200: 3rem;       /*  48px — heading L / display */
+--font-size-1600: 4rem;       /*  64px — hero display */
+```
+
+### Font Weights
+
+```css
+--font-weight-300: 300;   /* light */
+--font-weight-350: 350;   /* default — body and headings */
+--font-weight-400: 400;   /* regular — nav, UI labels */
+--font-weight-500: 500;   /* medium — eyebrows, emphasized labels */
+```
+
+### Heading Specs
+
+| Level | Size | Weight | Line Height | Letter Spacing |
+|---|---|---|---|---|
+| Display / H1 | 48px | 350 | 1.1 | -0.025em |
+| H2 | 40px | 350 | 1.1 | -0.01em |
+| H3 | 32px | 350 | 1.1 | -0.0125em |
+| H4 / Sub-heading | 24px | 350 | 1.2 | -0.015em |
+| Eyebrow | 12px | 500 | 1.1 | 0.08em + uppercase |
+
+### Body Text
+
+```
+font-size:      16px
+font-weight:    350
+line-height:    1.3
+letter-spacing: -0.01em
+color:          var(--text-primary)
+```
+
+---
+
+## Spacing Tokens
+
+### Base Scale
+
+```css
+--size-025:  0.0625rem;  /*   1px */
+--size-050:  0.125rem;   /*   2px */
+--size-100:  0.25rem;    /*   4px */
+--size-200:  0.5rem;     /*   8px */
+--size-300:  0.75rem;    /*  12px */
+--size-400:  1rem;       /*  16px */
+--size-600:  1.5rem;     /*  24px */
+--size-800:  2rem;       /*  32px */
+--size-1000: 2.5rem;     /*  40px */
+--size-1200: 3rem;       /*  48px */
+--size-1400: 3.5rem;     /*  56px */
+--size-1600: 4rem;       /*  64px */
+--size-1800: 4.5rem;     /*  72px */
+--size-2000: 5rem;       /*  80px */
+--size-2500: 6.25rem;    /* 100px */
+```
+
+### Named Aliases
+
+```css
+--spacing-4:  4px    --spacing-8:  8px    --spacing-16: 16px
+--spacing-24: 24px   --spacing-32: 32px   --spacing-40: 40px
+--spacing-48: 48px   --spacing-56: 56px   --spacing-64: 64px
+--spacing-80: 80px
+```
+
+### Component Spacing
+
+```css
+--nav-height:         3rem;    /*  48px */
+--page-grid-margin:   1rem;    /*  16px */
+--space-gutter:       1.25rem; /*  20px */
+--section-padding-y:  3.5rem;  /*  56px */
+--section-padding-y-lg: 5rem;  /*  80px */
+--card-padding:       2.5rem;  /*  40px */
+```
+
+---
+
+## Border Radius Tokens
+
+```css
+--radius-xs:   4px;    /* small UI elements */
+--radius-sm:   8px;    /* tags, chips */
+--radius-md:   16px;   /* cards */
+--radius-lg:   24px;   /* large cards */
+--radius-xl:   32px;   /* section top corners */
+--radius-full: 999px;  /* buttons, badges — pill */
+```
+
+**Rules:** Buttons are always `--radius-full`. Cards use `--radius-md`. Section stack effect: `border-radius: 32px 32px 0 0` (top only).
+
+---
+
+## Button Tokens
+
+| Variant | Background | Text | Padding | Font Size |
+|---|---|---|---|---|
+| Primary large | `#1c3a13` | `#fcfcf7` | `16px 24px` | 16px / 350 |
+| Primary small | `#1c3a13` | `#fcfcf7` | `10px 16px` | 14px / 350 |
+| Inverse | `#fcfcf7` | `#1c3a13` | `16px 24px` | 16px / 350 |
+| Ghost / Frosted | `rgba(87,94,85,0.35)` | `#fcfcf7` | `6px 12px` | 16px / 400 |
+| Dark overlay | `rgba(0,0,0,0.3)` | `#fcfcf7` | `16px 24px` | 16px / 350 |
+
+No border/outline buttons. No square buttons.
+
+---
+
+## Layout
+
+```
+Grid:          4-column fluid
+Gutter:        20px
+Page margin:   16px
+Nav height:    48px
+Content width: ~1032px
+```
+
+Full-bleed sections. Stacked card effect via `border-radius: 32px 32px 0 0`. No `box-shadow` tokens in the system.

@@ -1,128 +1,260 @@
-# Clean Shopper — Design
-
-## Visual Design System
-
-### Design Intent
-
-Clean Shopper's visual language should feel like a knowledgeable friend who's already done the research — warm, unhurried, and trustworthy. Every visual choice reinforces two things: this product is grounded in nature, and it gives you exactly what you need to make a confident decision, nothing more.
+# Clean Shopper — Design System
+**Source:** Extracted from seed.com  
+**Date:** 2026-04-14  |  **Version:** 2.0  |  **Branch:** design/extracted
 
 ---
 
-### Color Palette
+## Design Direction
 
-| Role | Name | Value | Usage |
+Clean Shopper's visual language is **premium, minimal, and nature-forward** — drawn directly from the Seed design system. The palette is almost monochromatic: deep forest green on layered off-whites, with muted warm neutrals for depth. There are no vivid accent colors except for functional feedback states.
+
+The experience should feel like consulting a knowledgeable, trusted source — calm, scientific, and unhurried. Typography carries an editorial weight: light-to-regular, tightly tracked on large headings, never loud. Buttons are always pill-shaped. Sections are full-bleed with generous vertical rhythm. No drop shadows — depth comes from layered surface colors, not elevation.
+
+---
+
+## Design Principles
+
+**Restraint is confidence.** No urgency, no conversion pressure, no visual noise. The interface recedes so information leads.
+
+**Nature as palette.** Deep forest greens and layered off-whites are drawn from the natural world — grounded, organic, trustworthy.
+
+**Editorial lightness.** Typography is light in weight and tight in tracking. Headings feel considered, not loud. Body copy is warm and readable.
+
+**Depth without shadow.** Surface hierarchy uses layered background tones (snow white → yellowish white → foam white) rather than drop shadows or borders.
+
+**Full-bleed generosity.** Sections breathe. Vertical padding is never less than 56px. Whitespace is not waste — it signals quality.
+
+---
+
+## Color System
+
+### Primitive Tokens
+
+| Token | Value | Name |
+|---|---|---|
+| `--color-primary-seed-green` | `#1c3a13` | Seed Green (deep forest) |
+| `--color-primary-soft-green` | `#3d5b34` | Soft Green |
+| `--color-primary-snow-white` | `#fcfcf7` | Snow White |
+| `--color-primary-white` | `#ffffff` | White |
+| `--color-neutral-cool-neutral-20` | `#f9f9f9` | Cool Neutral 20 |
+| `--color-neutral-cool-neutral-40` | `#efefef` | Cool Neutral 40 |
+| `--color-neutral-cool-neutral-60` | `#e6e6e6` | Cool Neutral 60 |
+| `--color-neutral-faded-green-20` | `#d2d8d0` | Faded Green 20 |
+| `--color-neutral-faded-green-40` | `#a4b0a1` | Faded Green 40 |
+| `--color-neutral-faded-green-60` | `#778971` | Faded Green 60 |
+| `--color-neutral-foam-white` | `#eff1e4` | Foam White |
+| `--color-neutral-yellowish-white` | `#f6f7ef` | Yellowish White |
+| `--color-micronav-green` | `#58644c` | Micronav Green |
+| `--color-guidance-bright-green` | `#d3fa99` | Bright Green (accent) |
+| `--color-guidance-lemongrass` | `#e9f0ca` | Lemongrass |
+| `--color-guidance-error` | `#eb5757` | Error |
+| `--color-guidance-warning` | `#ebb057` | Warning |
+
+### Opacity Variants
+
+| Token | Value |
+|---|---|
+| `--color-primary-seed-green-05` | `rgba(28, 58, 19, 0.05)` |
+| `--color-primary-seed-green-10` | `rgba(28, 58, 19, 0.1)` |
+| `--color-primary-seed-green-15` | `rgba(28, 58, 19, 0.15)` |
+| `--color-primary-seed-green-20` | `rgba(28, 58, 19, 0.2)` |
+| `--color-primary-seed-green-50` | `rgba(28, 58, 19, 0.5)` |
+| `--color-primary-seed-green-70` | `rgba(28, 58, 19, 0.7)` |
+| `--color-neutral-frosted-glass-08` | `rgba(87, 94, 85, 0.08)` |
+| `--color-neutral-frosted-glass-35` | `rgba(87, 94, 85, 0.35)` |
+
+### Semantic Tokens
+
+| Token | Maps to | Role |
+|---|---|---|
+| `--text-primary` | `--color-primary-seed-green` | Primary body and heading text |
+| `--text-secondary` | `--color-primary-seed-green-70` | Supporting labels, secondary copy |
+| `--text-inverse-primary` | `--color-primary-snow-white` | Text on dark/green backgrounds |
+| `--text-inverse-secondary` | snow white at 70% | Secondary text on dark backgrounds |
+| `--text-disabled` | `--color-primary-seed-green-50` | Disabled states |
+| `--text-error` | `--color-guidance-error` | Error messages |
+| `--text-warning` | `--color-guidance-warning` | Warning messages |
+| `--fill-brand` | `--color-primary-seed-green` | Brand-colored fills |
+| `--fill-brand-subtle` | `--color-primary-soft-green` | Subtle brand fills |
+| `--fill-primary` | `--color-primary-snow-white` | Primary surface background |
+| `--fill-secondary` | `--color-neutral-yellowish-white` | Secondary surface |
+| `--fill-tertiary` | `--color-neutral-foam-white` | Tertiary surface |
+| `--fill-neutral-light` | `--color-neutral-cool-neutral-20` | Neutral light fill |
+| `--fill-neutral-medium` | `--color-neutral-cool-neutral-40` | Neutral medium fill |
+
+### Color Usage Rules
+
+- **Background hierarchy:** `#ffffff` (true white) → `#fcfcf7` (snow white, primary surface) → `#f6f7ef` (yellowish white) → `#eff1e4` (foam white). Depth through layering, never shadows.
+- **`#1c3a13` is the anchor.** Used for all primary text, all primary buttons, and all brand fills. It carries meaning — don't dilute it with decorative use.
+- **`#d3fa99` (bright green) is a UI accent only.** Use for interactive highlights or confirmation states, never decoratively.
+- **Error (`#eb5757`) and warning (`#ebb057`) are functional only.** Never repurpose them for decoration.
+
+---
+
+## Typography
+
+### Typeface
+
+**Primary:** Inter (variable, 100–900 axis) — substitutes for proprietary Seed Sans  
+**Mono:** "JetBrains Mono" — substitutes for Seed Sans Mono  
+**Fallback stack:** `Inter, Helvetica, system-ui, sans-serif`
+
+> Note: Seed.com uses a custom proprietary typeface (Seed Sans) with a 350 weight axis. Inter with font-variation-settings approximates the optical weight. Set `font-feature-settings: 'cv05', 'cv11'` for a more humanist feel.
+
+### Scale
+
+| Token | rem | px | Usage |
 |---|---|---|---|
-| Background | Linen | `#F5F2EC` | App background |
-| Surface | Warm White | `#FAFAF7` | Cards, sidebars, input fields |
-| Primary | Sage | `#7A9E7E` | Primary actions, active states, links |
-| Deep | Moss | `#4E7055` | Hover states, emphasis, "Best match" badge |
-| Accent | Clay | `#B87A5A` | Warnings, highlights, secondary CTAs |
-| Text Primary | Charcoal | `#2C2C2A` | Body copy, headings |
-| Text Secondary | Stone | `#6B6B68` | Supporting labels, timestamps, preference notes |
-| Border | Dune | `#D4D0C8` | Dividers, card borders, input outlines |
-| Success | Garden | `#5E8C61` | Safety score high, confirmed preferences |
-| Error | Terracotta | `#C0614A` | Safety score low, flagged ingredients |
+| `--font-size-250` | 0.625rem | 10px | Smallest labels |
+| `--font-size-300` | 0.75rem | 12px | Eyebrow / uppercase labels |
+| `--font-size-350` | 0.875rem | 14px | Small body, nav links |
+| `--font-size-400` | 1rem | 16px | Body text |
+| `--font-size-450` | 1.125rem | 18px | Large body |
+| `--font-size-500` | 1.25rem | 20px | Sub-heading |
+| `--font-size-600` | 1.5rem | 24px | Section sub-heading |
+| `--font-size-800` | 2rem | 32px | Heading S |
+| `--font-size-1000` | 2.5rem | 40px | Heading M |
+| `--font-size-1200` | 3rem | 48px | Heading L / Display |
+| `--font-size-1600` | 4rem | 64px | Hero display |
 
-**Rules:**
-- Sage is the primary action color — buttons, links, active nav. Use it sparingly so it always signals something to do.
-- Clay appears only for secondary emphasis and warnings — never compete with Sage.
-- App background is always Linen (`#F5F2EC`). Cards and surfaces use Warm White (`#FAFAF7`). No pure white (#FFFFFF), no cool grays.
-- Functional colors (Garden/Terracotta) are reserved for safety scoring only — don't repurpose them for decoration.
+### Weights
+
+| Token | Value | Role |
+|---|---|---|
+| `--font-weight-300` | 300 | Light (captions, fine print) |
+| `--font-weight-350` | 350 | Default body and headings |
+| `--font-weight-400` | 400 | Regular (nav, UI labels) |
+| `--font-weight-500` | 500 | Medium (eyebrows, emphasized labels) |
+
+### Heading Styles
+
+| Level | Size | Weight | Line Height | Letter Spacing | Color |
+|---|---|---|---|---|---|
+| Display / H1 | 48px | 350 | 1.1 (52.8px) | -1.2px | `#1c3a13` |
+| H2 | 48px | 350 | 1.1 | -0.72px | `#fcfcf7` (inverse) |
+| H3 Large | 40px | 350 | 1.1 (44px) | -0.4px | `#1c3a13` |
+| H3 Section | 32px | 400 | 1.1 (35.2px) | 0 | `#fcfcf7` |
+| Sub-heading | 24px | 350 | 1.2 (28.8px) | -0.36px | varies |
+| Eyebrow | 12px | 500 | 1.1 | 0 | `#fcfcf7`, uppercase |
+
+### Body Text
+
+```
+font-size: 16px
+font-weight: 350
+line-height: 1.3 (20.8px)
+letter-spacing: -0.16px
+color: #1c3a13
+```
 
 ---
 
-### Typography
+## Spacing System
 
-**Typeface:** DM Sans (Google Fonts, free)
+### Base Scale
 
-| Level | Size | Weight | Usage |
-|---|---|---|---|
-| Heading L | 32px | 700 | Page titles, empty states |
-| Heading M | 24px | 600 | Section headers, product names in expanded view |
-| Heading S | 18px | 600 | Card product names, modal titles |
-| Body | 16px | 400 | Conversational AI responses, descriptions |
-| Label | 14px | 500 | Attribute tags, form labels, nav items |
-| Micro | 12px | 400 | Timestamps, legal copy, secondary metadata |
+| Token | rem | px |
+|---|---|---|
+| `--size-025` | 0.0625rem | 1px |
+| `--size-050` | 0.125rem | 2px |
+| `--size-100` | 0.25rem | 4px |
+| `--size-200` | 0.5rem | 8px |
+| `--size-300` | 0.75rem | 12px |
+| `--size-400` | 1rem | 16px |
+| `--size-600` | 1.5rem | 24px |
+| `--size-800` | 2rem | 32px |
+| `--size-1000` | 2.5rem | 40px |
+| `--size-1200` | 3rem | 48px |
+| `--size-1400` | 3.5rem | 56px |
+| `--size-1600` | 4rem | 64px |
+| `--size-1800` | 4.5rem | 72px |
+| `--size-2000` | 5rem | 80px |
+| `--size-2500` | 6.25rem | 100px |
 
-**Rules:**
-- Hierarchy through size and weight only — no decorative underlines or italic for emphasis.
-- Line height: 1.5 for body, 1.2 for headings.
-- Maximum line length: 64 characters for conversational AI responses.
-- Preference match notes use 14px / 400 weight / Stone (`#6B6B68`) — clearly secondary, never competing with the product name.
+### Named Spacing Aliases
+
+| Token | Value |
+|---|---|
+| `--spacing-4` | 4px |
+| `--spacing-8` | 8px |
+| `--spacing-16` | 16px |
+| `--spacing-24` | 24px |
+| `--spacing-32` | 32px |
+| `--spacing-40` | 40px |
+| `--spacing-48` | 48px |
+| `--spacing-56` | 56px |
+| `--spacing-64` | 64px |
+| `--spacing-80` | 80px |
+
+### Component Spacing
+
+| Context | Value |
+|---|---|
+| Section vertical padding | 56px |
+| Large section padding | 80px 32px |
+| Card padding | 40px |
+| Nav height | 48px |
+| Page margin | 16px |
+| Page gutter | 20px |
 
 ---
 
-### Spacing System
-
-Base unit: **4px**
-
-Scale: `4 / 8 / 12 / 16 / 24 / 32 / 48 / 64`
+## Border Radius
 
 | Token | Value | Usage |
 |---|---|---|
-| sp-1 | 4px | Tag inner vertical padding |
-| sp-2 | 8px | Tag inner horizontal padding, icon gaps |
-| sp-3 | 12px | Tight component stacking |
-| sp-4 | 16px | Card internal sections |
-| sp-6 | 24px | Default card padding |
-| sp-8 | 32px | Conversational message group separation |
-| sp-12 | 48px | Section separation minimum |
-| sp-16 | 64px | Page-level vertical rhythm |
+| `--radius-xs` | 4px | Small UI elements |
+| `--radius-sm` | 8px | Tags, chips |
+| `--radius-md` | 16px | Cards |
+| `--radius-lg` | 24px | Large cards |
+| `--radius-xl` | 32px | Section top corners |
+| `--radius-full` | 999px | Pills (buttons, badges) |
 
 **Rules:**
-- Lean toward more space, not less. When in doubt, step up the scale.
+- Buttons are **always pill-shaped** (`--radius-full`). No squared or rounded-corner buttons.
+- Cards use `--radius-md` (16px).
+- Section "card stack" effect: `border-radius: 32px 32px 0 0` on the top edge only.
 
 ---
 
-### Component Patterns
+## Buttons
 
-**Product Recommendation Card**
+| Variant | Background | Text | Padding | Radius | Size |
+|---|---|---|---|---|---|
+| **Primary (large)** | `#1c3a13` | `#fcfcf7` | `16px 24px` | pill | 16px / 350 |
+| **Primary (small)** | `#1c3a13` | `#fcfcf7` | `10px 16px` | pill | 14px / 350 |
+| **Inverse** | `#fcfcf7` | `#1c3a13` | `16px 24px` | pill | 16px / 350 |
+| **Ghost / Frosted** | `rgba(87,94,85,0.35)` | `#fcfcf7` | `6px 12px` | pill | 16px / 400 |
+| **Dark overlay** | `rgba(0,0,0,0.3)` | `#fcfcf7` | `16px 24px` | pill | 16px / 350 |
 
-Richer card with enforced hierarchy. Three visual zones:
-1. *Top*: Product name (Heading S / Charcoal) + brand (Label / Stone) + Safety Score badge (right-aligned, circular, color-coded Garden→Terracotta)
-2. *Middle*: Attribute tags — EWG Verified, fragrance-free, USDA Organic, etc. Small pills, sage background (`#7A9E7E` at 15% opacity), moss text. Max 3 visible, rest behind "+2 more."
-3. *Bottom*: One-line preference match note in Stone. "Matches your fragrance-free preference." Tap the card to expand for full ingredient reasoning.
-
-Card background: Warm White (`#FAFAF7`). App background behind cards: Linen (`#F5F2EC`). Border: 1px Dune. Border-radius: 12px. No drop shadow — separation through color contrast between card and page background, not elevation.
-
-**Product image** (when available): 1:1 aspect ratio, full card width, Linen background (`#F5F2EC`), `object-contain` so the product is never cropped, `mix-blend-multiply` to drop the white product image background. Sits above the top row. Cards without an image skip the image zone entirely — no placeholder.
-
-**Safety Score Badge**
-
-Circular badge, 44px. Letter grade (A–D). Color maps to: Garden (A/high), Clay (B–C/moderate), Terracotta (D/low). Appears top-right of every product card.
-
-**Attribute Tags**
-
-Pill shape, 6px border-radius. Sage background at 15% opacity, Moss text, Label size (13px/500). Flagged ingredients use Terracotta background at 12% opacity, Terracotta text, with a flag prefix. Never more than 3 visible without expansion.
-
-**Best Match Badge**
-
-Moss background, white text, 12px/600, 6px border-radius. Appears above the leading card only when the AI is confident. "✦ Best match."
-
-**AI Conversation**
-
-No chat bubbles. AI responses appear as clean body text in a warm white (`#FAFAF7`) container with 24px padding. Feels like reading, not messaging. User input sits in a linen input bar at the bottom, full-width, 16px body text, Dune border. Send button: 36px circle, Sage background, Moss on hover.
-
-**Comparison View**
-
-Side-by-side cards (stacked on mobile) with Best Match badge above the top recommendation. Cards share identical visual structure so the eye can scan differences without re-learning layout.
+No border/outline-style buttons. No square buttons.
 
 ---
 
-### AI State Patterns
+## Layout
 
-| State | Visual Signal |
-|---|---|
-| **Thinking** | Three sage dots, soft pulse animation. No spinner. Appears below the last message, not full-screen. |
-| **Suggesting** | Product cards fade in sequentially (100ms stagger). Feels deliberate, not instant-dump. |
-| **Confident** | "Best match" badge in Moss on the leading recommendation. |
-| **Uncertain** | No "Best match" badge. Intro copy shifts: "Here are a few options worth considering." No visual alarm — just honest framing. |
-| **Preference applied** | Small Stone label with sage left border above the recommendation: "Based on your fragrance-free preference." Quiet acknowledgment that the system is paying attention. |
-| **Flagged ingredient** | Terracotta tag on the relevant attribute. Tapping it shows the ingredient and why it's flagged. Never alarming — informative. |
+```
+Grid columns:     4-column fluid grid
+Gutter:           20px
+Page margin:      16px
+Nav height:       48px
+Content width:    ~1032px (at standard desktop viewport)
+```
+
+- Layout is **full-bleed** at the section level. Content constrains via the 4-column grid system, not a fixed max-width container.
+- Sections stack vertically with `border-radius: 32px 32px 0 0` on the top edge to create a cinematic "stacked card" reveal on scroll.
+- Nav uses flexbox (row). Hero sections use full-bleed with internal flex/grid alignment.
+- No drop shadows anywhere in the token system — depth is achieved through surface layering only.
 
 ---
 
-### Still to decide
+## Aesthetic Summary
 
-- Safety score: letter grade (A–D) vs. numeric (1–10). Letter grade used in this spec as the default.
-- Body weight for conversational AI responses: 400 used throughout. May want 300 (light) for a softer feel in longer responses.
+Seed's design language is **premium minimal with a nature-science foundation**:
+
+- **Color:** Almost monochromatic — deep forest green on off-white. Muted, grounded, never vivid.
+- **Type:** Light optical weight (350), tight tracking on large sizes, generous whitespace. Anti-bold — editorial, not loud.
+- **Form:** Pill buttons, rounded section corners, no hard edges.
+- **Depth:** Layered surface tones, no shadows or borders.
+- **Rhythm:** Full-bleed sections, 56–80px vertical padding, cinematic scroll.
+- **Overall:** Clinical wellness meets editorial luxury — clean, scientific, trustworthy without being sterile.
