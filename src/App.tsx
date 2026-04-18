@@ -8,11 +8,16 @@ function App() {
   const [view, setView] = useState<NavView>('browse')
 
   return (
-    <div className="min-h-screen bg-linen font-sans">
+    <div className="min-h-screen bg-linen font-sans flex flex-col">
       <NavBar activeView={view} onNavigate={setView} />
-      {view === 'browse' && <BrowsePage />}
-      {view === 'search' && <SearchPage />}
-      {view === 'chat' && <ChatPage />}
+      <main className="flex-1">
+        {view === 'browse' && <BrowsePage />}
+        {view === 'search' && <SearchPage />}
+        {view === 'chat' && <ChatPage />}
+      </main>
+      <footer className="py-4 text-center text-small text-neutral-400">
+        Built with Claude Code
+      </footer>
     </div>
   )
 }
