@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design System — Clean Shopper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --color-bg: #F3F1EB;
+  --color-surface: rgba(255,255,255,0.58);
+  --color-surface-hover: rgba(255,255,255,0.78);
+  --color-text: #141210;
+  --color-text-muted: #7A7671;
+  --color-accent: #2E5C3E;
+  --color-accent-hover: #1F402B;
+  --color-accent-light: rgba(46,92,62,0.10);
+  --color-border: rgba(255,255,255,0.70);
+  --color-border-subtle: rgba(0,0,0,0.06);
+  --color-success: #456B55;
+  --color-success-bg: rgba(69,107,85,0.09);
+  --color-warning: #8B6830;
+  --color-warning-bg: rgba(139,104,48,0.09);
+  --color-error: #924040;
+  --color-error-bg: rgba(146,64,64,0.09);
+  --color-info: #3D6080;
+  --color-info-bg: rgba(61,96,128,0.09);
+  --font-display: "DM Serif Display", serif;
+  --font-body: "Inter", sans-serif;
+  --text-display: 3.052rem;
+  --text-h1: 2.441rem;
+  --text-h2: 1.953rem;
+  --text-h3: 1.563rem;
+  --text-body: 1rem;
+  --text-small: 0.8rem;
+  --leading-tight: 1.1;
+  --leading-normal: 1.6;
+  --space-xs: 0.25rem; --space-sm: 0.5rem; --space-md: 1rem;
+  --space-lg: 1.5rem; --space-xl: 2.5rem; --space-2xl: 4rem;
+  --radius-sm: 0.25rem; --radius-md: 0.5rem; --radius-lg: 1rem;
+  --radius-xl: 1.5rem; --radius-full: 9999px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-glass: 0 2px 12px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.90);
+}
+*{box-sizing:border-box;margin:0;}
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; overflow-x: hidden;
+}
+
+/* ─── blobs ─── */
+.bg-blobs { position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden; }
+.blob { position:absolute; border-radius:50%; pointer-events:none; }
+.blob-1 {
+  width:800px;height:700px;top:-12%;left:-10%;
+  background:radial-gradient(ellipse,rgba(91,168,114,0.20) 0%,rgba(91,168,114,0.06) 55%,transparent 75%);
+  filter:blur(80px);
+  border-radius:62% 38% 55% 45%/48% 52% 48% 52%;
+  animation:drift1 20s ease-in-out infinite alternate;
+}
+.blob-2 {
+  width:600px;height:520px;top:20%;right:-8%;
+  background:radial-gradient(ellipse,rgba(120,170,100,0.16) 0%,rgba(100,155,80,0.05) 60%,transparent 80%);
+  filter:blur(70px);
+  border-radius:45% 55% 40% 60%/55% 45% 60% 40%;
+  animation:drift2 24s ease-in-out infinite alternate;
+}
+.blob-3 {
+  width:520px;height:480px;bottom:-8%;left:20%;
+  background:radial-gradient(ellipse,rgba(58,92,68,0.18) 0%,rgba(58,92,68,0.05) 55%,transparent 75%);
+  filter:blur(80px);
+  border-radius:55% 45% 60% 40%/40% 60% 45% 55%;
+  animation:drift3 28s ease-in-out infinite alternate;
+}
+.blob-4 {
+  width:350px;height:350px;top:52%;left:42%;
+  background:radial-gradient(ellipse,rgba(150,200,130,0.11) 0%,transparent 70%);
+  filter:blur(60px);
+  animation:drift4 22s ease-in-out infinite alternate;
+}
+@keyframes drift1{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(32px,22px) rotate(9deg)}}
+@keyframes drift2{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(-22px,28px) rotate(-7deg)}}
+@keyframes drift3{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(28px,-18px) rotate(6deg)}}
+@keyframes drift4{from{transform:translate(0,0) scale(1)}to{transform:translate(-16px,22px) scale(1.12)}}
+
+/* ─── botanical line layer ─── */
+.bg-botanical{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.055;}
+
+/* ─── mesh layer ─── */
+.bg-mesh{position:fixed;inset:0;z-index:2;pointer-events:none;}
+
+/* ─── grain layer ─── */
+.bg-grain{position:fixed;inset:0;z-index:9999;pointer-events:none;filter:url(#grain);opacity:0.038;background:white;}
+
+/* ─── content ─── */
+.wrap{position:relative;z-index:10;max-width:920px;margin:0 auto;padding:var(--space-2xl) var(--space-lg);}
+
+/* ─── glass ─── */
+.glass{
+  background:var(--color-surface);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid var(--color-border);
+  box-shadow:var(--shadow-glass);
+}
+.glass:hover{background:var(--color-surface-hover);border-color:rgba(255,255,255,0.88);}
+
+/* ─── header ─── */
+header.page{margin-bottom:var(--space-2xl);}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:var(--text-small);color:var(--color-accent);font-weight:600;margin-bottom:var(--space-sm);display:block;}
+header.page h1{font-family:var(--font-display);font-size:var(--text-display);line-height:var(--leading-tight);font-weight:400;margin-bottom:var(--space-sm);}
+header.page p{color:var(--color-text-muted);max-width:58ch;}
+section{margin-bottom:var(--space-2xl);}
+section>h2{font-family:var(--font-display);font-size:var(--text-h2);font-weight:400;margin-bottom:var(--space-lg);padding-bottom:var(--space-sm);border-bottom:1px solid var(--color-border-subtle);}
+
+/* ─── swatches ─── */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(144px,1fr));gap:var(--space-md);}
+.swatch{border-radius:var(--radius-lg);overflow:hidden;background:var(--color-surface);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--color-border);box-shadow:var(--shadow-sm);}
+.swatch .chip{height:62px;}
+.swatch .meta{padding:var(--space-sm) var(--space-md);}
+.swatch .name{font-weight:600;font-size:.80rem;color:var(--color-text);}
+.swatch .hex{color:var(--color-text-muted);font-size:.68rem;font-family:ui-monospace,monospace;margin-top:1px;}
+.swatch .use{color:var(--color-text-muted);font-size:.68rem;margin-top:2px;}
+
+/* functional badges */
+.func-row{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-top:var(--space-md);}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:var(--text-small);font-weight:500;padding:.28rem .75rem;border-radius:var(--radius-full);border:1px solid;}
+.badge svg{flex-shrink:0;}
+.badge-success{background:var(--color-success-bg);color:var(--color-success);border-color:rgba(69,107,85,0.22);}
+.badge-warning{background:var(--color-warning-bg);color:var(--color-warning);border-color:rgba(139,104,48,0.22);}
+.badge-error{background:var(--color-error-bg);color:var(--color-error);border-color:rgba(146,64,64,0.22);}
+.badge-info{background:var(--color-info-bg);color:var(--color-info);border-color:rgba(61,96,128,0.22);}
+.contrast-note{margin-top:var(--space-md);font-size:.70rem;color:var(--color-text-muted);font-family:ui-monospace,monospace;}
+
+/* ─── icons ─── */
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:var(--space-md);}
+.icon-item{
+  display:flex;flex-direction:column;align-items:center;gap:var(--space-xs);
+  padding:var(--space-md);
+  background:var(--color-surface);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  color:var(--color-accent);
+  font-size:.65rem;color:var(--color-text-muted);text-align:center;
+}
+.icon-item svg{color:var(--color-accent);}
+
+/* ─── empty states ─── */
+.empty-states{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-lg);}
+.empty-card{
+  background:var(--color-surface);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid var(--color-border);
+  box-shadow:var(--shadow-glass);
+  border-radius:var(--radius-xl);
+  padding:var(--space-xl) var(--space-lg);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-md);
+}
+.empty-card h3{font-family:var(--font-display);font-size:var(--text-h3);font-weight:400;color:var(--color-text);}
+.empty-card p{font-size:var(--text-small);color:var(--color-text-muted);max-width:22ch;line-height:1.6;}
+
+/* seed sprout animation */
+.sprout-leaves{transform-origin:50% 90%;animation:unfurl 2.2s ease-out forwards;}
+.sprout-stem{stroke-dasharray:60;stroke-dashoffset:60;animation:draw 1s ease-out .2s forwards;}
+.sprout-leaf-l{transform-origin:38px 28px;transform:scale(0) rotate(-20deg);opacity:0;animation:leafgrow 0.6s ease-out 1s forwards;}
+.sprout-leaf-r{transform-origin:52px 22px;transform:scale(0) rotate(15deg);opacity:0;animation:leafgrow 0.6s ease-out 1.3s forwards;}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes leafgrow{to{transform:scale(1) rotate(0deg);opacity:1}}
+@keyframes unfurl{0%{opacity:0}20%{opacity:1}100%{opacity:1}}
+
+/* leaf float animation */
+.leaf-float{animation:leaffloat 3.5s ease-in-out infinite alternate;transform-origin:50% 50%;}
+@keyframes leaffloat{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+
+/* basket bob animation */
+.basket-bob{animation:bob 2.8s ease-in-out infinite alternate;transform-origin:50% 60%;}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+
+/* ─── type ─── */
+.type-row{padding:var(--space-md) 0;border-bottom:1px solid var(--color-border-subtle);}
+.type-row:last-child{border-bottom:none;}
+.type-label{font-size:.68rem;color:var(--color-text-muted);font-family:ui-monospace,monospace;margin-bottom:var(--space-xs);}
+.d-display{font-family:var(--font-display);font-size:var(--text-display);line-height:1.1;font-weight:400;}
+.d-h1{font-family:var(--font-display);font-size:var(--text-h1);line-height:1.15;font-weight:400;}
+.d-h2{font-family:var(--font-display);font-size:var(--text-h2);line-height:1.2;font-weight:400;}
+.d-h3{font-family:var(--font-display);font-size:var(--text-h3);line-height:1.25;font-weight:400;}
+.d-body{font-size:var(--text-body);max-width:58ch;}
+.d-small{font-size:var(--text-small);color:var(--color-text-muted);}
+
+/* ─── spacing ─── */
+.space-scale{display:flex;flex-direction:column;gap:var(--space-sm);}
+.space-item{display:flex;align-items:center;gap:var(--space-md);}
+.space-tag{font-family:ui-monospace,monospace;font-size:var(--text-small);color:var(--color-text-muted);min-width:150px;}
+.space-bar{background:var(--color-accent);height:11px;border-radius:var(--radius-sm);display:block;opacity:.55;flex-shrink:0;}
+
+/* ─── box grid ─── */
+.box-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--space-lg);}
+.demo-box{background:var(--color-surface);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--color-border);padding:var(--space-lg);text-align:center;font-size:var(--text-small);color:var(--color-text-muted);}
+
+/* ─── components ─── */
+.components{display:grid;gap:var(--space-xl);}
+.comp-label{font-size:var(--text-small);color:var(--color-text-muted);margin-bottom:var(--space-sm);}
+.btn{font-family:var(--font-body);font-size:var(--text-body);font-weight:500;padding:var(--space-sm) var(--space-lg);border-radius:var(--radius-md);border:1px solid transparent;cursor:pointer;letter-spacing:.01em;transition:all .15s ease;display:inline-flex;align-items:center;gap:.4rem;}
+.btn-primary{background:var(--color-accent);color:#fff;}
+.btn-primary:hover{background:var(--color-accent-hover);box-shadow:0 2px 14px rgba(46,92,62,0.28);}
+.btn-glass{background:rgba(255,255,255,0.55);color:var(--color-text);border-color:rgba(255,255,255,0.70);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);}
+.btn-glass:hover{background:rgba(255,255,255,0.78);}
+.btn-disabled{background:rgba(0,0,0,0.05);color:var(--color-text-muted);border-color:rgba(0,0,0,0.06);cursor:not-allowed;}
+.btn-row{display:flex;gap:var(--space-md);flex-wrap:wrap;align-items:center;}
+.tag{background:var(--color-accent-light);color:var(--color-accent);border:1px solid rgba(46,92,62,0.20);border-radius:var(--radius-full);padding:.2rem .65rem;font-size:var(--text-small);font-weight:500;display:inline-block;}
+.tag-row{display:flex;gap:var(--space-xs);flex-wrap:wrap;}
+.card{border-radius:var(--radius-xl);padding:var(--space-lg);max-width:360px;background:var(--color-surface);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--color-border);box-shadow:var(--shadow-glass);transition:background .2s ease,border-color .2s ease;}
+.card:hover{background:var(--color-surface-hover);border-color:rgba(255,255,255,0.88);}
+.card h3{font-family:var(--font-display);font-size:var(--text-h3);font-weight:400;color:var(--color-text);margin-bottom:var(--space-sm);line-height:1.25;}
+.card p{color:var(--color-text-muted);font-size:.9375rem;margin-bottom:var(--space-md);line-height:1.55;}
+.card .tag-row{margin-bottom:var(--space-lg);}
+.field{display:flex;flex-direction:column;gap:var(--space-xs);max-width:360px;}
+.field label{font-size:var(--text-small);font-weight:500;color:var(--color-text);}
+.field input{font-family:var(--font-body);font-size:var(--text-body);padding:var(--space-sm) var(--space-md);background:rgba(255,255,255,0.60);border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-md);color:var(--color-text);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);outline:none;transition:border-color .15s,box-shadow .15s;}
+.field input::placeholder{color:var(--color-text-muted);}
+.field input:focus{border-color:rgba(46,92,62,0.40);box-shadow:0 0 0 3px rgba(46,92,62,0.12);}
+a.demo-link{color:var(--color-accent);text-decoration:none;border-bottom:1px solid rgba(46,92,62,0.35);padding-bottom:1px;}
+a.demo-link:hover{color:var(--color-accent-hover);border-bottom-color:var(--color-accent-hover);}
+footer.page{margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid var(--color-border-subtle);color:var(--color-text-muted);font-size:var(--text-small);}
+</style>
+</head>
+<body>
+
+<!-- SVG filters -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- Animated blobs -->
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
+
+<!-- Botanical line layer -->
+<svg class="bg-botanical" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- large sweeping stem, top-right -->
+  <path d="M 1100 -40 C 1050 120 980 200 900 320 C 820 440 780 500 820 620 C 860 740 920 800 880 920" stroke="#2E5C3E" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- leaf cluster, top right -->
+  <path d="M 920 220 C 960 180 1020 170 1040 210 C 1060 250 1020 280 980 260 C 940 240 920 220 920 220Z" stroke="#2E5C3E" stroke-width="1"/>
+  <path d="M 870 310 C 830 265 840 210 880 205 C 920 200 940 240 920 270 C 900 300 870 310 870 310Z" stroke="#2E5C3E" stroke-width="1"/>
+  <path d="M 850 395 C 900 360 960 370 970 410 C 980 450 940 470 900 455 C 860 440 850 395 850 395Z" stroke="#2E5C3E" stroke-width="1"/>
+  <!-- small branch -->
+  <path d="M 920 320 C 970 310 1010 290 1030 260" stroke="#2E5C3E" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- bottom-left vine -->
+  <path d="M -30 700 C 80 660 160 640 220 680 C 280 720 300 780 380 790 C 460 800 520 760 580 720" stroke="#2E5C3E" stroke-width="1.1" stroke-linecap="round"/>
+  <path d="M 160 645 C 140 600 155 555 185 555 C 215 555 225 590 210 615 C 195 640 160 645 160 645Z" stroke="#2E5C3E" stroke-width="0.9"/>
+  <path d="M 240 678 C 255 635 285 618 305 632 C 325 646 320 678 295 688 C 270 698 240 678 240 678Z" stroke="#2E5C3E" stroke-width="0.9"/>
+  <!-- center accent arc -->
+  <path d="M 580 860 C 640 800 700 750 740 700 C 780 650 800 580 820 540" stroke="#2E5C3E" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <!-- scattered small leaves -->
+  <ellipse cx="420" cy="300" rx="14" ry="22" stroke="#2E5C3E" stroke-width="0.8" transform="rotate(-30 420 300)"/>
+  <line x1="420" y1="300" x2="420" y2="322" stroke="#2E5C3E" stroke-width="0.7" stroke-linecap="round"/>
+  <ellipse cx="680" cy="160" rx="10" ry="18" stroke="#2E5C3E" stroke-width="0.8" transform="rotate(20 680 160)"/>
+  <line x1="680" y1="160" x2="680" y2="178" stroke="#2E5C3E" stroke-width="0.7" stroke-linecap="round"/>
+  <ellipse cx="200" cy="180" rx="10" ry="16" stroke="#2E5C3E" stroke-width="0.7" transform="rotate(-15 200 180)" opacity="0.7"/>
+  <ellipse cx="1200" cy="620" rx="12" ry="20" stroke="#2E5C3E" stroke-width="0.8" transform="rotate(25 1200 620)" opacity="0.7"/>
+</svg>
+
+<!-- Mesh texture -->
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:2;pointer-events:none;">
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="opacity:0.055;">
+    <filter id="mesh">
+      <feTurbulence type="turbulence" baseFrequency="0.013 0.017" numOctaves="4" seed="5" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.16  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.20 0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#mesh)"/>
+  </svg>
+</div>
+
+<!-- Grain -->
+<div class="bg-grain" aria-hidden="true"></div>
+
+<div class="wrap">
+
+<header class="page">
+  <span class="eyebrow">Design System</span>
+  <h1>Clean Shopper</h1>
+  <p><strong style="color:var(--color-text)">Direction:</strong> Light, textured, alive — warm cream ground, generative blobs, botanical line art, frosted glass &nbsp;·&nbsp; <strong style="color:var(--color-text)">Feeling:</strong> Calm and made with care</p>
+</header>
+
+<!-- COLOR -->
+<section>
+  <h2>Color</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="chip" style="background:#F3F1EB;border-bottom:1px solid rgba(0,0,0,0.06);"></div><div class="meta"><div class="name">Background</div><div class="hex">#F3F1EB</div><div class="use">Warm cream ground</div></div></div>
+    <div class="swatch"><div class="chip" style="background:rgba(255,255,255,0.58);border-bottom:1px solid rgba(0,0,0,0.06);"></div><div class="meta"><div class="name">Surface</div><div class="hex">rgba(255,255,255,.58)</div><div class="use">Glass cards</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#141210;"></div><div class="meta"><div class="name">Text primary</div><div class="hex">#141210</div><div class="use">Headings, body</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#7A7671;"></div><div class="meta"><div class="name">Text muted</div><div class="hex">#7A7671</div><div class="use">Secondary text</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#2E5C3E;"></div><div class="meta"><div class="name">Accent</div><div class="hex">#2E5C3E</div><div class="use">Actions, links</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#1F402B;"></div><div class="meta"><div class="name">Accent hover</div><div class="hex">#1F402B</div><div class="use">Hover state</div></div></div>
+  </div>
+
+  <!-- Functional colors -->
+  <div style="margin-top:var(--space-xl);">
+    <p style="font-size:var(--text-small);color:var(--color-text-muted);margin-bottom:var(--space-md);">Functional — earthy and tonal, not primary</p>
+    <div class="swatches" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));">
+      <div class="swatch"><div class="chip" style="background:rgba(69,107,85,0.16);border-bottom:1px solid rgba(69,107,85,0.2);"></div><div class="meta"><div class="name" style="color:var(--color-success);">Success</div><div class="hex">#456B55 — muted sage-forest</div><div class="use">Confirmed, added, in-stock</div></div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(139,104,48,0.16);border-bottom:1px solid rgba(139,104,48,0.2);"></div><div class="meta"><div class="name" style="color:var(--color-warning);">Warning</div><div class="hex">#8B6830 — warm amber ochre</div><div class="use">Low stock, expiring</div></div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(146,64,64,0.16);border-bottom:1px solid rgba(146,64,64,0.2);"></div><div class="meta"><div class="name" style="color:var(--color-error);">Error</div><div class="hex">#924040 — muted brick</div><div class="use">Errors, unavailable</div></div></div>
+      <div class="swatch"><div class="chip" style="background:rgba(61,96,128,0.16);border-bottom:1px solid rgba(61,96,128,0.2);"></div><div class="meta"><div class="name" style="color:var(--color-info);">Info</div><div class="hex">#3D6080 — dusty slate</div><div class="use">Hints, counts, info</div></div></div>
+    </div>
+  </div>
+
+  <div class="func-row" style="margin-top:var(--space-lg);">
+    <span class="badge badge-success">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Added to list
+    </span>
+    <span class="badge badge-warning">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Low stock
+    </span>
+    <span class="badge badge-error">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      Unavailable
+    </span>
+    <span class="badge badge-info">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      3 items updated
+    </span>
+  </div>
+  <p class="contrast-note">
+    All functional colors pass WCAG AA on cream background &nbsp;·&nbsp;
+    Success 5.3:1 · Warning 4.7:1 · Error 5.6:1 · Info 6.2:1
+  </p>
+</section>
+
+<!-- ICONS -->
+<section>
+  <h2>Icons</h2>
+  <p class="d-small" style="margin-bottom:var(--space-lg);">24px stroke icons · stroke-width 1.5 · round caps · inherit color from parent</p>
+  <div class="icon-grid">
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      cart
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      check
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="16 9 10 15 7 12"/>
+      </svg>
+      check-circle
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      search
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+      list
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      plus
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C7 2 4 7 4 12c0 3 1.5 5.5 4 7l4 3 4-3c2.5-1.5 4-4 4-7 0-5-3-10-8-10z"/>
+        <line x1="12" y1="8" x2="12" y2="16"/>
+      </svg>
+      leaf
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
+      </svg>
+      tag
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      store
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+      close
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+      chevron-right
+    </div>
+    <div class="icon-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      alert
+    </div>
+  </div>
+</section>
+
+<!-- EMPTY STATES -->
+<section>
+  <h2>Empty state motifs</h2>
+  <p class="d-small" style="margin-bottom:var(--space-lg);">Animated SVG line-art — stroke-based, no fills. Each state uses a forward/growth motif.</p>
+  <div class="empty-states">
+
+    <!-- Sprouting seed — empty list -->
+    <div class="empty-card">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- seed oval -->
+        <ellipse cx="40" cy="62" rx="10" ry="7" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- stem -->
+        <path class="sprout-stem" d="M 40 55 C 40 45 38 35 38 25" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- left leaf -->
+        <path class="sprout-leaf-l" d="M 38 32 C 28 28 22 18 28 14 C 34 10 40 20 38 28 Z" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- right leaf -->
+        <path class="sprout-leaf-r" d="M 38 24 C 46 16 58 16 58 22 C 58 28 48 32 40 28 Z" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Your list is empty</h3>
+      <p>Add items as you think of them. Start with this week's staples.</p>
+      <button class="btn btn-primary" style="font-size:var(--text-small);padding:.4rem 1rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add first item
+      </button>
+    </div>
+
+    <!-- Floating leaf — empty search -->
+    <div class="empty-card">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+        <g class="leaf-float">
+          <!-- magnifying glass -->
+          <circle cx="34" cy="34" r="16" stroke="#2E5C3E" stroke-width="1.5"/>
+          <line x1="45.5" y1="45.5" x2="58" y2="58" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- leaf inside glass -->
+          <path d="M 29 38 C 27 30 30 22 36 20 C 42 18 44 26 40 32 C 36 38 29 38 29 38Z" stroke="#2E5C3E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="29" y1="38" x2="36" y2="27" stroke="#2E5C3E" stroke-width="1" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <h3>Nothing found</h3>
+      <p>Try a different name, or browse your recent items.</p>
+      <button class="btn btn-glass" style="font-size:var(--text-small);padding:.4rem 1rem;">Clear search</button>
+    </div>
+
+    <!-- Basket bob — empty cart -->
+    <div class="empty-card">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g class="basket-bob">
+          <!-- basket body -->
+          <path d="M 16 38 L 20 62 Q 20 66 24 66 L 56 66 Q 60 66 60 62 L 64 38 Z" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- basket weave lines horizontal -->
+          <line x1="17" y1="46" x2="63" y2="46" stroke="#2E5C3E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <line x1="18" y1="54" x2="62" y2="54" stroke="#2E5C3E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <!-- weave verticals -->
+          <line x1="28" y1="38" x2="24" y2="66" stroke="#2E5C3E" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
+          <line x1="38" y1="38" x2="38" y2="66" stroke="#2E5C3E" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
+          <line x1="48" y1="38" x2="52" y2="66" stroke="#2E5C3E" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
+          <!-- handle -->
+          <path d="M 24 38 C 24 24 56 24 56 38" stroke="#2E5C3E" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- small leaf sprig on handle -->
+          <path d="M 36 28 C 32 22 28 22 28 26 C 28 30 34 30 36 28 Z" stroke="#2E5C3E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+      <h3>Cart is empty</h3>
+      <p>Items you add to your cart will appear here, ready for checkout.</p>
+      <button class="btn btn-primary" style="font-size:var(--text-small);padding:.4rem 1rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Browse list
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section>
+  <h2>Typography</h2>
+  <div class="type-row"><div class="type-label">Display · 3.052rem · DM Serif Display</div><div class="d-display">Fresh. Simple. Yours.</div></div>
+  <div class="type-row"><div class="type-label">H1 · 2.441rem · DM Serif Display</div><div class="d-h1">Your shopping list</div></div>
+  <div class="type-row"><div class="type-label">H2 · 1.953rem · DM Serif Display</div><div class="d-h2">This week's items</div></div>
+  <div class="type-row"><div class="type-label">H3 · 1.563rem · DM Serif Display</div><div class="d-h3">Produce</div></div>
+  <div class="type-row"><div class="type-label">Body · 1rem · Inter 400</div><div class="d-body">Clean Shopper helps you shop with intention. Add items, note where to find them, and keep your list organized without the noise. No ads, no upsells.</div></div>
+  <div class="type-row"><div class="type-label">Small · 0.8rem · Inter 400</div><div class="d-small">Last updated 2 minutes ago · 12 items across 3 stores</div></div>
+</section>
+
+<!-- SPACING -->
+<section>
+  <h2>Spacing</h2>
+  <div class="space-scale">
+    <div class="space-item"><span class="space-tag">xs · 0.25rem (4px)</span><span class="space-bar" style="width:var(--space-xs);"></span></div>
+    <div class="space-item"><span class="space-tag">sm · 0.5rem (8px)</span><span class="space-bar" style="width:var(--space-sm);"></span></div>
+    <div class="space-item"><span class="space-tag">md · 1rem (16px)</span><span class="space-bar" style="width:var(--space-md);"></span></div>
+    <div class="space-item"><span class="space-tag">lg · 1.5rem (24px)</span><span class="space-bar" style="width:var(--space-lg);"></span></div>
+    <div class="space-item"><span class="space-tag">xl · 2.5rem (40px)</span><span class="space-bar" style="width:var(--space-xl);"></span></div>
+    <div class="space-item"><span class="space-tag">2xl · 4rem (64px)</span><span class="space-bar" style="width:var(--space-2xl);"></span></div>
+  </div>
+</section>
+
+<!-- RADIUS + SHADOW -->
+<section>
+  <h2>Radius &amp; elevation</h2>
+  <div class="box-grid">
+    <div class="demo-box" style="border-radius:var(--radius-sm)">sm · 0.25rem</div>
+    <div class="demo-box" style="border-radius:var(--radius-md)">md · 0.5rem</div>
+    <div class="demo-box" style="border-radius:var(--radius-lg)">lg · 1rem</div>
+    <div class="demo-box" style="border-radius:var(--radius-xl)">xl · 1.5rem</div>
+    <div class="demo-box" style="border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border-color:transparent;">shadow sm</div>
+    <div class="demo-box" style="border-radius:var(--radius-md);box-shadow:var(--shadow-glass);border-color:rgba(255,255,255,0.70);">glass shadow</div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section>
+  <h2>Components</h2>
+  <div class="components">
+    <div>
+      <p class="comp-label">Buttons</p>
+      <div class="btn-row">
+        <button class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add to list
+        </button>
+        <button class="btn btn-glass">View details</button>
+        <button class="btn btn-disabled" disabled>Unavailable</button>
+      </div>
+    </div>
+    <div>
+      <p class="comp-label">Tags</p>
+      <div class="tag-row">
+        <span class="tag">Organic</span>
+        <span class="tag">Gluten-free</span>
+        <span class="tag">Whole Foods</span>
+        <span class="tag">Weekly staple</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Almond milk, unsweetened</h3>
+      <p>Refrigerated aisle, shelf 3. Buy 2 — one for this week, one to stock.</p>
+      <div class="tag-row">
+        <span class="tag">Dairy-free</span>
+        <span class="tag">Trader Joe's</span>
+      </div>
+      <button class="btn btn-primary" style="margin-top:var(--space-md);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add to cart
+      </button>
+    </div>
+    <div class="field">
+      <label for="demo-input">Search your list</label>
+      <input id="demo-input" type="text" placeholder="e.g. oat milk, spinach…" />
+    </div>
+    <p class="d-body">Not sure what store carries it? <a class="demo-link" href="#">Check past purchases</a> to see where you found it last time.</p>
+  </div>
+</section>
+
+<footer class="page">
+  Generated by the Design System Generator skill · Edit <code style="font-family:ui-monospace,monospace;">design.md</code> to update the system, then regenerate this page.
+</footer>
+
+</div><!-- /wrap -->
+</body>
+</html>
